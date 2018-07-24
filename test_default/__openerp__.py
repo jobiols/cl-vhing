@@ -19,8 +19,8 @@
 #
 # -----------------------------------------------------------------------------
 {
-    'name': 'Test',
-    'version': '10.0.0.0.0',
+    'name': 'test-v11',
+    'version': '11.0.0.0.0',
     'license': 'Other OSI approved licence',
     'category': 'Tools',
     'summary': 'Modulo base para testear odoo v11',
