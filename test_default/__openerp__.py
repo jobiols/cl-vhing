@@ -23,7 +23,7 @@
     'version': '10.0.0.0.0',
     'license': 'Other OSI approved licence',
     'category': 'Tools',
-    'summary': 'Testeando v11',
+    'summary': 'Modulo base para testear odoo v11',
     'author': 'jeo Software',
     'depends': [
     ],
@@ -38,12 +38,11 @@
 
     'port': '8069',
     'repos': [
-        {'usr': 'jobiols', 'repo': 'cl-test', 'branch': '10.0'},
-        {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '10.0'},
+        {'usr': 'jobiols', 'repo': 'cl-test', 'branch': '11.0'},
 
     ],
     'docker': [
-        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '10.0'},
+        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '11.0'},
         {'name': 'postgres', 'usr': 'postgres', 'ver': '9.5'},
     ]
 }
