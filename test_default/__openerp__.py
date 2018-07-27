@@ -19,11 +19,11 @@
 #
 # -----------------------------------------------------------------------------
 {
-    'name': 'test11',
+    'name': 'vhing',
     'version': '11.0.0.0.0',
     'license': 'Other OSI approved licence',
     'category': 'Tools',
-    'summary': 'Modulo base para testear odoo v11',
+    'summary': 'Customizacion para VH Ingenieria',
     'author': 'jeo Software',
     'depends': [
     ],
@@ -38,7 +38,7 @@
 
     'port': '8069',
     'repos': [
-        {'usr': 'jobiols', 'repo': 'cl-test', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'cl-vhing', 'branch': '11.0'},
 
     ],
     'docker': [
