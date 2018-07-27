@@ -26,6 +26,9 @@
     'summary': 'Customizacion para VH Ingenieria',
     'author': 'jeo Software',
     'depends': [
+        'sale_management',
+        'account_invoicing',  # Facturacion
+        'purchase',
     ],
     'data': [
     ],
