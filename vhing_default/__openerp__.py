@@ -27,8 +27,9 @@
     'author': 'jeo Software',
     'depends': [
         'sale_management',
-        'account_invoicing',  # Facturacion
+        'account_invoicing',
         'purchase',
+        'project',
     ],
     'data': [
     ],
@@ -42,7 +43,6 @@
     'port': '8069',
     'repos': [
         {'usr': 'jobiols', 'repo': 'cl-vhing', 'branch': '11.0'},
-
     ],
     'docker': [
         {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '11.0'},
