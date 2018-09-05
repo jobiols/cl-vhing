@@ -30,6 +30,15 @@
         'account_invoicing',
         'purchase',
         'project',
+
+        # para la localizacion argentina
+        'l10n_ar_account',
+        'l10n_ar_afipws_fe',        # Factura Electrónica Argentina
+        'l10n_ar_aeroo_einvoice',   # impresion de factura electronica aeroo
+        'l10n_ar_account_vat_ledger_citi',
+        'account_debt_management',  #
+        'l10n_ar_aeroo_payment_group',  #
+
     ],
     'data': [
     ],
@@ -43,10 +52,19 @@
     'port': '8069',
     'repos': [
         {'usr': 'jobiols', 'repo': 'cl-vhing', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'odoo-argentina', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'account-financial-tools', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'account-payment', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'miscellaneous', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'argentina-reporting', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'reporting-engine', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'aeroo_reports', 'branch': '11.0'},
+        {'usr': 'OCA', 'repo': 'partner-contact', 'branch': '11.0'},
     ],
     'docker': [
         {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '11.0'},
         {'name': 'postgres', 'usr': 'postgres', 'ver': '9.6'},
-        {'name': 'nginx', 'usr': 'nginx', 'ver': 'latest'}
+        {'name': 'nginx', 'usr': 'nginx', 'ver': 'latest'},
+        {'name': 'aeroo', 'usr': 'jobiols', 'img': 'aeroo-docs'},
     ]
 }
