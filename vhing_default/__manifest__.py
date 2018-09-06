@@ -38,7 +38,6 @@
         'l10n_ar_account_vat_ledger_citi',
         'account_debt_management',  #
         'l10n_ar_aeroo_payment_group',  #
-
     ],
     'data': [
     ],
