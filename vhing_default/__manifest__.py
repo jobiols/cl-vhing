@@ -51,6 +51,7 @@
     'port': '8069',
     'repos': [
         {'usr': 'jobiols', 'repo': 'cl-vhing', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'odoo-argentina', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'account-financial-tools', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'account-payment', 'branch': '11.0'},
