@@ -31,6 +31,9 @@
         'purchase',
         'project',
 
+        # desarrollados
+        'project_purchase_sale',
+
         # para la localizacion argentina
         'l10n_ar_account',
         'l10n_ar_afipws_fe',        # Factura Electrónica Argentina
@@ -61,6 +64,7 @@
         {'usr': 'ingadhoc', 'repo': 'aeroo_reports', 'branch': '11.0'},
         {'usr': 'OCA', 'repo': 'partner-contact', 'branch': '11.0'},
         {'usr': 'OCA', 'repo': 'web', 'branch': '11.0'},
+        {'usr': 'OCA', 'repo': 'server-tools', 'branch': '11.0'},
     ],
     'docker': [
         {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '11.0'},
