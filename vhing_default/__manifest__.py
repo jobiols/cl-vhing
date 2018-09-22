@@ -32,7 +32,7 @@
         'project',
 
         # desarrollados
-        'project_purchase_sale',
+        'project_eng',
 
         # para la localizacion argentina
         'l10n_ar_account',
