@@ -55,6 +55,7 @@
     'repos': [
         {'usr': 'jobiols', 'repo': 'cl-vhing', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'backend-theme', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'odoo-argentina', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'account-financial-tools', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'account-payment', 'branch': '11.0'},
@@ -65,6 +66,7 @@
         {'usr': 'OCA', 'repo': 'partner-contact', 'branch': '11.0'},
         {'usr': 'OCA', 'repo': 'web', 'branch': '11.0'},
         {'usr': 'OCA', 'repo': 'server-tools', 'branch': '11.0'},
+
     ],
     'docker': [
         {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '11.0'},
