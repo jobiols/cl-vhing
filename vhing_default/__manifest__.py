@@ -33,6 +33,7 @@
 
         # desarrollados
         'project_eng',
+        'cust_vhing',
 
         # para la localizacion argentina
         'l10n_ar_account',
