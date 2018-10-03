@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_order_form" model="ir.ui.view">
+        <field name="name">CUST VHING add create date</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <!-- agregar fecha de creacion -->
+                <xpath expr="//field[@name='confirmation_date']"
+                       position="after">
+                    <field name="create_date"/>
+                </xpath>
+                <!-- poner invisible la analitica-->
+                <xpath expr="//field[@name='analytic_account_id']"
+                       position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!-- poner la analitica bajo el nombre-->
+                <xpath expr="//div[@class='oe_title']" position="after">
+                    <field name="analytic_account_id" attrs="{'readonly':1}"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!-- Agregar analytic account -->
+    <record id="purchase_order_form" model="ir.ui.view">
+        <field name="name">CUST VHING Add analytic account</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date_order']" position="after">
+                <field name="analytic_account_id" attrs="{'required':1}"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
+
+
+
+
