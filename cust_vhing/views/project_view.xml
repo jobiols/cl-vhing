@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- cambiar nombres a las columnas -->
+    <record id="view_project" model="ir.ui.view">
+        <field name="name">CUST VHING change column names</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="attributes">
+                    <attribute name="string">Project Number</attribute>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="attributes">
+                    <attribute name="string">Customer</attribute>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+</odoo>

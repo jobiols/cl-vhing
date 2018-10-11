@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # -----------------------------------------------------------------------------
 #
-#    Copyright (C) 2018  jeo Software  (http://www.jeosoft.com.ar)
+#    Copyright (C) 2016  jeo Software  (http://www.jeosoft.com.ar)
 #    All Rights Reserved.
 #
 #    This program is free software: you can redistribute it and/or modify
@@ -19,24 +19,27 @@
 #
 # -----------------------------------------------------------------------------
 {
-    'name': 'cust_vhing',
+    'name': 'Project Eng',
     'version': '11.0.0.0.0',
     'license': 'AGPL-3',
     'category': 'Tools',
-    'summary': 'Customizacion para VH Ingenieria',
+    'summary': 'Project enhacements for engineering',
     'author': 'jeo Software',
     'depends': [
-        'sale',
-        'purchase'
+        'project',
+        'purchase',
+        'sale'
     ],
     'data': [
-        'views/sale_views.xml',
-        'views/project_view.xml'
+        'views/project_view.xml',
+        'views/sale_views.xml'
     ],
     'test': [
     ],
+    'demo': [
+    ],
     'installable': True,
-    'application': True,
+    'application': False,
     'auto_install': False,
-    'images': []
+    'images': [],
 }
