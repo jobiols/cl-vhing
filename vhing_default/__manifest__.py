@@ -36,7 +36,8 @@
         'cust_vhing',
 
         # para la localizacion argentina
-        'l10n_ar_account',
+        'l10n_ar_base',             # esto se instala solo
+        'l10n_ar_account',          # esto se instala solo
         'l10n_ar_afipws_fe',        # Factura Electrónica Argentina
         'l10n_ar_aeroo_einvoice',   # impresion de factura electronica aeroo
         'l10n_ar_account_vat_ledger_citi',
