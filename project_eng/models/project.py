@@ -2,6 +2,21 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import api, fields, models, tools, SUPERUSER_ID, _
+from odoo.addons import decimal_precision as dp
+
+
+class ProjectTask(models.Model):
+    _inherit = 'project.task'
+
+    sale_price = fields.Float(
+        digits=dp.get_precision('Product Price')
+    )
+    cost_price = fields.Float(
+        digits=dp.get_precision('Product Price')
+    )
+    product_id = fields.Many2one(
+        'product.product'
+    )
 
 
 class Project(models.Model):

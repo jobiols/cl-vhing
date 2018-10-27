@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Agregar precio / costo a task -->
+    <record id="view_task_form2" model="ir.ui.view">
+        <field name="name">PROJECT ENG Add price cost to task</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//field[@name='tag_ids']" position="after">
+                <field name="sale_price"/>
+                <field name="cost_price"/>
+                <field name="product_id"/>
+            </xpath>
+        </field>
+    </record>
+
+
+</odoo>

@@ -42,6 +42,9 @@
         'l10n_ar_account_vat_ledger_citi',
         'account_debt_management',  #
         'l10n_ar_aeroo_payment_group',  #
+
+        # utilitarios
+        'auto_backup',  # poner el backup en: /var/odoo/backups/
     ],
     'data': [
     ],

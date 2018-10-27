@@ -28,11 +28,15 @@
     'depends': [
         'project',
         'purchase',
-        'sale'
+        'sale',
+        'sale_timesheet'
     ],
     'data': [
         'views/project_view.xml',
-        'views/sale_views.xml'
+        'views/purchase_view.xml',
+        'views/task_view.xml',
+        'views/sale_views.xml',
+        'wizard/project_task_invoice_wizard_views.xml',
     ],
     'test': [
     ],
