@@ -35,13 +35,13 @@
         'project_eng',
 
         # para la localizacion argentina
-        'l10n_ar_base',             # esto se instala solo
-        'l10n_ar_account',          # esto se instala solo
-        'l10n_ar_afipws_fe',        # Factura Electrónica Argentina
-        'l10n_ar_aeroo_einvoice',   # impresion de factura electronica aeroo
+        'l10n_ar_base',  # esto se instala solo
+        'l10n_ar_account',  # esto se instala solo
+        'l10n_ar_afipws_fe',  # Factura Electrónica Argentina
+        'l10n_ar_aeroo_einvoice',  # impresion de factura electronica aeroo
         'l10n_ar_account_vat_ledger_citi',
-        'account_debt_management',  #
-        'l10n_ar_aeroo_payment_group',  #
+        'account_debt_management',
+        'l10n_ar_aeroo_payment_group',
 
         # utilitarios
         'auto_backup',  # poner el backup en: /var/odoo/backups/
@@ -61,7 +61,8 @@
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'backend-theme', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'odoo-argentina', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'account-financial-tools', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'account-financial-tools',
+         'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'account-payment', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'miscellaneous', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'argentina-reporting', 'branch': '11.0'},
