@@ -107,7 +107,7 @@ class Project(models.Model):
 
     @api.model
     def create(self, vals):
-        """ crea por defecto los estados de la lista de etapas.
+        """ crear por defecto los estados de la lista de etapas.
         """
         res = super(Project, self).create(vals)
         tasks = self.env['project.task.type'].search([])

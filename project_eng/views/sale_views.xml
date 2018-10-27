@@ -22,12 +22,14 @@
                 </xpath>
 
                 <!-- ocultar el boton lock-->
-                <xpath expr="//button[@name='action_done']" position="attributes">
+                <xpath expr="//button[@name='action_done']"
+                       position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
 
                 <!-- ocultar el boton unlock-->
-                <xpath expr="//button[@name='action_unlock']" position="attributes">
+                <xpath expr="//button[@name='action_unlock']"
+                       position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
 

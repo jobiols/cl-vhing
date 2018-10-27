@@ -26,15 +26,17 @@
     'summary': 'Project enhacements for engineering',
     'author': 'jeo Software',
     'depends': [
+        'hr_timesheet',
         'project',
         'purchase',
         'sale',
-        'sale_timesheet'
+        'sale_timesheet',
+        'analytic',
     ],
     'data': [
         'views/project_view.xml',
         'views/purchase_view.xml',
-        'views/task_view.xml',
+        'views/timesheet_view.xml',
         'views/sale_views.xml',
         'wizard/project_task_invoice_wizard_views.xml',
     ],
