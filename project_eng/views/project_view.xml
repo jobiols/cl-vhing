@@ -40,17 +40,6 @@
                 <field name="obs"/>
                 <field name="status"/>
                 <field name="total_sales" widget="monetary"/>
-            </xpath>
-        </field>
-    </record>
-
-    <!-- cambiar nombres a las columnas -->
-    <record id="view_project" model="ir.ui.view">
-        <field name="name">PROJECT ENG change column names</field>
-        <field name="model">project.project</field>
-        <field name="inherit_id" ref="project.view_project"/>
-        <field name="arch" type="xml">
-            <data>
                 <xpath expr="//field[@name='name']" position="attributes">
                     <attribute name="string">Project Number</attribute>
                 </xpath>
@@ -58,9 +47,10 @@
                        position="attributes">
                     <attribute name="string">Customer</attribute>
                 </xpath>
-            </data>
+            </xpath>
         </field>
     </record>
+
 
     <!-- Agregar precio / costo a task -->
     <record id="view_task_form2" model="ir.ui.view">

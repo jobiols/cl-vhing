@@ -22,6 +22,11 @@ class AccountAnalyticLine(models.Model):
         readonly=True
     )
 
+    purchase_order = fields.Many2one(
+        'purchase.order',
+        help="Purchase order for this piece of work"
+    )
+
     @api.multi
     @api.depends('name')
     def name_get(self):

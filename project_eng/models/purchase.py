@@ -1,4 +1,3 @@
-# -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import fields, models, _
@@ -13,7 +12,7 @@ class PurchaseOrder(models.Model):
         readonly=True,
         states={'draft': [('readonly', False)],
                 'sent': [('readonly', False)]},
-        help=_("The analytic account related to a purchase order."),
+        help="The analytic account related to a purchase order.",
         copy=False
     )
 
