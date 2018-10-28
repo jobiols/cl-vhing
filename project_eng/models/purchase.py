@@ -24,5 +24,6 @@ class PurchaseOrderLine(models.Model):
     account_analytic_id = fields.Many2one(
         'account.analytic.account',
         related='order_id.analytic_account_id',
-        store=True
+        store=True,
+        readonly=True
     )

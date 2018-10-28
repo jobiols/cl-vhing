@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import api, fields, models
-
+from odoo import api, fields, models, _
+from odoo.exceptions import UserError
 
 class ProjectTaskInvoiceWizard(models.TransientModel):
     _name = 'project.task.invoice.wizard'
@@ -38,6 +38,9 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
 
             # crear los productos
             for aal in _aals:
+                if not aal.task_id.product_id:
+                    raise UserError(_('Task %s does not have an associated '
+                                      'product.') % aal.task_id.name)
                 po.order_line.create({
                     'product_id': aal.task_id.product_id.id,
                     'product_qty': aal.unit_amount,

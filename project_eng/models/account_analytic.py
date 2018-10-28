@@ -9,11 +9,17 @@ class AccountAnalyticLine(models.Model):
 
     asignee_id = fields.Many2one(
         'res.users',
-        related="task_id.user_id"
+        related="task_id.user_id",
+        readonly=True
     )
 
     name = fields.Char(
         required=False
+    )
+
+    work = fields.Char(
+        related="task_id.project_id.work",
+        readonly=True
     )
 
     @api.multi
