@@ -12,7 +12,8 @@
 Engineering Projects
 ====================
 
-[![Build Status](https://travis-ci.org/jobiols/cl-vhing.svg?branch=11.0)](https://travis-ci.org/jobiols/cl-vhing)
+.. image:: https://travis-ci.org/jobiols/cl-vhing.svg?branch=11.0
+    :target: https://travis-ci.org/jobiols/cl-vhing
 
 This module is a customization for engineering jobs where hours are bought and
 sold, includes smart buttons in the project to see the purchase and sale
