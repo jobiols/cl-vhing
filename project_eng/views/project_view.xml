@@ -40,13 +40,12 @@
                 <field name="obs"/>
                 <field name="status"/>
                 <field name="total_sales" widget="monetary"/>
-                <xpath expr="//field[@name='name']" position="attributes">
-                    <attribute name="string">Project Number</attribute>
-                </xpath>
-                <xpath expr="//field[@name='partner_id']"
-                       position="attributes">
-                    <attribute name="string">Customer</attribute>
-                </xpath>
+            </xpath>
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="string">Project Number</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="attributes">
+                <attribute name="string">Customer</attribute>
             </xpath>
         </field>
     </record>
