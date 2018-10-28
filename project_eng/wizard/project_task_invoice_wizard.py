@@ -28,7 +28,7 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
             # obtener las tareas que van en cada oc
             _aals = self.aal_ids.filtered(
                 lambda r: r.asignee_id == po_data[0] and
-                          r.project_id.analytic_account_id == po_data[1])
+                r.project_id.analytic_account_id == po_data[1])
 
             # crear la oc
             po = purchase_order_obj.create({
