@@ -8,13 +8,16 @@
    :target: https://www.gnu.org/licenses/agpl
    :alt: License: AGPL-3
 
-===================
-Project Engineering
-===================
+====================
+Engineering Projects
+====================
 
-This module adds two smart buttons to project form, one pointing to Sales order
-and the other pointing to Purchases order related to this project.
-And perform some enhacements for engineering projects.
+[![Build Status](https://travis-ci.org/jobiols/cl-vhing.svg?branch=11.0)](https://travis-ci.org/jobiols/cl-vhing)
+
+This module is a customization for engineering jobs where hours are bought and
+sold, includes smart buttons in the project to see the purchase and sale
+orders, the possibility of billing suppliers from the timesheet and multiple
+improvements for this vertical.
 
 Installation
 ============
@@ -29,14 +32,6 @@ Configuration
 To configure this module, you need to:
 
 #. No configuration needed
-
-Usage
-=====
-
-This module adds two smart buttons to the project view to see the sales
-and purchases related to this project, in addition some fields were added to
-the project list wich enhace the usability for engineering projects.
-
 
 Bug Tracker
 ===========
