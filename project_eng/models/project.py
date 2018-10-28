@@ -33,19 +33,50 @@ class Project(models.Model):
     obs = fields.Char(
 
     )
-    status = fields.Selection(
-        [
-            ('not_started', 'Not Started'),
-            ('on_progress', 'On progress'),
-            ('delivered', 'Delivered')
-        ]
-    )
-    type = fields.Char(
-
+    stage = fields.Char(
+        compute='_compute_stage',
+        readonly=True
     )
     total_sales = fields.Float(
-        compute='_compute_total_sales'
+        compute='_compute_total_sales',
+        readonly=True
     )
+    percent_vh = fields.Float(
+        compute='_compute_percent',
+        readonly=True,
+        string="VH %"
+    )
+    percent_ing = fields.Float(
+        compute='_compute_percent',
+        readonly=True,
+        string="ING %"
+    )
+
+    @api.multi
+    def _compute_stage(self):
+        for proj in self:
+            # obtener la etapa mas avanzada de las tareas
+            stage = (100000000, '')
+            for task in proj.tasks:
+                if task.stage_id.sequence < stage[0]:
+                    stage = (task.stage_id.sequence, task.stage_id.name)
+            proj.stage = stage[1]
+
+    @api.multi
+    def _compute_percent(self):
+        for proj in self:
+            # calcular ing como SUM(compra) / SUM(venta) * 100
+
+            sale_price = cost_price = 0.0
+            for task in proj.tasks:
+                cost_price += task.cost_price
+                sale_price += task.sale_price
+
+            proj.percent_ing = 100 * cost_price / sale_price if \
+                sale_price != 0 else 0
+
+            # calcular VH como 100 - ing
+            proj.percent_vh = 100 - proj.percent_ing
 
     @api.multi
     def _compute_total_sales(self):

@@ -23,7 +23,7 @@
             <xpath expr="//field[@name='user_id']" position="before">
                 <field name="work"/>
                 <field name="obs"/>
-                <field name="status"/>
+                <field name="stage"/>
             </xpath>
 
         </field>
@@ -38,7 +38,7 @@
             <xpath expr="//field[@name='name']" position="after">
                 <field name="work"/>
                 <field name="obs"/>
-                <field name="status"/>
+                <field name="stage"/>
                 <field name="total_sales" widget="monetary"/>
             </xpath>
             <xpath expr="//field[@name='name']" position="attributes">
@@ -47,17 +47,21 @@
             <xpath expr="//field[@name='partner_id']" position="attributes">
                 <attribute name="string">Customer</attribute>
             </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="percent_ing" widget="progressbar"/>
+                <field name="percent_vh" widget="progressbar"/>
+            </xpath>
+
         </field>
     </record>
 
 
     <!-- Agregar precio / costo a task -->
     <record id="view_task_form2" model="ir.ui.view">
-        <field name="name">PROJECT ENG Add price cost to task</field>
+        <field name="name">PROJECT ENG Add price/cost to task</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_form2"/>
         <field name="arch" type="xml">
-
             <xpath expr="//field[@name='tag_ids']" position="after">
                 <field name="sale_price"/>
                 <field name="cost_price"/>
@@ -65,5 +69,4 @@
             </xpath>
         </field>
     </record>
-
 </odoo>
