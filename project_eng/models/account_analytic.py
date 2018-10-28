@@ -21,9 +21,10 @@ class AccountAnalyticLine(models.Model):
         readonly=True
     )
 
-    purchase_order = fields.Many2one(
+    purchase_order_id = fields.Many2one(
         'purchase.order',
-        help="Purchase order for this piece of work"
+        help="Purchase order for this piece of work",
+        readonly=True
     )
 
     @api.multi

@@ -26,37 +26,33 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
         # generar las ordenes de compra
         for po_data in purchase_orders:
             # obtener las tareas que van en cada oc
-            _aals = self.aal_ids.filtered(
-                lambda r: r.asignee_id == po_data[0] and
-                r.project_id.analytic_account_id == po_data[1])
+            _aals = self.aal_ids.filtered(lambda r: r.asignee_id == po_data[
+                0] and r.project_id.analytic_account_id == po_data[1])
 
             # crear la oc
             po = purchase_order_obj.create({
                 'partner_id': po_data[0].id,
-                'analytic_account_id': po_data[1].id
-            })
+                'analytic_account_id': po_data[1].id})
 
             # crear los productos
             for aal in _aals:
                 if not aal.task_id.product_id:
                     raise UserError(_('Task %s does not have an associated '
                                       'product.') % aal.task_id.name)
-                po.order_line.create({
-                    'product_id': aal.task_id.product_id.id,
-                    'product_qty': aal.unit_amount,
-                    'price_unit': aal.task_id.product_id.standard_price,
-                    'name': aal.task_id.name,
-                    'date_planned': aal.date,
-                    'product_uom': 1,
-                    'order_id': po.id
-                })
+                po.order_line.create(
+                    {'product_id': aal.task_id.product_id.id,
+                     'product_qty': aal.unit_amount,
+                     'price_unit': aal.task_id.product_id.standard_price,
+                     'name': aal.task_id.name,
+                     'date_planned': aal.date,
+                     'product_uom': 1, 'order_id': po.id})
+                # enlazar la orden de compra con la linea analitica
+                aal.purchase_order_id = po.id
 
     @api.model
     def default_get(self, fields):
-        result = super(ProjectTaskInvoiceWizard, self).default_get(fields)
+        ret = super(ProjectTaskInvoiceWizard, self).default_get(fields)
         selected_aals = self.env['account.analytic.line'].browse(
             self.env.context.get('active_ids', False))
-        result.update({
-            'aal_ids': selected_aals.ids,
-        })
-        return result
+        ret.update({'aal_ids': selected_aals.ids})
+        return ret
