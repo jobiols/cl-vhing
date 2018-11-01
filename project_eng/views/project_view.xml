@@ -6,7 +6,7 @@
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.edit_project"/>
         <field name="arch" type="xml">
-            <xpath expr="//button[@name='247']" position="before">
+            <xpath expr="//button[@class='oe_stat_button'][2]" position="before">
 
                 <button class="oe_stat_button" name="action_view_purchases"
                         type="object" icon="fa-shopping-cart">

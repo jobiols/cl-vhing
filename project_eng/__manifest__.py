@@ -38,7 +38,8 @@
         'views/timesheet_view.xml',
         'views/sale_views.xml',
         'wizard/project_task_invoice_wizard_views.xml',
-        'views/custom_reports.xml'
+        'views/custom_reports.xml',
+        'views/project_view.xml',
     ],
     'test': [
     ],

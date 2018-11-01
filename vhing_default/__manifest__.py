@@ -44,6 +44,7 @@
 
         # utilitarios
         'auto_backup',  # poner el backup en: /var/odoo/backups/
+        'backend_theme',
     ],
     'data': [
     ],
