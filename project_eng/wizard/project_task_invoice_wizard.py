@@ -18,6 +18,7 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
         purchase_orders = []
 
         # buscar tuplas distintas que son las oc a generar
+        # la tupla se forma con el asignado y la cuenta analitica
         for task in self.aal_ids:
             po_tuple = (task.asignee_id, task.project_id.analytic_account_id)
             if po_tuple not in purchase_orders:
@@ -29,9 +30,9 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
             _aals = self.aal_ids.filtered(lambda r: r.asignee_id == po_data[
                 0] and r.project_id.analytic_account_id == po_data[1])
 
-            # crear la oc
+            # crear la oc, hay que cambiar el usuario por el partner asociado
             po = purchase_order_obj.create({
-                'partner_id': po_data[0].id,
+                'partner_id': po_data[0].partner_id.id,
                 'analytic_account_id': po_data[1].id})
 
             # crear los productos
