@@ -61,7 +61,7 @@ class Project(models.Model):
             for task in proj.tasks:
                 total_price += task.sale_price
                 progress += task.progress * task.sale_price
-            proj.stage = progress / total_price
+            proj.stage = progress / total_price if total_price else 0
 
     @api.multi
     def _compute_percent(self):
