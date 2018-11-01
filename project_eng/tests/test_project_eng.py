@@ -37,6 +37,4 @@ class TestProjectEng(TransactionCase):
     def test_01_product_mapper(self):
         """ Check prueba ----------------------------------------------------01
         """
-
-        print('aaaaaaaaaaaaaaaaaaaaaaaaaaaaa')
         self.assertEqual(1, 1)

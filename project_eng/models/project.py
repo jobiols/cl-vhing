@@ -91,19 +91,15 @@ class Project(models.Model):
             proj.total_sales = total
 
     @api.multi
-    def _compute_purchase_count(self):
+    def _compute_count(self):
         for proj in self:
             analytic = proj.analytic_account_id
-            _obj = self.env['purchase.order.line']
+            _obj_p = self.env['purchase.order.line']
+            _obj_s = self.env['sale.order.line']
             domain = [('order_id.analytic_account_id.id', '=', analytic.id)]
-            proj.purchase_count = _obj.search_count(domain)
 
-    def _compute_sales_count(self):
-        for proj in self:
-            analytic = proj.analytic_account_id
-            _obj = self.env['sale.order.line']
-            domain = [('order_id.analytic_account_id.id', '=', analytic.id)]
-            proj.sales_count = _obj.search_count(domain)
+            proj.purchase_count = _obj_p.search_count(domain)
+            proj.sales_count = _obj_s.search_count(domain)
 
     @api.multi
     def action_view_sales(self):
