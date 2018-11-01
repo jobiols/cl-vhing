@@ -48,8 +48,8 @@
                 <attribute name="string">Customer</attribute>
             </xpath>
             <xpath expr="//field[@name='partner_id']" position="after">
-                <field name="percent_ing" widget="progressbar"/>
-                <field name="percent_vh" widget="progressbar"/>
+                <field name="percent_ing" widget="percent"/>
+                <field name="percent_vh" widget="percent"/>
             </xpath>
 
         </field>
