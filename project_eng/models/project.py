@@ -33,7 +33,7 @@ class Project(models.Model):
     obs = fields.Char(
 
     )
-    stage = fields.Char(
+    stage = fields.Integer(
         compute='_compute_stage',
         readonly=True
     )
@@ -55,12 +55,13 @@ class Project(models.Model):
     @api.multi
     def _compute_stage(self):
         for proj in self:
-            # obtener la etapa mas avanzada de las tareas
-            stage = (100000000, '')
+            # obtener la etapa como
+            # Sum( % avance tarea * $ tarea ) / Sum($ tarea)
+            total_price = progress = 0
             for task in proj.tasks:
-                if task.stage_id.sequence < stage[0]:
-                    stage = (task.stage_id.sequence, task.stage_id.name)
-            proj.stage = stage[1]
+                total_price += task.sale_price
+                progress += task.progress * task.sale_price
+            proj.stage = progress / total_price
 
     @api.multi
     def _compute_percent(self):
