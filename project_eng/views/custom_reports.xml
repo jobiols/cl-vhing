@@ -2,7 +2,7 @@
 <openerp>
     <!-- factura modificada, saca el odt de project_eng -->
 
-    <data noupdate="1">
+    <data noupdate="0">
     <!-- Printed Invoice -->
         <record id="action_aeroo_report_ar_einvoice" context="{'no_key_lines':True}" model="ir.actions.report">
             <field name="name">Argentinian Aeroo Electronic Invoice</field>

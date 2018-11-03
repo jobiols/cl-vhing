@@ -22,10 +22,12 @@ class Project(models.Model):
     _inherit = "project.project"
 
     purchase_count = fields.Integer(
-        compute='_compute_purchase_count'
+        compute='_compute_count',
+        readonly=True
     )
     sales_count = fields.Integer(
-        compute='_compute_sales_count'
+        compute='_compute_count',
+        readonly=True
     )
     work = fields.Char(
 
