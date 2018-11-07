@@ -45,6 +45,7 @@
         # utilitarios
         'auto_backup',  # poner el backup en: /var/odoo/backups/
         'backend_theme',
+        'due_payments_argentina_fix'
     ],
     'data': [
     ],
