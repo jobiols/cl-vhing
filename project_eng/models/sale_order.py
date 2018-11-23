@@ -10,7 +10,7 @@ class SaleOrderLine(models.Model):
         ret = super(SaleOrderLine,
                     self)._timesheet_create_task_prepare_values()  # noqa
 
-        ret['sale_price'] = self.price_subtotal
+        ret['sale_price'] = self.product_id.list_price
         ret['product_id'] = self.product_id.id
         ret['cost_price'] = self.product_id.standard_price
 
