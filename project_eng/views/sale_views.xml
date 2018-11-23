@@ -55,20 +55,65 @@
     </record>
 
     <record id="view_quotation_tree" model="ir.ui.view">
-        <field name="name">PROJECT ENG customize quotation list</field>
+        <field name="name">PROJECT ENG customize quotation tree</field>
         <field name="model">sale.order</field>
         <field name="inherit_id" ref="sale.view_quotation_tree"/>
         <field name="arch" type="xml">
             <data>
+                <!-- agregar campo work y description -->
                 <xpath expr="//field[@name='user_id']" position="after">
                     <field name="work"/>
                     <field name="description"/>
                 </xpath>
+                <!-- eliminar campo user_id -->
                 <xpath expr="//field[@name='user_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+                <!-- quitar la hora -->
                 <xpath expr="//field[@name='date_order']" position="attributes">
                     <attribute name="widget">date</attribute>
+                </xpath>
+
+            </data>
+        </field>
+    </record>
+
+    <record id="view_order_tree" model="ir.ui.view">
+        <field name="name">PROJECT ENG customize order tree</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_tree"/>
+        <field name="arch" type="xml">
+            <data>
+                <!-- agregar el campo codigo de proyecto -->
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="project_code"/>
+                </xpath>
+                <xpath expr="//field[@name='partner_id']" position="after">
+                    <field name="work"/>
+                </xpath>
+                <!-- quitar la hora -->
+                <xpath expr="//field[@name='confirmation_date']" position="attributes">
+                    <attribute name="widget">date</attribute>
+                </xpath>
+                <!-- ocultar columna comercial -->
+                <xpath expr="//field[@name='user_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+                <!-- agregar la columna iniciales -->
+                <xpath expr="//field[@name='user_id']" position="after">
+                    <field name="user_initials"/>
+                </xpath>
+
+                <!-- Agregar columna Avance % -->
+                <xpath expr="//field[@name='user_initials']" position="after">
+                    <field name="stage_percent"/>
+                </xpath>
+
+                <!-- Agregar columnas cobrado%, facturado%, sin cobrar -->
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="amount_paid_percent"/>
+                    <field name="amount_invoiced_percent"/>
+                    <field name="amount_due" widget="monetary" sum="Total due"/>
                 </xpath>
 
             </data>

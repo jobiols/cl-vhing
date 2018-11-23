@@ -20,8 +20,37 @@ class SaleOrder(models.Model):
 
     )
 
+    user_initials = fields.Char(
+        compute="compute_user_initials"
+    )
+
+    stage_percent = fields.Float(
+        help="Porcentaje de avance"
+    )
+
+    amount_paid_percent = fields.Float(
+        help="Porcentaje cobrado del total facturado"
+    )
+
+    amount_invoiced_percent = fields.Float(
+        help="Porcentaje de la orden de venta que ha sido facturado"
+    )
+
+    amount_due = fields.Float(
+        help="Lo que resta cobrar del total facturado"
+    )
+
     _sql_constraints = [('project_code_unique', 'unique(project_code)',
                          'The project code must be unique.')]
+
+    @api.depends('user_id')
+    def compute_user_initials(self):
+        for so in self:
+            name_list = so.user_id.name.split()
+            initials = ""
+            for name in name_list:
+                initials += name[0].upper()
+            so.user_initials = initials
 
 
 class SaleOrderLine(models.Model):
