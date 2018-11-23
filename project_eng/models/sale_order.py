@@ -20,6 +20,9 @@ class SaleOrder(models.Model):
 
     )
 
+    _sql_constraints = [('project_code_unique', 'unique(project_code)',
+                         'The project code must be unique.')]
+
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
