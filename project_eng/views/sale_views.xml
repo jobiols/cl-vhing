@@ -33,6 +33,23 @@
                     <attribute name="invisible">1</attribute>
                 </xpath>
 
+                <!-- Eliminar direccion de entrega -->
+                <xpath expr="//field[@name='partner_shipping_id']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- Agregar contacto -->
+                <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                    <field name="partner_contact_id"/>
+                </xpath>
+
+                <!-- Agregar codigo de proyecto y obra -->
+                <xpath expr="//field[@name='payment_term_id']" position="after">
+                    <field name="project_code"/>
+                    <field name="work" />
+                    <field name='description'/>
+                </xpath>
+
             </data>
         </field>
     </record>

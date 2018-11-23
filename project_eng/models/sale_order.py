@@ -1,5 +1,24 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
-from odoo import api, models
+from odoo import api, models, fields
+
+
+class SaleOrder(models.Model):
+    _inherit = 'sale.order'
+
+    work = fields.Char(
+
+    )
+    partner_contact_id = fields.Many2one(
+        'res.partner'
+    )
+
+    project_code = fields.Char(
+        required=True
+    )
+
+    description = fields.Char(
+
+    )
 
 
 class SaleOrderLine(models.Model):
