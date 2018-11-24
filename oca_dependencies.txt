@@ -1,5 +1,5 @@
 odoo-argentina https://github.com/ingadhoc/odoo-argentina.git 11.0
-argentina-reporting https://github.com/ingadhoc/argentina-reporting.git 11.0
+argentina-reporting https://github.com/jobiols/argentina-reporting.git 11.0
 
 
 
