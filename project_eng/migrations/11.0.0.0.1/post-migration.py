@@ -26,4 +26,3 @@ def migrate(cr, version):
             SET name = id
             WHERE name is null
         """)
-
