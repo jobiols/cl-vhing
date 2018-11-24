@@ -6,7 +6,7 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     work = fields.Char(
-
+        required=True
     )
     partner_contact_id = fields.Many2one(
         'res.partner'
