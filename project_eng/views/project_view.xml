@@ -22,7 +22,7 @@
             </xpath>
             <xpath expr="//field[@name='user_id']" position="before">
                 <field name="work"/>
-                <field name="obs"/>
+                <field name="description"/>
                 <field name="stage"/>
             </xpath>
 
@@ -37,7 +37,7 @@
         <field name="arch" type="xml">
             <xpath expr="//field[@name='name']" position="after">
                 <field name="work"/>
-                <field name="obs"/>
+                <field name="description"/>
                 <field name="stage"/>
                 <field name="total_sales" widget="monetary"/>
             </xpath>

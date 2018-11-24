@@ -30,10 +30,13 @@ class Project(models.Model):
         readonly=True
     )
     work = fields.Char(
-
+        compute="_compute_from_so",
+        readonly=True
     )
-    obs = fields.Char(
 
+    description = fields.Char(
+        compute='_compute_from_so',
+        readonly=True
     )
     stage = fields.Integer(
         compute='_compute_stage',
@@ -53,6 +56,23 @@ class Project(models.Model):
         readonly=True,
         string="ING %"
     )
+
+    @api.depends('analytic_account_id')
+    def _compute_from_so(self):
+        for proj in self:
+            # se supone que hay una analitica por cada so, si hay
+            # mas devuelvo las cosas en una lista
+            sos = proj.analytic_account_id.get_so()
+            work = []
+            description = []
+            for so in sos:
+                if so.work:
+                    work.append(so.work)
+                if so.description:
+                    description.append(so.description)
+
+            proj.work = ', '.join(work) if work else False
+            proj.description = ', '.join(description) if work else False
 
     @api.multi
     def _compute_stage(self):

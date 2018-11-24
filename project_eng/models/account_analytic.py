@@ -3,6 +3,23 @@
 from odoo import api, fields, models
 
 
+class AccountAnalytic(models.Model):
+    _inherit = "account.analytic.account"
+
+    @api.multi
+    def get_so(self):
+        """ Obtener la obra que tiene esta analitica
+            la saca de las SO
+        """
+        # TODO Revisar esto, tengo que devolver el work y el description en
+        # lugar del so
+        sale_order_obj = self.env['sale.order']
+        for aa in self:
+            so = sale_order_obj.search(
+                [('analytic_account_id.id', '=', aa.id)])
+            return so
+
+
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
