@@ -21,7 +21,7 @@ class SaleOrder(models.Model):
     )
 
     user_initials = fields.Char(
-        compute="compute_user_initials"
+        compute="_compute_user_initials"
     )
 
     stage_percent = fields.Float(
@@ -44,7 +44,7 @@ class SaleOrder(models.Model):
                          'The project code must be unique.')]
 
     @api.depends('user_id')
-    def compute_user_initials(self):
+    def _compute_user_initials(self):
         for so in self:
             name_list = so.user_id.name.split()
             initials = ""
