@@ -1,3 +1,4 @@
+reporting-engine https://github.com/jobiols/reporting-engine.git 11.0
 odoo-argentina https://github.com/ingadhoc/odoo-argentina.git 11.0
 argentina-reporting https://github.com/ingadhoc/argentina-reporting.git 11.0
 server-tools https://github.com/oca/server-tools.git 11.0
