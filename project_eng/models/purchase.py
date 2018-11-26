@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import fields, models, api
+from odoo.addons import decimal_precision as dp
 
 
 class PurchaseOrder(models.Model):
@@ -10,7 +11,9 @@ class PurchaseOrder(models.Model):
         readonly=True,
         compute="_compute_work"
     )
-
+    project_code = fields.Char(
+        compute='_compute_project_code'
+    )
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
         'Analytic Account',
@@ -22,11 +25,22 @@ class PurchaseOrder(models.Model):
     )
 
     @api.depends('analytic_account_id')
+    def _compute_project_code(self):
+        for po in self:
+            if po.analytic_account_id:
+                project_code = []
+                sos = po.analytic_account_id.get_so()
+                for so in sos:
+                    if so.project_code:
+                        project_code.append(so.project_code)
+                po.project_code = ', '.join(project_code) if project_code else False
+
+    @api.depends('analytic_account_id')
     def _compute_work(self):
         for po in self:
             if po.analytic_account_id:
                 work = []
-                sos = po.analytic_account_id.get_work()
+                sos = po.analytic_account_id.get_so()
                 for so in sos:
                     if so.work:
                         work.append(so.work)
@@ -41,4 +55,7 @@ class PurchaseOrderLine(models.Model):
         related='order_id.analytic_account_id',
         store=True,
         readonly=True
+    )
+    price_task_total = fields.Float(
+        digits=dp.get_precision('Product Price')
     )

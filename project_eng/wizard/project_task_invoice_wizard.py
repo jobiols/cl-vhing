@@ -33,6 +33,7 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
             # crear la oc, hay que cambiar el usuario por el partner asociado
             po = purchase_order_obj.create({
                 'partner_id': po_data[0].partner_id.id,
+                'partner_ref': po_data[0].partner_id.ref,
                 'analytic_account_id': po_data[1].id})
 
             # crear los productos
@@ -40,10 +41,15 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
                 if not aal.task_id.product_id:
                     raise UserError(_('Task %s does not have an associated '
                                       'product.') % aal.task_id.name)
+
+                # traemos el costo cargado en la tarea.
+                price_task = aal.task_id.cost_price
+
                 po.order_line.create(
                     {'product_id': aal.task_id.product_id.id,
                      'product_qty': aal.unit_amount,
-                     'price_unit': aal.task_id.product_id.standard_price,
+                     'price_unit': price_task / 100,
+                     'price_task_total': price_task,
                      'name': aal.task_id.name,
                      'date_planned': aal.date,
                      'product_uom': 1, 'order_id': po.id})

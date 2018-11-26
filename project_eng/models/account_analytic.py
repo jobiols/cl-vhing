@@ -8,10 +8,8 @@ class AccountAnalytic(models.Model):
 
     @api.multi
     def get_so(self):
-        """ Obtener la obra que tiene esta analitica
-            la saca de las SO
+        """ Obtener las SO que apuntan a esta analitica
         """
-        # TODO Revisar esto, tengo que devolver el work y el description en
         # lugar del so
         sale_order_obj = self.env['sale.order']
         for aa in self:

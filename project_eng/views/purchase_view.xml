@@ -2,7 +2,7 @@
 <odoo>
 
     <record id="purchase_order_form" model="ir.ui.view">
-        <field name="name">PROJECT ENG customize</field>
+        <field name="name">PROJECT ENG customize PO</field>
         <field name="model">purchase.order</field>
         <field name="inherit_id" ref="purchase.purchase_order_form"/>
         <field name="arch" type="xml">
@@ -11,6 +11,7 @@
             <xpath expr="//field[@name='date_order']" position="after">
                 <field name="analytic_account_id" attrs="{'required':1}"/>
                 <field name="work"/>
+                <field name="project_code"/>
             </xpath>
 
             <!-- ocultar la analitica de la linea -->
@@ -18,6 +19,51 @@
                    position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
+
+            <!-- agregar costo total de la tarea -->
+            <xpath expr="//field[@name='price_unit']" position="before">
+                <field name="price_task_total"/>
+            </xpath>
+
+            <!-- quitar hora de la fecha de pedido -->
+            <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="widget">date</attribute>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="purchase_order_tree" model="ir.ui.view">
+        <field name="name">PROJECT ENG customize PO tree</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_tree"/>
+        <field name="arch" type="xml">
+
+            <!-- agregar codigo de proyecto -->
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="project_code"/>
+            </xpath>
+
+            <!-- quitar la hora de la fecha del presupuesto -->
+            <xpath expr="//field[@name='date_order']" position="attributes">
+                <attribute name="widget">date</attribute>
+            </xpath>
+
+            <!-- quitar la columna fecha prevista -->
+            <xpath expr="//field[@name='date_planned']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <!-- agregar columna obra -->
+            <xpath expr="//field[@name='date_order']" position="after">
+                <field name="work"/>
+            </xpath>
+
+            <!-- ocultar documento origen -->
+            <xpath expr="//field[@name='origin']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
         </field>
     </record>
 

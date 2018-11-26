@@ -11,31 +11,24 @@ class SaleOrder(models.Model):
     partner_contact_id = fields.Many2one(
         'res.partner'
     )
-
     project_code = fields.Char(
         required=True
     )
-
     description = fields.Char(
 
     )
-
     user_initials = fields.Char(
         compute="_compute_user_initials"
     )
-
     stage_percent = fields.Float(
         help="Porcentaje de avance"
     )
-
     amount_paid_percent = fields.Float(
         help="Porcentaje cobrado del total facturado"
     )
-
     amount_invoiced_percent = fields.Float(
         help="Porcentaje de la orden de venta que ha sido facturado"
     )
-
     amount_due = fields.Float(
         help="Lo que resta cobrar del total facturado"
     )
