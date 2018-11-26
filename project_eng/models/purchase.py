@@ -14,6 +14,9 @@ class PurchaseOrder(models.Model):
     project_code = fields.Char(
         compute='_compute_project_code'
     )
+    description = fields.Char(
+        compute='_compute_description'
+    )
     analytic_account_id = fields.Many2one(
         'account.analytic.account',
         'Analytic Account',
@@ -45,6 +48,17 @@ class PurchaseOrder(models.Model):
                     if so.work:
                         work.append(so.work)
                 po.work = ', '.join(work) if work else False
+
+    @api.depends('analytic_account_id')
+    def _compute_description(self):
+        for po in self:
+            if po.analytic_account_id:
+                description = []
+                sos = po.analytic_account_id.get_so()
+                for so in sos:
+                    if so.description:
+                        description.append(so.description)
+                po.description = ', '.join(description) if description else False
 
 
 class PurchaseOrderLine(models.Model):

@@ -65,10 +65,12 @@
                     <field name="work"/>
                     <field name="description"/>
                 </xpath>
+
                 <!-- eliminar campo user_id -->
                 <xpath expr="//field[@name='user_id']" position="attributes">
                     <attribute name="invisible">1</attribute>
                 </xpath>
+
                 <!-- quitar la hora -->
                 <xpath expr="//field[@name='date_order']" position="attributes">
                     <attribute name="widget">date</attribute>
