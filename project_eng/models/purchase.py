@@ -36,7 +36,8 @@ class PurchaseOrder(models.Model):
                 for so in sos:
                     if so.project_code:
                         project_code.append(so.project_code)
-                po.project_code = ', '.join(project_code) if project_code else False
+                po.project_code = ', '.join(project_code) if project_code \
+                    else False
 
     @api.depends('analytic_account_id')
     def _compute_work(self):
@@ -58,7 +59,8 @@ class PurchaseOrder(models.Model):
                 for so in sos:
                     if so.description:
                         description.append(so.description)
-                po.description = ', '.join(description) if description else False
+                po.description = ', '.join(description) if description \
+                    else False
 
 
 class PurchaseOrderLine(models.Model):
