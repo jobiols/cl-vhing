@@ -5,9 +5,6 @@ from odoo import api, models, fields
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    pelotas = fields.Char(
-        required=True
-    )
     work = fields.Char(
 
     )
