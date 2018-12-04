@@ -5,14 +5,17 @@ from odoo import api, models, fields
 class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
-    work = fields.Char(
+    pelotas = fields.Char(
         required=True
+    )
+    work = fields.Char(
+
+    )
+    project_code = fields.Char(
+
     )
     partner_contact_id = fields.Many2one(
         'res.partner'
-    )
-    project_code = fields.Char(
-        required=True
     )
     description = fields.Char(
 
