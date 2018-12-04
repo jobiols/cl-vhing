@@ -1,10 +1,9 @@
 odoo-argentina https://github.com/ingadhoc/odoo-argentina.git 11.0
 argentina-reporting https://github.com/jobiols/argentina-reporting.git 11.0
 backend-theme https://github.com/jobiols/backend-theme.git 11.0
+odoo-addons https://github.com/jobiols/odoo-addons.git 11.0
 
 #esto da error al bajar cups aunque en el ultimo repo no esta (?)
-
-
 
 #odoo-addons https://github.com/jobiols/odoo-addons.git 11.0
 #account-financial-tools https://github.com/ingadhoc/account-financial-tools.git 11.0
