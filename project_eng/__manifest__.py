@@ -32,9 +32,6 @@
         'sale_timesheet',
         'analytic',
     ],
-    'demo': [
-        'data/sales_order_data_demo.xml'
-    ],
     'data': [
         'views/project_view.xml',
         'views/purchase_view.xml',

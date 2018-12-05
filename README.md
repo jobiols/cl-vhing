@@ -1,2 +1,2 @@
-CUSTOMIZACION VHING [![Build Status](https://travis-ci.org/jobiols/cl-vhing.svg?branch=11.0)](https://travis-ci.org/jobiols/cl-vhing) [![CodeFactor](https://www.codefactor.io/repository/github/jobiols/cl-vhing/badge)](https://www.codefactor.io/repository/github/jobiols/cl-vhing)
+CUSTOMIZACION VHING [![Build Status](https://travis-ci.org/jobiols/cl-vhing.svg?branch=11.0)](https://travis-ci.org/jobiols/cl-vhing) [![codecov](https://codecov.io/gh/jobiols/cl-vhing/branch/11.0/graph/badge.svg)](https://codecov.io/gh/jobiols/cl-vhing) [![CodeFactor](https://www.codefactor.io/repository/github/jobiols/cl-vhing/badge)](https://www.codefactor.io/repository/github/jobiols/cl-vhing)
 -------------------
