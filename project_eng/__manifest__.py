@@ -41,9 +41,10 @@
         'views/custom_reports.xml',
         'views/project_view.xml',
     ],
-    'test': [
-    ],
     'demo': [
+        'data/sales_order_data_demo.xml'
+    ],
+    'test': [
     ],
     'installable': True,
     'application': False,

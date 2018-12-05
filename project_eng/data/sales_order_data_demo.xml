@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record model="sale.order" id="sale.sale_order_8">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-1</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_7">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-2</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_6">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-3</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_4">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-4</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_3">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-5</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_14">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-6</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_9">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-7</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_15">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-8</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_10">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-9</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_16">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-10</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_11">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-11</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_17">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-12</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_12">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-13</field>
+        </record>
+        <record model="sale.order" id="sale.portal_sale_order_2">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-14</field>
+        </record>
+        <record model="sale.order" id="sale.portal_sale_order_1">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-15</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_5">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-16</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_2">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-17</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_1">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-18</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_18">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-19</field>
+        </record>
+        <record model="sale.order" id="sale.sale_order_13">
+            <field name="work">La casa de la abuela</field>
+            <field name="project_code">112456-20</field>
+        </record>
+    </data>
+</odoo>
