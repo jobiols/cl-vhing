@@ -6,10 +6,10 @@ class SaleOrder(models.Model):
     _inherit = 'sale.order'
 
     work = fields.Char(
-        required=True
+
     )
     project_code = fields.Char(
-        required=True
+
     )
     partner_contact_id = fields.Many2one(
         'res.partner'
@@ -18,23 +18,41 @@ class SaleOrder(models.Model):
 
     )
     user_initials = fields.Char(
-        compute="_compute_user_initials"
+        compute="_compute_user_initials",
+        readonly=True
     )
     stage_percent = fields.Float(
-        help="Porcentaje de avance"
+        help="Porcentaje de avance",
+        compute="_compute_percentages",
+        readonly=True
     )
     amount_paid_percent = fields.Float(
-        help="Porcentaje cobrado del total facturado"
+        help="Porcentaje cobrado del total facturado",
+        compute="_compute_percentages",
+        readonly=True
     )
     amount_invoiced_percent = fields.Float(
-        help="Porcentaje de la orden de venta que ha sido facturado"
+        help="Porcentaje de la orden de venta que ha sido facturado",
+        compute="_compute_percentages",
+        readonly=True
     )
     amount_due = fields.Float(
-        help="Lo que resta cobrar del total facturado"
+        help="Lo que resta cobrar del total facturado",
+        compute="_compute_percentages",
+        readonly=True
     )
 
     _sql_constraints = [('project_code_unique', 'unique(project_code)',
                          'The project code must be unique.')]
+
+    @api.depends()
+    def _compute_percentages(self):
+        for so in self:
+            so.stage_percent = 0
+            so.amount_paid_percent = 0
+            so.amount_invoice_percent = 0
+            so.amount_due = 0
+
 
     @api.depends('user_id')
     def _compute_user_initials(self):

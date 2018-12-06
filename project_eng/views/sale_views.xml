@@ -45,8 +45,8 @@
 
                 <!-- Agregar codigo de proyecto y obra -->
                 <xpath expr="//field[@name='payment_term_id']" position="after">
-                    <field name="project_code"/>
-                    <field name="work" />
+                    <field name="project_code" required="True"/>
+                    <field name="work" required="True"/>
                     <field name='description'/>
                 </xpath>
 
@@ -62,7 +62,7 @@
             <data>
                 <!-- agregar campo work y description -->
                 <xpath expr="//field[@name='user_id']" position="after">
-                    <field name="work"/>
+                    <field name="work" required="True" />
                     <field name="description"/>
                 </xpath>
 
@@ -88,10 +88,10 @@
             <data>
                 <!-- agregar el campo codigo de proyecto -->
                 <xpath expr="//field[@name='name']" position="after">
-                    <field name="project_code"/>
+                    <field name="project_code" required="True"/>
                 </xpath>
                 <xpath expr="//field[@name='partner_id']" position="after">
-                    <field name="work"/>
+                    <field name="work" required="True"/>
                 </xpath>
                 <!-- quitar la hora -->
                 <xpath expr="//field[@name='confirmation_date']" position="attributes">
