@@ -52,7 +52,6 @@ class SaleOrder(models.Model):
             so.amount_invoice_percent = 0
             so.amount_due = 0
 
-
     @api.depends('user_id')
     def _compute_user_initials(self):
         for so in self:
