@@ -19,7 +19,8 @@ class SaleOrder(models.Model):
     )
     user_initials = fields.Char(
         compute="_compute_user_initials",
-        readonly=True
+        readonly=True,
+        help="Iniciales del nombre del usuario responsable"
     )
     stage = fields.Integer(
         help="Porcentaje de avance",
@@ -48,9 +49,31 @@ class SaleOrder(models.Model):
     @api.depends()
     def _compute_percentages(self):
         for so in self:
-            so.amount_paid_percent = 0
-            so.amount_invoice_percent = 0
-            so.amount_due = 0
+            # inicializar variables
+            amount_invoiced = 0
+            residual = 0
+
+            # total de la orden de venta
+            amount_total = so.amount_total
+
+            # sumar total y residual de todas las facturas
+            for invoice in so.invoice_ids:
+                amount_invoiced += invoice.amount_total
+                residual += invoice.residual
+
+            # calcular el cobrado como facturado menos residual
+            amount_paid = amount_invoiced - residual
+
+            # porcentaje facturado sobre el total de la ov
+            _ = 100 * amount_invoiced / amount_total if amount_total else 0
+            so.amount_invoiced_percent = _
+
+            # porcentaje cobrado del total facturado
+            _ = 100 * amount_paid / amount_invoiced if amount_invoiced else 0
+            so.amount_paid_percent = _
+
+            # total que queda por cobrar en pesos
+            so.amount_due = residual
 
     @api.depends('user_id')
     def _compute_user_initials(self):
