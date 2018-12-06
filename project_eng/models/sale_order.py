@@ -21,9 +21,9 @@ class SaleOrder(models.Model):
         compute="_compute_user_initials",
         readonly=True
     )
-    stage_percent = fields.Float(
+    stage = fields.Integer(
         help="Porcentaje de avance",
-        compute="_compute_percentages",
+        related="project_ids.stage",
         readonly=True
     )
     amount_paid_percent = fields.Float(
@@ -48,7 +48,6 @@ class SaleOrder(models.Model):
     @api.depends()
     def _compute_percentages(self):
         for so in self:
-            so.stage_percent = 0
             so.amount_paid_percent = 0
             so.amount_invoice_percent = 0
             so.amount_due = 0

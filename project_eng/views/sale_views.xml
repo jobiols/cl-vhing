@@ -108,7 +108,7 @@
 
                 <!-- Agregar columna Avance % -->
                 <xpath expr="//field[@name='user_initials']" position="after">
-                    <field name="stage_percent"/>
+                    <field name="stage"/>
                 </xpath>
 
                 <!-- Agregar columnas cobrado%, facturado%, sin cobrar -->
