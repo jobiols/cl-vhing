@@ -6,4 +6,3 @@ from openupgradelib import openupgrade
 def migrate(env, version):
     loc = env['stock.location']
     loc._parent_store_compute()
-
