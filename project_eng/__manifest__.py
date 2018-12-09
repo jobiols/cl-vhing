@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 {
     'name': 'Project Eng',
-    'version': '11.0.0.0.4',
+    'version': '11.0.0.0.5',
     'license': 'AGPL-3',
     'category': 'Tools',
     'summary': 'Project enhacements for engineering',
