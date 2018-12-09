@@ -49,12 +49,17 @@ class Project(models.Model):
     percent_vh = fields.Float(
         compute='_compute_percent',
         readonly=True,
-        string="VH %"
+        string="VH%"
     )
     percent_ing = fields.Float(
         compute='_compute_percent',
         readonly=True,
-        string="ING %"
+        string="ING%"
+    )
+    responsible_initials = fields.Char(
+        related='user_id.initials',
+        readonly=True,
+        string="Resp."
     )
 
     @api.depends('analytic_account_id')

@@ -18,7 +18,7 @@ class SaleOrder(models.Model):
 
     )
     user_initials = fields.Char(
-        compute="_compute_user_initials",
+        related="user_id.initials",
         readonly=True,
         help="Iniciales del nombre del usuario responsable"
     )
@@ -74,15 +74,6 @@ class SaleOrder(models.Model):
 
             # total que queda por cobrar en pesos
             so.amount_due = residual
-
-    @api.depends('user_id')
-    def _compute_user_initials(self):
-        for so in self:
-            name_list = so.user_id.name.split()
-            initials = ""
-            for name in name_list:
-                initials += name[0].upper()
-            so.user_initials = initials
 
 
 class SaleOrderLine(models.Model):

@@ -40,6 +40,7 @@
         'wizard/project_task_invoice_wizard_views.xml',
         'views/custom_reports.xml',
         'views/project_view.xml',
+        'views/res_partner.xml',
     ],
     'demo': [
         'data/sales_order_data_demo.xml'
