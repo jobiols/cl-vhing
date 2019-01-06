@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+        <record id="res_partner_0" model="res.partner">
+            <field name="name">Juan Pablo Grossi</field>
+        </record>
+        <record id="res_partner_1" model="res.partner">
+            <field name="name">Emprendimientos C4 S.R.L.</field>
+        </record>
+        <record id="res_partner_2" model="res.partner">
+            <field name="name">Estudio ByT</field>
+        </record>
+
+        <data>
+            <record id="base.res_users1" model="res.users">
+                <field name="name">Fernando Heredia</field>
+                <field name="login">fernando@test.com</field>
+            </record>
+            <record id="base.res_users2" model="res.users">
+                <field name="name">Nicolas Francisco Diez</field>
+                <field name="login">nicolas@test.com</field>
+            </record>
+            <record id="base.res_users2" model="res.users">
+                <field name="name">Monica Fernanda Suarez Amezquita</field>
+                <field name="login">monica@test.com</field>
+            </record>
+        </data>
+
+    </data>
+</odoo>

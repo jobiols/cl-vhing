@@ -1,85 +1,42 @@
-<?xml version="1.0" encoding="utf-8"?>
 <odoo>
-    <data>
-        <record model="sale.order" id="sale.sale_order_8">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-1</field>
+	<data noupdate="0">
+		<record id="sale_order_so0" model="sale.order">
+			<field name="name">SO0001</field>
+			<field name="description">Edificio h&#176; a 2 subsuelos, PB y 6 pisos altos</field>
+			<field name="partner_contact_id" model="res.partner"  search="[('name', '=', 'Juan Pablo Grossi')]" />
+			<field name="partner_id" model="res.partner"  search="[('name', '=', 'Emprendimientos C4 S.R.L.')]" />
+			<field name="project_code">20367-180614</field>
+			<field name="work">YERBAL 145</field>
         </record>
-        <record model="sale.order" id="sale.sale_order_7">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-2</field>
+		<record id="sale_order_line_so0_2" model="sale.order.line">
+			<field name="product_id" model="product.product"  search="[('name', '=', 'Diseño de pavimentos')]" />
+            <field name="order_id" model="sale.order" search="[('name', '=', 'SO0001')]" />
+			<field name="product_uom_qty" eval="100.0" />
         </record>
-        <record model="sale.order" id="sale.sale_order_6">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-3</field>
+		<record id="sale_order_line_so0_1" model="sale.order.line">
+			<field name="product_id" model="product.product"  search="[('name', '=', 'Diseño y cálculo de la estructura de hormigón armado')]" />
+            <field name="order_id" model="sale.order" search="[('name', '=', 'SO0001')]" />
+			<field name="product_uom_qty" eval="100.0" />
         </record>
-        <record model="sale.order" id="sale.sale_order_4">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-4</field>
+
+		<record id="sale_order_so1" model="sale.order">
+			<field name="name">SO0002</field>
+			<field name="description">Estructura mixta hormigón y metálica</field>
+			<field name="partner_contact_id" model="res.partner"  search="[('name', '=', 'Estudio ByT, Arq. Marco Daniel Beldevere')]" />
+			<field name="partner_id" model="res.partner"  search="[('name', '=', 'Estudio ByT')]" />
+			<field name="project_code">32828-190102</field>
+			<field name="work">Centro comercial Monte Grande</field>
         </record>
-        <record model="sale.order" id="sale.sale_order_3">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-5</field>
+		<record id="sale_order_line_so1_1" model="sale.order.line">
+			<field name="product_id" model="product.product"  search="[('name', '=', 'Diseño y cálculo de la estructura de hormigón armado')]" />
+            <field name="order_id" model="sale.order" search="[('name', '=', 'SO0002')]" />
+			<field name="product_uom_qty" eval="100.0" />
         </record>
-        <record model="sale.order" id="sale.sale_order_14">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-6</field>
+		<record id="sale_order_line_so1_2" model="sale.order.line">
+			<field name="product_id" model="product.product"  search="[('name', '=', 'Diseño y cálculo de la estructura metálica de cubierta')]" />
+            <field name="order_id" model="sale.order" search="[('name', '=', 'SO0002')]" />
+			<field name="product_uom_qty" eval="100.0" />
         </record>
-        <record model="sale.order" id="sale.sale_order_9">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-7</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_15">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-8</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_10">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-9</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_16">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-10</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_11">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-11</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_17">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-12</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_12">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-13</field>
-        </record>
-        <record model="sale.order" id="sale.portal_sale_order_2">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-14</field>
-        </record>
-        <record model="sale.order" id="sale.portal_sale_order_1">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-15</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_5">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-16</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_2">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-17</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_1">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-18</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_18">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-19</field>
-        </record>
-        <record model="sale.order" id="sale.sale_order_13">
-            <field name="work">La casa de la abuela</field>
-            <field name="project_code">112456-20</field>
-        </record>
-    </data>
+
+	</data>
 </odoo>
