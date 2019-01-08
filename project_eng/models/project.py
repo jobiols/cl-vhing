@@ -8,13 +8,25 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     sale_price = fields.Float(
-        digits=dp.get_precision('Product Price')
+        digits=dp.get_precision('Product Price'),
+        help='precio de venta de la tarea'
     )
     cost_price = fields.Float(
-        digits=dp.get_precision('Product Price')
+        digits=dp.get_precision('Product Price'),
+        help='precio de costo de la tarea'
     )
     product_id = fields.Many2one(
-        'product.product'
+        'product.product',
+        help='producto que representa esta tarea'
+    )
+    project_code = fields.Char(
+        help='codigo de proyecto que corresponde a esta tarea'
+    )
+    work = fields.Char(
+        help='obra para la cual se trabaja en esta tarea'
+    )
+    description = fields.Char(
+        help='descripcion que viene de la SO'
     )
 
 
@@ -30,12 +42,11 @@ class Project(models.Model):
         readonly=True
     )
     work = fields.Char(
-        compute="_compute_from_so",
+        compute="_compute_work",
         readonly=True
     )
-
     description = fields.Char(
-        compute='_compute_from_so',
+        compute='_compute_description',
         readonly=True
     )
     stage = fields.Integer(
@@ -62,22 +73,30 @@ class Project(models.Model):
         string="Resp."
     )
 
-    @api.depends('analytic_account_id')
-    def _compute_from_so(self):
+    @api.depends('tasks')
+    def _compute_work(self):
         for proj in self:
-            # se supone que hay una analitica por cada so, si hay
-            # mas devuelvo las cosas en una lista
-            sos = proj.analytic_account_id.get_so()
-            work = []
-            description = []
-            for so in sos:
-                if so.work:
-                    work.append(so.work)
-                if so.description:
-                    description.append(so.description)
-
+            # lo paso a set para eliminar duplicados
+            work = set(proj.tasks.mapped('work'))
+            # si alguna viene en False la tengo que sacar
+            if False in work:
+                work.remove(False)
             proj.work = ', '.join(work) if work else False
-            proj.description = ', '.join(description) if work else False
+
+    @api.depends('tasks')
+    def _compute_description(self):
+        for proj in self:
+            import re
+            desc_list = []
+            description = False
+
+            for task in proj.tasks:
+                # le saco el html
+                if task.description:
+                    description = re.sub('<[^<]+?>', '', task.description)
+                    if description not in desc_list:
+                        desc_list.append(description)
+            proj.description = ', '.join(desc_list) if desc_list else False
 
     @api.multi
     def _compute_stage(self):
@@ -119,6 +138,10 @@ class Project(models.Model):
 
     @api.multi
     def _compute_count(self):
+        """ TODO Revisar
+        """
+        return
+
         for proj in self:
             analytic = proj.analytic_account_id
             _obj_p = self.env['purchase.order.line']

@@ -7,37 +7,34 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
     _name = 'project.task.invoice.wizard'
 
     aal_ids = fields.Many2many(
-        'account.analytic.line',
-        string="Tasks to Invoice",
-        required=True
+            'account.analytic.line',
+            string="Tasks to Invoice",
+            required=True
     )
 
     @api.multi
     def invoice_tasks(self):
+        """ Factura las tareas seleccionadas en el wizard, agrupando por
+            el asignee
+        """
         purchase_order_obj = self.env['purchase.order']
-        purchase_orders = []
 
-        # buscar tuplas distintas que son las oc a generar
-        # la tupla se forma con el asignado y la cuenta analitica
-        for task in self.aal_ids:
-            po_tuple = (task.asignee_id, task.project_id.analytic_account_id)
-            if po_tuple not in purchase_orders:
-                purchase_orders.append(po_tuple)
+        # buscar asignados para determinar las oc a generar
+        asignee_ids = self.aal_ids.mapped('asignee_id')
 
         # generar las ordenes de compra
-        for po_data in purchase_orders:
+        for po_asignee in asignee_ids:
             # obtener las tareas que van en cada oc
-            _aals = self.aal_ids.filtered(lambda r: r.asignee_id == po_data[
-                0] and r.project_id.analytic_account_id == po_data[1])
+            _aal_ids = self.aal_ids.filtered(
+                    lambda r: r.asignee_id == po_asignee)
 
             # crear la oc, hay que cambiar el usuario por el partner asociado
             po = purchase_order_obj.create({
-                'partner_id': po_data[0].partner_id.id,
-                'partner_ref': po_data[0].partner_id.ref,
-                'analytic_account_id': po_data[1].id})
+                'partner_id': po_asignee.partner_id.id,
+                'partner_ref': po_asignee.partner_id.ref})
 
-            # crear los productos
-            for aal in _aals:
+            # crear las lineas de la oc que son los productos (tareas)
+            for aal in _aal_ids:
                 if not aal.task_id.product_id:
                     raise UserError(_('Task %s does not have an associated '
                                       'product.') % aal.task_id.name)
@@ -46,20 +43,28 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
                 price_task = aal.task_id.cost_price
 
                 po.order_line.create(
-                    {'product_id': aal.task_id.product_id.id,
-                     'product_qty': aal.unit_amount,
-                     'price_unit': price_task / 100,
-                     'price_task_total': price_task,
-                     'name': aal.task_id.name,
-                     'date_planned': aal.date,
-                     'product_uom': 1, 'order_id': po.id})
+                        {'product_id': aal.task_id.product_id.id,
+                         'product_qty': aal.unit_amount,
+                         'price_unit': price_task / 100,
+                         'price_task_total': price_task,
+                         'name': aal.task_id.name,
+                         'date_planned': aal.date,
+                         'product_uom': 1,
+                         'order_id': po.id,
+                         'account_analytic_id':
+                             aal.project_id.analytic_account_id.id
+                         })
                 # enlazar la orden de compra con la linea analitica
                 aal.purchase_order_id = po.id
 
     @api.model
     def default_get(self, fields):
+        """ Obtiene las aal tildadas para facturar
+        """
         ret = super(ProjectTaskInvoiceWizard, self).default_get(fields)
-        selected_aals = self.env['account.analytic.line'].browse(
-            self.env.context.get('active_ids', False))
-        ret.update({'aal_ids': selected_aals.ids})
+        active_ids = self.env.context.get('active_ids', False)
+        if active_ids:
+            selected_aal_ids = self.env['account.analytic.line'].browse(
+                active_ids)
+            ret.update({'aal_ids': selected_aal_ids.ids})
         return ret

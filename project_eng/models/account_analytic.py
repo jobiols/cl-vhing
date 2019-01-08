@@ -10,6 +10,9 @@ class AccountAnalytic(models.Model):
     def get_so(self):
         """ Obtener las SO que apuntan a esta analitica
         """
+        import wdb;wdb.set_trace()
+
+
         # lugar del so
         sale_order_obj = self.env['sale.order']
         for aa in self:

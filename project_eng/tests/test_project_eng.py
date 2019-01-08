@@ -34,9 +34,28 @@ class TestProjectEng(TransactionCase):
         """
         super(TestProjectEng, self).setUp()
 
+        #import wdb;wdb.set_trace()
+
         project_obj = self.env['project.project']
         project_task_obj = self.env['project.task']
         aal_obj = self.env['account.analytic.line']
+
+        # confirmar las dos so
+        def confirm_SO(name):
+            so_obj = self.env['sale.order']
+            so = so_obj.search([('name', '=', name)])
+            so.action_confirm()
+        confirm_SO('SO0001')
+        confirm_SO('SO0002')
+
+        # asignar las cuatro tareas y ponerle precio
+        tasks = project_task_obj.search(
+            [('project_id.name', 'in', ['IPV: SO0001', 'IHA: SO0002'])])
+        price = 10
+        for task in tasks:
+            task.user_id = self.env.ref('base.res_users2')
+            price += 10
+            task.cost_price = price
 
         def create_analitic_line(project, task, amount):
             # busco el project y la task
@@ -52,33 +71,30 @@ class TestProjectEng(TransactionCase):
             aal_obj.create(vals)
 
         create_analitic_line(
-                'IPV: SO0001',
-                'SO0001:[IHA] Diseño y cálculo de la estructura de hormigón armado',
-                30
+            'IPV: SO0001',
+            'SO0001:[IHA] Diseño y cálculo de la estructura de hormigón armado',
+            30
         )
         create_analitic_line(
-                'IPV: SO0001',
-                'SO0001:[IPV] Diseño de pavimentos',
-                40
+            'IPV: SO0001',
+            'SO0001:[IPV] Diseño de pavimentos',
+            40
         )
         create_analitic_line(
-                'IHA: SO0002',
-                'SO0002:[IME] Diseño y cálculo de la estructura metálica de cubierta',
-                40
+            'IHA: SO0002',
+            'SO0002:[IME] Diseño y cálculo de la estructura metálica de cubierta',
+            40
         )
         create_analitic_line(
-                'IHA: SO0002',
-                'SO0002:[IHA] Diseño y cálculo de la estructura de hormigón armado',
-                40
+            'IHA: SO0002',
+            'SO0002:[IHA] Diseño y cálculo de la estructura de hormigón armado',
+            40
         )
 
     def test_01_crear_oc(self):
         """ crear ordenes de compra
         """
         # obtener la ultima orden de compra
-        import wdb;
-        wdb.set_trace()
-
         po_obj = self.env['purchase.order']
         last_po = po_obj.search([], limit=1, order='id desc')
 
@@ -98,5 +114,3 @@ class TestProjectEng(TransactionCase):
 
         self.assertEqual(po.partner_id.name,
                          'Monica Fernanda Suarez Amezquita')
-        self.assertEqual(po.ref, 'MFSA')
-        self.assertEquan(po.analytic_account_id.name, 'IHA: SO0002')

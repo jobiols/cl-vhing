@@ -48,7 +48,6 @@
         'data/partner_demo.xml',
         'data/product_data_demo.xml',
         'data/sales_order_data_demo.xml',
-        'data/sale_demo.yml'
     ],
     'test': [
     ],

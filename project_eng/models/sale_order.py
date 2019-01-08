@@ -79,13 +79,26 @@ class SaleOrder(models.Model):
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
+    project_code = fields.Char(
+        readonly=True,
+        related='order_id.project_code'
+    )
+
     @api.model
     def _timesheet_create_task_prepare_values(self):
-        ret = super(SaleOrderLine,
-                    self)._timesheet_create_task_prepare_values()  # noqa
+        """ Sobreescribo esto para pasarle a las tasks:
+            - los precios
+            - el producto asociado a la tarea
+            - el codigo de proyecto
+            - la obra
+        """
 
+        ret = super(SaleOrderLine, self)._timesheet_create_task_prepare_values()
         ret['sale_price'] = self.product_id.list_price
         ret['product_id'] = self.product_id.id
         ret['cost_price'] = self.product_id.standard_price
+        ret['project_code'] = self.project_code
+        ret['work'] = self.work
+        ret['description'] = self.description
 
         return ret
