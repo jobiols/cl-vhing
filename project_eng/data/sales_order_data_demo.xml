@@ -1,42 +1,53 @@
 <odoo>
-	<data noupdate="0">
-		<record id="sale_order_so0" model="sale.order">
-			<field name="name">SO0001</field>
-			<field name="description">Edificio h&#176; a 2 subsuelos, PB y 6 pisos altos</field>
-			<field name="partner_contact_id" model="res.partner"  search="[('name', '=', 'Juan Pablo Grossi')]" />
-			<field name="partner_id" model="res.partner"  search="[('name', '=', 'Emprendimientos C4 S.R.L.')]" />
-			<field name="project_code">20367-180614</field>
-			<field name="work">YERBAL 145</field>
+    <data noupdate="0">
+        <record id="sale_order_so0" model="sale.order">
+            <field name="name">SO0001</field>
+            <field name="description">Edificio h&#176; a 2 subsuelos, PB y 6 pisos altos</field>
+            <field name="partner_contact_id" model="res.partner"
+                   search="[('name', '=', 'Juan Pablo Grossi')]"/>
+            <field name="partner_id" model="res.partner"
+                   search="[('name', '=', 'Emprendimientos C4 S.R.L.')]"/>
+            <field name="project_code">20367-180614</field>
+            <field name="work">YERBAL 145</field>
         </record>
-		<record id="sale_order_line_so0_2" model="sale.order.line">
-			<field name="product_id" model="product.product"  search="[('name', '=', 'Diseño de pavimentos')]" />
-            <field name="order_id" model="sale.order" search="[('name', '=', 'SO0001')]" />
-			<field name="product_uom_qty" eval="100.0" />
+        <record id="sale_order_line_so0_2" model="sale.order.line">
+            <field name="product_id" model="product.product"
+                   search="[('name', '=', 'Diseño de pavimentos')]"/>
+            <field name="order_id" model="sale.order"
+                   search="[('name', '=', 'SO0001')]"/>
+            <field name="product_uom_qty" eval="100.0"/>
         </record>
-		<record id="sale_order_line_so0_1" model="sale.order.line">
-			<field name="product_id" model="product.product"  search="[('name', '=', 'Diseño y cálculo de la estructura de hormigón armado')]" />
-            <field name="order_id" model="sale.order" search="[('name', '=', 'SO0001')]" />
-			<field name="product_uom_qty" eval="100.0" />
-        </record>
-
-		<record id="sale_order_so1" model="sale.order">
-			<field name="name">SO0002</field>
-			<field name="description">Estructura mixta hormigón y metálica</field>
-			<field name="partner_contact_id" model="res.partner"  search="[('name', '=', 'Estudio ByT, Arq. Marco Daniel Beldevere')]" />
-			<field name="partner_id" model="res.partner"  search="[('name', '=', 'Estudio ByT')]" />
-			<field name="project_code">32828-190102</field>
-			<field name="work">Centro comercial Monte Grande</field>
-        </record>
-		<record id="sale_order_line_so1_1" model="sale.order.line">
-			<field name="product_id" model="product.product"  search="[('name', '=', 'Diseño y cálculo de la estructura de hormigón armado')]" />
-            <field name="order_id" model="sale.order" search="[('name', '=', 'SO0002')]" />
-			<field name="product_uom_qty" eval="100.0" />
-        </record>
-		<record id="sale_order_line_so1_2" model="sale.order.line">
-			<field name="product_id" model="product.product"  search="[('name', '=', 'Diseño y cálculo de la estructura metálica de cubierta')]" />
-            <field name="order_id" model="sale.order" search="[('name', '=', 'SO0002')]" />
-			<field name="product_uom_qty" eval="100.0" />
+        <record id="sale_order_line_so0_1" model="sale.order.line">
+            <field name="product_id" model="product.product"
+                   search="[('name', '=', 'Diseño y cálculo de la estructura de hormigón armado')]"/>
+            <field name="order_id" model="sale.order"
+                   search="[('name', '=', 'SO0001')]"/>
+            <field name="product_uom_qty" eval="100.0"/>
         </record>
 
-	</data>
+        <record id="sale_order_so1" model="sale.order">
+            <field name="name">SO0002</field>
+            <field name="description">Estructura mixta hormigón y metálica</field>
+            <field name="partner_contact_id" model="res.partner"
+                   search="[('name', '=', 'Estudio ByT, Arq. Marco Daniel Beldevere')]"/>
+            <field name="partner_id" model="res.partner"
+                   search="[('name', '=', 'Estudio ByT')]"/>
+            <field name="project_code">32828-190102</field>
+            <field name="work">Centro comercial Monte Grande</field>
+        </record>
+        <record id="sale_order_line_so1_1" model="sale.order.line">
+            <field name="product_id" model="product.product"
+                   search="[('name', '=', 'Diseño y cálculo de la estructura de hormigón armado')]"/>
+            <field name="order_id" model="sale.order"
+                   search="[('name', '=', 'SO0002')]"/>
+            <field name="product_uom_qty" eval="100.0"/>
+        </record>
+        <record id="sale_order_line_so1_2" model="sale.order.line">
+            <field name="product_id" model="product.product"
+                   search="[('name', '=', 'Diseño y cálculo de la estructura metálica de cubierta')]"/>
+            <field name="order_id" model="sale.order"
+                   search="[('name', '=', 'SO0002')]"/>
+            <field name="product_uom_qty" eval="100.0"/>
+        </record>
+    </data>
 </odoo>
