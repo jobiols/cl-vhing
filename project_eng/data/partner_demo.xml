@@ -14,14 +14,17 @@
             <record id="base.res_users1" model="res.users">
                 <field name="name">Fernando Heredia</field>
                 <field name="login">fernando@test.com</field>
+                <field name="no_reset_password" eval="0" />
             </record>
             <record id="base.res_users2" model="res.users">
                 <field name="name">Nicolas Francisco Diez</field>
                 <field name="login">nicolas@test.com</field>
+                <field name="no_reset_password" eval="0" />
             </record>
-            <record id="base.res_users2" model="res.users">
+            <record id="base.res_users3" model="res.users">
                 <field name="name">Monica Fernanda Suarez Amezquita</field>
                 <field name="login">monica@test.com</field>
+                <field name="no_reset_password" eval="0" />
             </record>
         </data>
 

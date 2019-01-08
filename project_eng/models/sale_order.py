@@ -93,7 +93,8 @@ class SaleOrderLine(models.Model):
             - la obra
         """
 
-        ret = super(SaleOrderLine, self)._timesheet_create_task_prepare_values()
+        ret = super(SaleOrderLine,
+                    self)._timesheet_create_task_prepare_values()
         ret['sale_price'] = self.product_id.list_price
         ret['product_id'] = self.product_id.id
         ret['cost_price'] = self.product_id.standard_price
