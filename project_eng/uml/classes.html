@@ -1,5 +1,8 @@
 @startuml
 
+class AccountAnalyticAccount {
+}
+
 class AccountAnalyticLine  {
     work : Char(related)
     asignee_id  : res.users
@@ -47,9 +50,9 @@ Class ProjectTask {
     description: Char
 }
 
-SaleOrder o-- SaleOrderLine : order_line
-PurchaseOrder o-- PurchaseOrderLine : order_line
-ProjectProject o-- ProjectTask : tasks
-
+SaleOrder "order_line" o-- "order_id" SaleOrderLine
+PurchaseOrder "order_line" o-- "order_id" PurchaseOrderLine
+ProjectProject "tasks" o-- "project_id" ProjectTask
+AccountAnalyticAccount "line_ids" o-- "account_id" AccountAnalyticLine
 
 @enduml

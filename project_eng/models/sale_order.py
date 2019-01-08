@@ -80,8 +80,8 @@ class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
     project_code = fields.Char(
-        readonly=True,
-        related='order_id.project_code'
+        related='order_id.project_code',
+        readonly=True
     )
 
     @api.model
@@ -98,7 +98,7 @@ class SaleOrderLine(models.Model):
         ret['product_id'] = self.product_id.id
         ret['cost_price'] = self.product_id.standard_price
         ret['project_code'] = self.project_code
-        ret['work'] = self.work
-        ret['description'] = self.description
+        ret['work'] = self.order_id.work
+        ret['description'] = self.order_id.description
 
         return ret
