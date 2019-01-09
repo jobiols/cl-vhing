@@ -17,17 +17,24 @@ class ProjectTask(models.Model):
     )
     product_id = fields.Many2one(
         'product.product',
-        help='producto que representa esta tarea'
+        help='producto que representa esta tarea',
+        required=True
     )
-    project_code = fields.Char(
-        help='codigo de proyecto que corresponde a esta tarea'
-    )
+
+
+    # estos campos no se muestran, candidatos a borrarse.
+    """
     work = fields.Char(
-        help='obra para la cual se trabaja en esta tarea'
+        help='obra para la cual se trabaja en esta tarea',
+        related='project_id.work',
+        readonly=True
     )
     description = fields.Char(
-        help='descripcion que viene de la SO'
+        help='descripcion que viene de la SO',
+        related='project_id.description',
+        readonly=True
     )
+    """
 
 
 class Project(models.Model):
@@ -42,13 +49,19 @@ class Project(models.Model):
         readonly=True
     )
     work = fields.Char(
-        compute="_compute_work",
+        compute="_compute_refs",
         readonly=True
     )
     description = fields.Char(
-        compute='_compute_description',
+        compute='_compute_refs',
         readonly=True
     )
+    project_code = fields.Char(
+        compute='_compute_refs',
+        readonly=True,
+        help='campo tecnico para pasar el project_code a aal'
+    )
+
     stage = fields.Integer(
         compute='_compute_stage',
         readonly=True
@@ -73,32 +86,15 @@ class Project(models.Model):
         string="Resp."
     )
 
-    @api.depends('tasks')
-    def _compute_work(self):
+    @api.depends('analytic_account_id.sale_order_ids')
+    def _compute_refs(self):
         for proj in self:
-            # lo paso a set para eliminar duplicados
-            work = set(proj.tasks.mapped('work'))
-            # si alguna viene en False la tengo que sacar
-            if False in work:
-                work.remove(False)
-            proj.work = ', '.join(work) if work else False
+            so_ids = proj.mapped('analytic_account_id.sale_order_ids')
+            proj.work = so_ids[0].work if so_ids else False
+            proj.description = so_ids[0].description if so_ids else False
+            proj.project_code = so_ids[0].project_code if so_ids else False
 
     @api.depends('tasks')
-    def _compute_description(self):
-        for proj in self:
-            import re
-            desc_list = []
-            description = False
-
-            for task in proj.tasks:
-                # le saco el html
-                if task.description:
-                    description = re.sub('<[^<]+?>', '', task.description)
-                    if description not in desc_list:
-                        desc_list.append(description)
-            proj.description = ', '.join(desc_list) if desc_list else False
-
-    @api.multi
     def _compute_stage(self):
         for proj in self:
             # obtener la etapa como
@@ -109,7 +105,7 @@ class Project(models.Model):
                 progress += task.progress * task.sale_price
             proj.stage = progress / total_price if total_price else 0
 
-    @api.multi
+    @api.depends('tasks')
     def _compute_percent(self):
         for proj in self:
             # calcular ing como SUM(compra) / SUM(venta) * 100
@@ -125,7 +121,7 @@ class Project(models.Model):
             # calcular VH como 100 - ing
             proj.percent_vh = 100 - proj.percent_ing
 
-    @api.multi
+    @api.depends('analytic_account_id')
     def _compute_total_sales(self):
         for proj in self:
             analytic = proj.analytic_account_id
@@ -136,20 +132,19 @@ class Project(models.Model):
                 total += sale.price_subtotal
             proj.total_sales = total
 
-    @api.multi
+    @api.depends('analytic_account_id')
     def _compute_count(self):
-        """ TODO Revisar
-        """
-        return
-
         for proj in self:
             analytic = proj.analytic_account_id
             _obj_p = self.env['purchase.order.line']
             _obj_s = self.env['sale.order.line']
-            domain = [('order_id.analytic_account_id.id', '=', analytic.id)]
 
-            proj.purchase_count = _obj_p.search_count(domain)
-            proj.sales_count = _obj_s.search_count(domain)
+            domain_p = [('account_analytic_id.id', '=', analytic.id)]
+            domain_s = [('order_id.analytic_account_id.id', '=', analytic.id)]
+
+            # TODO no funcionan las purchases
+            proj.purchase_count = _obj_p.search_count(domain_p)
+            proj.sales_count = _obj_s.search_count(domain_s)
 
     @api.multi
     def action_view_sales(self):
@@ -169,6 +164,8 @@ class Project(models.Model):
 
     @api.multi
     def action_view_purchases(self):
+        # TODO no funcionan las purchases
+
         self.ensure_one()
         analytic = self.analytic_account_id
         return {

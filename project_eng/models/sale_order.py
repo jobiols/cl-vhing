@@ -75,6 +75,22 @@ class SaleOrder(models.Model):
             # total que queda por cobrar en pesos
             so.amount_due = residual
 
+    @api.multi
+    def _create_analytic_account(self, prefix=None):
+        """ metodo heredado para pasarle los tres parametros al crear la
+            analitica: project_code, work y description
+        """
+        for order in self:
+            analytic = self.env['account.analytic.account'].create({
+                'name': order.project_code,
+                'code': order.client_order_ref,
+                'company_id': order.company_id.id,
+                'partner_id': order.partner_id.id,
+                'work': order.work,
+                'description': order.description
+            })
+            order.analytic_account_id = analytic
+
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"

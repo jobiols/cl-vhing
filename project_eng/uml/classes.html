@@ -14,6 +14,8 @@ class SaleOrder {
     work        : Char
     project_code : Char
     description : Char
+    ..
+    analytic_account_id : AccountAnalyticAccount
 }
 
 class SaleOrderLine {
@@ -27,6 +29,7 @@ class PurchaseOrder {
 }
 
 class PurchaseOrderLine {
+    account_analytic_id : AccountAnalyticAccount
 }
 
 class ProjectProject {
@@ -39,6 +42,8 @@ class ProjectProject {
     percent_vh      : Float(compute)
     percent_ing     : Float(compute)
     responsible_initials : Char(related)
+    ..
+    analytic_account_id : AccountAnalyticAccount
 }
 
 Class ProjectTask {

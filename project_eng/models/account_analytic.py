@@ -6,50 +6,43 @@ from odoo import api, fields, models
 class AccountAnalytic(models.Model):
     _inherit = "account.analytic.account"
 
-    @api.multi
-    def get_so(self):
-        """ Obtener las SO que apuntan a esta analitica
-        """
-        import wdb;wdb.set_trace()
-
-
-        # lugar del so
-        sale_order_obj = self.env['sale.order']
-        for aa in self:
-            so = sale_order_obj.search(
-                [('analytic_account_id.id', '=', aa.id)])
-            return so
+    sale_order_ids = fields.One2many(
+        'sale.order',
+        'analytic_account_id',
+        help='Campo tecnico para llegar del project a la SO'
+    )
 
 
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
+    # este campo se muestra en el listado de partes de horas
     asignee_id = fields.Many2one(
         'res.users',
         related="task_id.user_id",
-        readonly=True
+        readonly=True,
+        store=True
     )
-
-    name = fields.Char(
-        required=False
-    )
-
+    # este campo se muestra en el listado de partes de horas
     work = fields.Char(
         related="task_id.project_id.work",
-        readonly=True
+        readonly=True,
+        help='work related to this piece of work'
     )
-
+    project_code = fields.Char(
+        related="task_id.project_id.project_code",
+        readonly=True,
+        help='campo tecnico para pasar el project_code a la oc'
+    )
+    description = fields.Char(
+        related="task_id.project_id.description",
+        readonly=True,
+        help='campo tecnico para pasar la description a la oc'
+    )
+    # este campo se muestra en el listado de partes de horas y se completa
+    # con la PO cuando se compran las horas.
     purchase_order_id = fields.Many2one(
         'purchase.order',
         help="Purchase order for this piece of work",
         readonly=True
     )
-
-    @api.multi
-    @api.depends('name')
-    def name_get(self):
-        result = []
-        for aal in self:
-            name = aal.task_id.name
-            result.append((aal.id, name))
-        return result
