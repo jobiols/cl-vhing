@@ -21,7 +21,6 @@ class ProjectTask(models.Model):
         required=True
     )
 
-
     # estos campos no se muestran, candidatos a borrarse.
     """
     work = fields.Char(

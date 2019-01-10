@@ -7,9 +7,9 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
     _name = 'project.task.invoice.wizard'
 
     aal_ids = fields.Many2many(
-            'account.analytic.line',
-            string="Tasks to Invoice",
-            required=True
+        'account.analytic.line',
+        string="Tasks to Invoice",
+        required=True
     )
 
     @api.multi
@@ -26,7 +26,7 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
         for po_asignee in asignee_ids:
             # obtener las tareas que van en cada oc
             _aal_ids = self.aal_ids.filtered(
-                    lambda r: r.asignee_id == po_asignee)
+                lambda r: r.asignee_id == po_asignee)
 
             # crear la oc, hay que cambiar el usuario por el partner asociado
             po = purchase_order_obj.create({
@@ -43,17 +43,17 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
                 price_task = aal.task_id.cost_price
 
                 po.order_line.create(
-                        {'product_id': aal.task_id.product_id.id,
-                         'product_qty': aal.unit_amount,
-                         'price_unit': price_task / 100,
-                         'price_task_total': price_task,
-                         'name': aal.task_id.name,
-                         'date_planned': aal.date,
-                         'product_uom': 1,
-                         'order_id': po.id,
-                         'account_analytic_id':
-                             aal.project_id.analytic_account_id.id
-                         })
+                    {'product_id': aal.task_id.product_id.id,
+                     'product_qty': aal.unit_amount,
+                     'price_unit': price_task / 100,
+                     'price_task_total': price_task,
+                     'name': aal.task_id.name,
+                     'date_planned': aal.date,
+                     'product_uom': 1,
+                     'order_id': po.id,
+                     'account_analytic_id':
+                         aal.project_id.analytic_account_id.id
+                     })
                 # enlazar la orden de compra con la linea analitica
                 aal.purchase_order_id = po.id
 

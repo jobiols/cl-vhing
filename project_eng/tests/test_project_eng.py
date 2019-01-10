@@ -34,8 +34,6 @@ class TestProjectEng(TransactionCase):
         """
         super(TestProjectEng, self).setUp()
 
-        #import wdb;wdb.set_trace()
-
         project_obj = self.env['project.project']
         project_task_obj = self.env['project.task']
         aal_obj = self.env['account.analytic.line']
@@ -45,6 +43,7 @@ class TestProjectEng(TransactionCase):
             so_obj = self.env['sale.order']
             so = so_obj.search([('name', '=', name)])
             so.action_confirm()
+
         confirm_SO('SO0001')
         confirm_SO('SO0002')
 
@@ -72,7 +71,8 @@ class TestProjectEng(TransactionCase):
 
         create_analitic_line(
             'IPV: SO0001',
-            'SO0001:[IHA] Diseño y cálculo de la estructura de hormigón armado',
+            'SO0001:[IHA] Diseño y cálculo de la '
+            'estructura de hormigón armado',
             30
         )
         create_analitic_line(
@@ -82,12 +82,14 @@ class TestProjectEng(TransactionCase):
         )
         create_analitic_line(
             'IHA: SO0002',
-            'SO0002:[IME] Diseño y cálculo de la estructura metálica de cubierta',
+            'SO0002:[IME] Diseño y cálculo de la '
+            'estructura metálica de cubierta',
             40
         )
         create_analitic_line(
             'IHA: SO0002',
-            'SO0002:[IHA] Diseño y cálculo de la estructura de hormigón armado',
+            'SO0002:[IHA] Diseño y cálculo de la '
+            'estructura de hormigón armado',
             40
         )
 
