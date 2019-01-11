@@ -1,14 +1,13 @@
-odoo-argentina https://github.com/ingadhoc/odoo-argentina.git 11.0
-argentina-reporting https://github.com/jobiols/argentina-reporting.git 11.0
-backend-theme https://github.com/jobiols/backend-theme.git 11.0
 odoo-addons https://github.com/jobiols/odoo-addons.git 11.0
-
-#esto da error al bajar cups aunque en el ultimo repo no esta (?)
-
-#odoo-addons https://github.com/jobiols/odoo-addons.git 11.0
-#account-financial-tools https://github.com/ingadhoc/account-financial-tools.git 11.0
-#account-payment https://github.com/ingadhoc/account-payment.git 11.0
-#miscellaneous https://github.com/ingadhoc/miscellaneous.git 11.0
-#partner-contact https://github.com/oca/partner-contact.git 11.0
-#web https://github.com/oca/web.git 11.0
-#server-tools https://github.com/oca/server-tools.git 11.0
+backend-theme https://github.com/jobiols/rafi16jan-backend-theme.git 11.0
+odoo-argentina https://github.com/jobiols/adhoc-odoo-argentina.git 11.0
+argentina-sale https://github.com/jobiols/adhoc-argentina-sale.git 11.0
+account-financial-tools https://github.com/jobiols/adhoc-account-financial-tools.git 11.0
+account-payment https://github.com/jobiols/adhoc-account-payment.git 11.0
+miscellaneous https://github.com/jobiols/adhoc-miscellaneous.git 11.0
+argentina-reporting https://github.com/jobiols/adhoc-argentina-reporting.git 11.0
+reporting-engine https://github.com/jobiols/adhoc-reporting-engine.git 11.0
+aeroo_reports https://github.com/jobiols/adhoc-aeroo_reports.git 11.0
+partner-contact https://github.com/jobiols/oca-partner-contact.git 11.0
+web https://github.com/jobiols/oca-web.git 11.0
+server-tools https://github.com/jobiols/oca-server-tools.git 11.0
