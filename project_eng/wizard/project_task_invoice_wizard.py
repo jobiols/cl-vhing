@@ -37,7 +37,8 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
             for aal in _aal_ids:
                 if not aal.task_id.product_id:
                     raise UserError(_('Task %s does not have an associated '
-                                      'product.') % aal.task_id.name)
+                                      'product. I need a product to create '
+                                      'the invoice line') % aal.task_id.name)
 
                 # traemos el costo cargado en la tarea.
                 price_task = aal.task_id.cost_price

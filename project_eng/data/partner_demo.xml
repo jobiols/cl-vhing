@@ -10,23 +10,52 @@
             <field name="name">Estudio ByT</field>
         </record>
 
-        <data>
-            <record id="base.res_users1" model="res.users">
-                <field name="name">Fernando Heredia</field>
-                <field name="login">fernando@test.com</field>
-                <field name="no_reset_password" eval="0" />
-            </record>
-            <record id="base.res_users2" model="res.users">
-                <field name="name">Nicolas Francisco Diez</field>
-                <field name="login">nicolas@test.com</field>
-                <field name="no_reset_password" eval="0" />
-            </record>
-            <record id="base.res_users3" model="res.users">
-                <field name="name">Monica Fernanda Suarez Amezquita</field>
-                <field name="login">monica@test.com</field>
-                <field name="no_reset_password" eval="0" />
-            </record>
-        </data>
+        <record id="res_partner_user_0" model="res.partner">
+            <field name="name">Fernando Heredia</field>
+        </record>
+        <record id="res_partner_user_1" model="res.partner">
+            <field name="name">Nicolas Francisco Diez</field>
+        </record>
+        <record id="res_partner_user_2" model="res.partner">
+            <field name="name">Monica Fernanda Suarez Amezquita</field>
+        </record>
 
+        <record id="base.res_users1" model="res.users">
+            <field name="partner_id" ref="res_partner_user_0"/>
+            <field name="login">fer</field>
+            <field name="password">fer</field>
+            <field name="signature" type="xml">
+                <span>--<br/>+Mr FER
+                </span>
+            </field>
+            <field name="company_id" ref="main_company"/>
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_user'), ref('base.group_partner_manager')])]"/>
+        </record>
+        <record id="base.res_users2" model="res.users">
+            <field name="partner_id" ref="res_partner_user_1"/>
+            <field name="login">Nic</field>
+            <field name="password">nic</field>
+            <field name="signature" type="xml">
+                <span>--<br/>+Mr NIC
+                </span>
+            </field>
+            <field name="company_id" ref="main_company"/>
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_user'), ref('base.group_partner_manager')])]"/>
+        </record>
+        <record id="base.res_users3" model="res.users">
+            <field name="partner_id" ref="res_partner_user_2"/>
+            <field name="login">mon</field>
+            <field name="password">mon</field>
+            <field name="signature" type="xml">
+                <span>--<br/>+Mr MON
+                </span>
+            </field>
+            <field name="company_id" ref="main_company"/>
+            <field name="groups_id"
+                   eval="[(6,0,[ref('base.group_user'), ref('base.group_partner_manager')])]"/>
+        </record>
     </data>
+
 </odoo>
