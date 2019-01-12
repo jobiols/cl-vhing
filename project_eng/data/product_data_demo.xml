@@ -1,0 +1,1116 @@
+<?xml version="1.0" ?>
+<odoo>
+    <data>
+        <record id="product_category0" model="product.category">
+            <field name="name">Tareas de estudio</field>
+        </record>
+
+        <record id="product_category1" model="product.category">
+            <field name="name">Detalles de estructura metálica</field>
+            <field name="parent_id" model="product.category"  search="[('name', '=', 'Tareas de estudio')]"/>
+        </record>
+
+        <record id="product_category2" model="product.category">
+            <field name="name">Diseño de anclajes</field>
+            <field name="parent_id" model="product.category"  search="[('name', '=', 'Tareas de estudio')]"/>
+        </record>
+
+        <record id="product_category3" model="product.category">
+            <field name="name">Cimentaciones</field>
+            <field name="parent_id" model="product.category"  search="[('name', '=', 'Tareas de estudio')]"/>
+        </record>
+
+        <record id="product_category4" model="product.category">
+            <field name="name">Diseño de estructuras</field>
+        </record>
+
+        <record id="product_category5" model="product.category">
+            <field name="name">Documentación</field>
+            <field name="parent_id" model="product.category"  search="[('name', '=', 'Tareas de estudio')]"/>
+        </record>
+
+        <record id="product_category6" model="product.category">
+            <field name="name">Detalles de estructura metálica</field>
+            <field name="parent_id" model="product.category"  search="[('name', '=', 'Tareas de estudio')]"/>
+        </record>
+
+        <record id="product_category7" model="product.category">
+            <field name="name">Tareas de Campo</field>
+        </record>
+
+        <record id="product_category8" model="product.category">
+            <field name="name">Inspecciones</field>
+            <field name="parent_id" model="product.category"  search="[('name', '=', 'Tareas de Campo')]"/>
+        </record>
+    </data>
+
+    <data>
+        <record id="product_template_cmputodemateriales0"
+                model="product.template">
+            <field name="name">Cómputo de materiales</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field name="create_date">2018-09-18 20:44:21</field>
+            <field eval="1" name="sale_ok"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_detallesconstructivosdeestructurametlicaenpuntosprincipalesanclajesunionesresistentes0"
+                model="product.template">
+            <field name="name">Detalles constructivos de estructura metálica en
+                puntos principales (Anclajes, uniones resistentes)
+            </field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field name="create_date">2018-09-18 20:34:08</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio / Detalles de estructura metálica')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_diseodeanclajesqumicosmecnicosenprimeraosegundaetapasobrehormignfrescooendurecido0"
+                model="product.template">
+            <field name="name">Diseño de anclajes químicos, mecánicos, en
+                primera o segunda etapa sobre hormigón fresco o endurecido
+            </field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">IHA</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio / Diseño de anclajes')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_diseodepavimentos0"
+                model="product.template">
+            <field name="name">Diseño de pavimentos</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field model="res.users" name="create_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field model="res.users" name="responsible_id"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">manual</field>
+            <field name="default_code">IPV</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio / Cimentaciones')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_diseoyclculodelaestructuradehormignarmado0"
+                model="product.template">
+            <field name="name">Diseño y cálculo de la estructura de hormigón armado</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">IHA</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Diseño de estructuras')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_diseoyclculodelaestructurametlicacompuestadecolumnasvigasyentrepisodelosamixta0"
+                model="product.template">
+            <field name="name">Diseño y cálculo de la estructura metálica compuesta de columnas, vigas y entrepiso de losa mixta</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">IME</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Diseño de estructuras')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_diseoyclculodelaestructurametlicadecubierta0"
+                model="product.template">
+            <field name="name">Diseño y cálculo de la estructura metálica de cubierta</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">IME</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Diseño de estructuras')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_documentacinbsicadeestructuradehormignarmadoincluyendoplanosdeencofradoyfundaciones0"
+                model="product.template">
+            <field name="name">Documentación básica de estructura de hormigón armado, incluyendo planos de encofrado y fundaciones</field>
+            <field name="write_date">2018-09-18 20:31:02</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">DHA</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio / Documentación')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_documentacindeestructurametlica0"
+                model="product.template">
+            <field name="name">Documentación de estructura metálica</field>
+            <field name="write_date">2018-12-08 23:20:36</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field model="res.users" name="create_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field model="res.users" name="responsible_id"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">manual</field>
+            <field name="default_code">DME</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio / Detalles de estructura metálica')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_documentacinejecutivaparaestructuradehormigncondetallesdearmaduras0"
+                model="product.template">
+            <field name="name">Documentación ejecutiva para estructura de hormigón con detalles de armaduras</field>
+            <field name="write_date">2018-09-18 20:27:12</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">DHA</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio / Documentación')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_estructurametlica0"
+                model="product.template">
+            <field name="name">Estructura Metálica</field>
+            <field name="write_date">2018-12-08 21:43:12</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field model="res.users" name="create_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field model="res.users" name="responsible_id"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">manual</field>
+            <field name="default_code">MET</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Diseño de estructuras')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+
+    <data noupdate="0">
+        <record id="product_template_hormignarmado0" model="product.template">
+            <field name="name">Hormigón armado</field>
+            <field name="write_date">2018-12-08 21:57:31</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field model="res.users" name="create_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field model="res.users" name="responsible_id"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">HAR</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="65000.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Diseño de estructuras')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_ihadiseoyclculodelaestructuradehormignarmado0"
+                model="product.template">
+            <field name="name">Diseño y cálculo de la estructura de hormigón armado</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field model="res.users" name="create_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field eval="1" name="purchase_ok"/>
+            <field model="res.users" name="responsible_id"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">manual</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+
+            <field eval="1.0" name="list_price"/>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_impresiondeplanos0"
+                model="product.template">
+            <field name="name">Impresion de planos</field>
+            <field name="write_date">2018-12-05 17:40:55</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">PLANOS</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">no</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_informederesultados0"
+                model="product.template">
+            <field name="name">Informe de resultados</field>
+            <field name="write_date">2018-09-18 20:46:05</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_informedescriptivoescritoconimgenesresultadosdelainvestigacinyasesoramientoparaposiblessolucionesyopasosaseguir0"
+                model="product.template">
+            <field name="name">Informe descriptivo escrito con imágenes, resultados de la investigación y asesoramiento para posibles soluciones y/o pasos a seguir</field>
+            <field name="write_date">2018-09-18 20:42:47</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_informedevalidacindeladocumentacinentregadaconobservacionesquecorrespondan0"
+                model="product.template">
+            <field name="name">Informe de validación de la documentación entregada con observaciones que correspondan</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_ingenierabsicadeestructurametlica0"
+                model="product.template">
+            <field name="name">Ingeniería básica de estructura metálica</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">IME</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_inspeccindeledificiodereferenciaafindedetectarfallasconstructivas0"
+                model="product.template">
+            <field name="name">Inspección del edificio de referencia a fin de detectar fallas constructivas</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de Campo / Inspecciones')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_investigacindelasposiblescausasdefallas0"
+                model="product.template">
+            <field name="name">Investigación de las posibles causas de fallas</field>
+            <field name="write_date">2018-09-18 20:41:10</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_memoriasdeclculodeestructurametlica0"
+                model="product.template">
+            <field name="name">Memorias de cálculo de estructura metálica</field>
+            <field name="write_date">2018-09-18 20:47:02</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_memoriasdeclculodehormignarmado0"
+                model="product.template">
+            <field name="name">Memorias de cálculo de hormigón armado</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_modeladodelaestructurametlica0"
+                model="product.template">
+            <field name="name">Modelado de la estructura metálica</field>
+            <field name="write_date">2018-09-18 20:25:00</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">IME</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_pagoanticipado0" model="product.template">
+            <field name="name">Pago Anticipado</field>
+            <field name="write_date">2018-09-14 21:29:14</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="0" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">no</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_plandeexcavacin0"
+                model="product.template">
+            <field name="name">Plan de excavación</field>
+            <field name="write_date">2018-09-18 20:43:51</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio / Cimentaciones')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_relevamientofotogrfico0"
+                model="product.template">
+            <field name="name">Relevamiento fotográfico</field>
+            <field name="write_date">2018-09-18 20:41:39</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de Campo / Inspecciones')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_serviciodeguarda0"
+                model="product.template">
+            <field name="name">Servicio de Guarda</field>
+            <field name="write_date">2018-09-06 22:20:36</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">receive</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">manual</field>
+            <field name="default_code">AFIP_SERV_GUARDA</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">no</field>
+            <field eval="0" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[])]" name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_tasaestadstica0" model="product.template">
+            <field name="name">Tasa Estadística</field>
+            <field name="write_date">2018-09-06 22:20:36</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">receive</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">manual</field>
+            <field name="default_code">AFIP_TASA_EST</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">no</field>
+            <field eval="0" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field name="categ_id" ref="product.product_category_all"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[])]" name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_verificacindelaestructuradehormignarmado0"
+                model="product.template">
+            <field name="name">Verificación de la estructura de hormigón armado</field>
+            <field name="write_date">2018-09-18 20:25:49</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">IHA</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_verificacindelaestructurametlica0"
+                model="product.template">
+            <field name="name">Verificación de la estructura metálica</field>
+            <field name="write_date">2018-09-18 20:26:27</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="default_code">IME</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de estudio')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_visitadeobra0" model="product.template">
+            <field name="name">Visita de obra</field>
+            <field name="write_date">2018-09-14 22:53:52</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field model="res.users" name="create_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field model="res.users" name="responsible_id"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field name="service_type">manual</field>
+            <field name="default_code">VOB</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">no</field>
+            <field eval="1" name="sale_ok"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de Campo / Inspecciones')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field model="res.users" name="write_uid"
+                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+    <data noupdate="0">
+        <record id="product_template_visitasparaverificacindetrabajosdeejecucindeestructuracantidadadefinir0"
+                model="product.template">
+            <field name="name">Visitas para verificación de trabajos de ejecución de estructura (cantidad a definir)</field>
+            <field name="tracking">none</field>
+            <field name="purchase_line_warn">no-message</field>
+            <field name="purchase_method">purchase</field>
+            <field eval="1" name="active"/>
+            <field name="create_uid" ref="base.user_root"/>
+            <field eval="1" name="purchase_ok"/>
+            <field name="sale_line_warn">no-message</field>
+            <field name="responsible_id" ref="base.user_root"/>
+            <field name="uom_id" ref="product.product_uom_unit"/>
+            <field eval="[(6,0,[])]" name="supplier_taxes_id"/>
+            <field name="service_type">timesheet</field>
+            <field name="expense_policy">no</field>
+            <field eval="0" name="rental"/>
+            <field name="type">service</field>
+            <field name="uom_po_id" ref="product.product_uom_unit"/>
+            <field eval="1" name="sequence"/>
+            <field name="service_tracking">task_new_project</field>
+            <field eval="1" name="sale_ok"/>
+            <field eval="1.0" name="list_price"/>
+            <field model="product.category" name="categ_id"
+                   search="[('complete_name', '=', 'Tareas de Campo / Inspecciones')]"/>
+            <field name="company_id" ref="base.main_company"/>
+            <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
+                   name="route_ids"/>
+            <field name="write_uid" ref="base.user_root"/>
+            <field name="invoice_policy">order</field>
+        </record>
+    </data>
+</odoo>

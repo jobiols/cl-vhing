@@ -19,10 +19,3 @@ def migrate(cr, version):
             SET project_code = id
             WHERE project_code is null
         """)
-
-    cr.execute(
-        """
-            UPDATE account_analytic_line
-            SET name = id
-            WHERE name is null
-        """)

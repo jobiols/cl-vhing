@@ -8,14 +8,32 @@ class ProjectTask(models.Model):
     _inherit = 'project.task'
 
     sale_price = fields.Float(
-        digits=dp.get_precision('Product Price')
+        digits=dp.get_precision('Product Price'),
+        help='precio de venta de la tarea'
     )
     cost_price = fields.Float(
-        digits=dp.get_precision('Product Price')
+        digits=dp.get_precision('Product Price'),
+        help='precio de costo de la tarea'
     )
     product_id = fields.Many2one(
-        'product.product'
+        'product.product',
+        help='producto que representa esta tarea',
+        required=True
     )
+
+    # estos campos no se muestran, candidatos a borrarse.
+    """
+    work = fields.Char(
+        help='obra para la cual se trabaja en esta tarea',
+        related='project_id.work',
+        readonly=True
+    )
+    description = fields.Char(
+        help='descripcion que viene de la SO',
+        related='project_id.description',
+        readonly=True
+    )
+    """
 
 
 class Project(models.Model):
@@ -30,14 +48,19 @@ class Project(models.Model):
         readonly=True
     )
     work = fields.Char(
-        compute="_compute_from_so",
+        compute="_compute_refs",
         readonly=True
+    )
+    description = fields.Char(
+        compute='_compute_refs',
+        readonly=True
+    )
+    project_code = fields.Char(
+        compute='_compute_refs',
+        readonly=True,
+        help='campo tecnico para pasar el project_code a aal'
     )
 
-    description = fields.Char(
-        compute='_compute_from_so',
-        readonly=True
-    )
     stage = fields.Integer(
         compute='_compute_stage',
         readonly=True
@@ -62,24 +85,15 @@ class Project(models.Model):
         string="Resp."
     )
 
-    @api.depends('analytic_account_id')
-    def _compute_from_so(self):
+    @api.depends('analytic_account_id.sale_order_ids')
+    def _compute_refs(self):
         for proj in self:
-            # se supone que hay una analitica por cada so, si hay
-            # mas devuelvo las cosas en una lista
-            sos = proj.analytic_account_id.get_so()
-            work = []
-            description = []
-            for so in sos:
-                if so.work:
-                    work.append(so.work)
-                if so.description:
-                    description.append(so.description)
+            so_ids = proj.mapped('analytic_account_id.sale_order_ids')
+            proj.work = so_ids[0].work if so_ids else False
+            proj.description = so_ids[0].description if so_ids else False
+            proj.project_code = so_ids[0].project_code if so_ids else False
 
-            proj.work = ', '.join(work) if work else False
-            proj.description = ', '.join(description) if work else False
-
-    @api.multi
+    @api.depends('tasks')
     def _compute_stage(self):
         for proj in self:
             # obtener la etapa como
@@ -90,7 +104,7 @@ class Project(models.Model):
                 progress += task.progress * task.sale_price
             proj.stage = progress / total_price if total_price else 0
 
-    @api.multi
+    @api.depends('tasks')
     def _compute_percent(self):
         for proj in self:
             # calcular ing como SUM(compra) / SUM(venta) * 100
@@ -106,7 +120,7 @@ class Project(models.Model):
             # calcular VH como 100 - ing
             proj.percent_vh = 100 - proj.percent_ing
 
-    @api.multi
+    @api.depends('analytic_account_id')
     def _compute_total_sales(self):
         for proj in self:
             analytic = proj.analytic_account_id
@@ -117,16 +131,19 @@ class Project(models.Model):
                 total += sale.price_subtotal
             proj.total_sales = total
 
-    @api.multi
+    @api.depends('analytic_account_id')
     def _compute_count(self):
         for proj in self:
             analytic = proj.analytic_account_id
             _obj_p = self.env['purchase.order.line']
             _obj_s = self.env['sale.order.line']
-            domain = [('order_id.analytic_account_id.id', '=', analytic.id)]
 
-            proj.purchase_count = _obj_p.search_count(domain)
-            proj.sales_count = _obj_s.search_count(domain)
+            domain_p = [('account_analytic_id.id', '=', analytic.id)]
+            domain_s = [('order_id.analytic_account_id.id', '=', analytic.id)]
+
+            # TODO no funcionan las purchases
+            proj.purchase_count = _obj_p.search_count(domain_p)
+            proj.sales_count = _obj_s.search_count(domain_s)
 
     @api.multi
     def action_view_sales(self):
@@ -156,7 +173,7 @@ class Project(models.Model):
             'view_mode': 'tree',
             'target': 'current',
             'res_model': 'purchase.order.line',
-            'domain': [('order_id.analytic_account_id.id', '=', analytic.id)],
+            'domain': [('account_analytic_id.id', '=', analytic.id)],
         }
 
     @api.model

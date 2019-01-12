@@ -75,17 +75,47 @@ class SaleOrder(models.Model):
             # total que queda por cobrar en pesos
             so.amount_due = residual
 
+    @api.multi
+    def _create_analytic_account(self, prefix=None):
+        """ metodo heredado para pasarle los tres parametros al crear la
+            analitica: project_code, work y description
+        """
+        for order in self:
+            analytic = self.env['account.analytic.account'].create({
+                'name': order.project_code,
+                'code': order.client_order_ref,
+                'company_id': order.company_id.id,
+                'partner_id': order.partner_id.id,
+                'work': order.work,
+                'description': order.description
+            })
+            order.analytic_account_id = analytic
+
 
 class SaleOrderLine(models.Model):
     _inherit = "sale.order.line"
 
+    project_code = fields.Char(
+        related='order_id.project_code',
+        readonly=True
+    )
+
     @api.model
     def _timesheet_create_task_prepare_values(self):
-        ret = super(SaleOrderLine,
-                    self)._timesheet_create_task_prepare_values()  # noqa
+        """ Sobreescribo esto para pasarle a las tasks:
+            - los precios
+            - el producto asociado a la tarea
+            - el codigo de proyecto
+            - la obra
+        """
 
+        ret = super(SaleOrderLine,
+                    self)._timesheet_create_task_prepare_values()
         ret['sale_price'] = self.product_id.list_price
         ret['product_id'] = self.product_id.id
         ret['cost_price'] = self.product_id.standard_price
+        ret['project_code'] = self.project_code
+        ret['work'] = self.order_id.work
+        ret['description'] = self.order_id.description
 
         return ret

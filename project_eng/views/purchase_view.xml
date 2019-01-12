@@ -9,17 +9,20 @@
 
             <!-- agregar analitic y work en el form -->
             <xpath expr="//field[@name='date_order']" position="after">
+
+                <!-- quitar la analytic account del form
                 <field name="analytic_account_id" attrs="{'required':1}"/>
+                -->
                 <field name="work"/>
                 <field name="project_code"/>
             </xpath>
 
-            <!-- ocultar la analitica de la linea -->
+            <!-- devolverla ocultar la analitica de la linea
             <xpath expr="//field[@name='account_analytic_id']"
                    position="attributes">
                 <attribute name="invisible">1</attribute>
             </xpath>
-
+-->
             <!-- agregar costo total de la tarea -->
             <xpath expr="//field[@name='price_unit']" position="before">
                 <field name="price_task_total"/>

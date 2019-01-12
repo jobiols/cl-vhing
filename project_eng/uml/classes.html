@@ -1,0 +1,63 @@
+@startuml
+
+class AccountAnalyticAccount {
+}
+
+class AccountAnalyticLine  {
+    work : Char(related)
+    asignee_id  : res.users
+    name : Char
+    purchase_order_id : purchase.order
+}
+
+class SaleOrder {
+    work        : Char
+    project_code : Char
+    description : Char
+    ..
+    analytic_account_id : AccountAnalyticAccount
+}
+
+class SaleOrderLine {
+    project_code : Char(related)
+}
+
+class PurchaseOrder {
+    work            : Char(compute)
+    project_code    : Char(compute)
+    description     : Char(compute)
+}
+
+class PurchaseOrderLine {
+    account_analytic_id : AccountAnalyticAccount
+}
+
+class ProjectProject {
+    purchase_count  : Integer(compute)
+    sales_count     : Integer(compute)
+    work            : Char(compute)
+    description     : Char(compute)
+    stage           : Integer(compute)
+    total_sales     : Float(compute)
+    percent_vh      : Float(compute)
+    percent_ing     : Float(compute)
+    responsible_initials : Char(related)
+    ..
+    analytic_account_id : AccountAnalyticAccount
+}
+
+Class ProjectTask {
+    sale_price : Float
+    cost_price : Float
+    product_id : product.product
+    project_code: Char
+    work: Char
+    description: Char
+}
+
+SaleOrder "order_line" o-- "order_id" SaleOrderLine
+PurchaseOrder "order_line" o-- "order_id" PurchaseOrderLine
+ProjectProject "tasks" o-- "project_id" ProjectTask
+AccountAnalyticAccount "line_ids" o-- "account_id" AccountAnalyticLine
+
+@enduml
