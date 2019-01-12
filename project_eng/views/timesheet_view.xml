@@ -50,4 +50,60 @@
         </field>
     </record>
 
+    <record id="hr_timesheet.hr_timesheet_line_search" model="ir.ui.view">
+        <field name="name">account.analytic.line.search</field>
+        <field name="model">account.analytic.line</field>
+        <field name="arch" type="xml">
+            <search string="Timesheet">
+                <field name="asignee_id"/>
+                <field name="work"/>
+                <field name="partner_id" string="Customer"/>
+<!--
+                <field name="date"/>
+                <field name="employee_id"/>
+                <field name="project_id"/>
+                <field name="task_id"/>
+                <field name="name"/>
+-->
+                <filter name="mine" string="My Timesheets" domain="[('user_id', '=', uid)]"/>
+                <separator/>
+                <filter name="week" string="This Week"
+                        domain="[
+                            '&amp;',
+                            ('date', '>=', (context_today() + relativedelta(weeks=-1,days=1,weekday=0)).strftime('%Y-%m-%d')),
+                            ('date', '&lt;=', (context_today() + relativedelta(weekday=6)).strftime('%Y-%m-%d')),
+                        ]"/>
+                <filter name="month" string="This Month"
+                        domain="[
+                            '&amp;',
+                            ('date', '>=', (context_today() + relativedelta(day=1)).strftime('%Y-%m-%d')),
+                            ('date', '&lt;=', (context_today() + relativedelta(months=1, day=1, days=-1)).strftime('%Y-%m-%d')),
+                        ]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Employee" name="groupby_employee" domain="[]" context="{'group_by':'employee_id'}"/>
+                    <filter string="Project" name="groupby_project" domain="[]" context="{'group_by':'project_id'}"/>
+                    <filter string="Task" name="groupby_task" domain="[]" context="{'group_by':'task_id'}"/>
+                    <filter string="Timesheet Month" name="groupby_date" domain="[]" context="{'group_by':'date'}" help="Timesheet by Month"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- elimino los filtros por defecto -->
+    <record id="hr_timesheet.timesheet_action_all" model="ir.actions.act_window">
+        <field name="name">All Timesheets</field>
+        <field name="res_model">account.analytic.line</field>
+        <field name="search_view_id" ref="hr_timesheet.hr_timesheet_line_search"/>
+        <field name="domain">[('project_id', '!=', False)]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <!-- cambiamos la secuencia para que aparezca este menu primero y
+         se convierta en el default  -->
+    <menuitem id="hr_timesheet.timesheet_menu_activity_all"
+        name="All Timesheets"
+        sequence="9"
+        parent="hr_timesheet.menu_hr_time_tracking"
+        action="hr_timesheet.timesheet_action_all"/>
+
 </odoo>

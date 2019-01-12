@@ -1,10 +1,16 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
-from odoo import fields, models
+from odoo import fields, api, models
 
 
 class AccountAnalytic(models.Model):
     _inherit = "account.analytic.account"
+
+    code = fields.Char(
+        compute="_compute_code",
+        readonly=True,
+        string="Work"
+    )
 
     sale_order_ids = fields.One2many(
         'sale.order',
@@ -12,22 +18,33 @@ class AccountAnalytic(models.Model):
         help='Campo tecnico para llegar del project a la SO'
     )
 
+    @api.depends('line_ids')
+    def _compute_code(self):
+        for analytic in self:
+            work = set(analytic.line_ids.mapped('work'))
+            if False in work:
+                work.remove(False)
+            analytic.code = ', '.join(work)
+
 
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
-    # este campo se muestra en el listado de partes de horas
+    # este campo se muestra en el listado de partes de horas y se usa para
+    # filtrar las timesheets
     asignee_id = fields.Many2one(
         'res.users',
         related="task_id.user_id",
         readonly=True,
         store=True
     )
-    # este campo se muestra en el listado de partes de horas
+    # este campo se muestra en el listado de partes de horas y se usa para
+    # filtrar las timesheets
     work = fields.Char(
         related="task_id.project_id.work",
         readonly=True,
-        help='work related to this piece of work'
+        store=True,
+        help='work related to this analytic line'
     )
     project_code = fields.Char(
         related="task_id.project_id.project_code",
