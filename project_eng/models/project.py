@@ -163,8 +163,6 @@ class Project(models.Model):
 
     @api.multi
     def action_view_purchases(self):
-        # TODO no funcionan las purchases
-
         self.ensure_one()
         analytic = self.analytic_account_id
         return {
@@ -175,7 +173,7 @@ class Project(models.Model):
             'view_mode': 'tree',
             'target': 'current',
             'res_model': 'purchase.order.line',
-            'domain': [('order_id.analytic_account_id.id', '=', analytic.id)],
+            'domain': [('account_analytic_id.id', '=', analytic.id)],
         }
 
     @api.model
