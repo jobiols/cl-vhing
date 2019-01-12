@@ -28,7 +28,7 @@
                 <span>--<br/>+Mr FER
                 </span>
             </field>
-            <field name="company_id" ref="main_company"/>
+            <field name="company_id" ref="base.main_company"/>
             <field name="groups_id"
                    eval="[(6,0,[ref('base.group_user'), ref('base.group_partner_manager')])]"/>
         </record>
@@ -40,7 +40,7 @@
                 <span>--<br/>+Mr NIC
                 </span>
             </field>
-            <field name="company_id" ref="main_company"/>
+            <field name="company_id" ref="base.main_company"/>
             <field name="groups_id"
                    eval="[(6,0,[ref('base.group_user'), ref('base.group_partner_manager')])]"/>
         </record>
@@ -52,7 +52,7 @@
                 <span>--<br/>+Mr MON
                 </span>
             </field>
-            <field name="company_id" ref="main_company"/>
+            <field name="company_id" ref="base.main_company"/>
             <field name="groups_id"
                    eval="[(6,0,[ref('base.group_user'), ref('base.group_partner_manager')])]"/>
         </record>
