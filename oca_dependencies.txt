@@ -1,8 +1,8 @@
 odoo-addons https://github.com/jobiols/odoo-addons.git 11.0
 odoo-argentina https://github.com/jobiols/adhoc-odoo-argentina.git 11.0
 argentina-reporting https://github.com/jobiols/adhoc-argentina-reporting.git 11.0
+backend-theme https://github.com/jobiols/rafi16jan-backend-theme.git 11.0
 
-#backend-theme https://github.com/jobiols/rafi16jan-backend-theme.git 11.0
 #argentina-sale https://github.com/jobiols/adhoc-argentina-sale.git 11.0
 #account-financial-tools https://github.com/jobiols/adhoc-account-financial-tools.git 11.0
 #account-payment https://github.com/jobiols/adhoc-account-payment.git 11.0
