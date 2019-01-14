@@ -41,8 +41,9 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
                                       'the invoice line') % aal.task_id.name)
 
                 # traemos el costo cargado en la tarea.
-                price_task = aal.task_id.cost_price
-
+                task = aal.task_id
+                price_task = task.cost_price
+                taxes = [x.id for x in task.product_id.supplier_taxes_id]
                 po.order_line.create(
                     {'product_id': aal.task_id.product_id.id,
                      'product_qty': aal.unit_amount,
@@ -53,7 +54,8 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
                      'product_uom': 1,
                      'order_id': po.id,
                      'account_analytic_id':
-                         aal.project_id.analytic_account_id.id
+                         aal.project_id.analytic_account_id.id,
+                     'taxes_id': [(6, 0, taxes)]
                      })
                 # enlazar la orden de compra con la linea analitica
                 aal.purchase_order_id = po.id
