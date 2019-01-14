@@ -79,7 +79,7 @@
     ],
     'docker': [
         {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '11.0'},
-        {'name': 'postgres', 'usr': 'postgres', 'ver': '9.6'},
+        {'name': 'postgres', 'usr': 'postgres', 'ver': '11.1-alpine'},
         {'name': 'nginx', 'usr': 'nginx', 'ver': 'latest'},
         {'name': 'aeroo', 'usr': 'adhoc', 'img': 'aeroo-docs'},
     ]

@@ -1,6 +1,7 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 
 from odoo import fields, api, models
+from odoo.addons import decimal_precision as dp
 
 
 class AccountAnalytic(models.Model):
@@ -63,3 +64,13 @@ class AccountAnalyticLine(models.Model):
         help="Purchase order for this piece of work",
         readonly=True
     )
+    # este campo se muestra en el listado de partes de horas
+    amount = fields.Float(
+        digits=dp.get_precision('Product Price'),
+        compute="_compute_amount",
+        readonly=True
+    )
+
+    def _compute_amount(self):
+        for aal in self:
+            aal.amount = aal.unit_amount * aal.task_id.cost_price / 100

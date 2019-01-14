@@ -16,6 +16,9 @@
                 <field name="work"/>
                 <field name="purchase_order_id"/>
             </xpath>
+            <xpath expr="//field[@name='unit_amount']" position="before">
+                <field name="amount"/>
+            </xpath>
         </field>
     </record>
 
