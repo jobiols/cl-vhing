@@ -57,7 +57,6 @@ class TestProjectEng(TransactionCase):
             task.cost_price = price
 
         def create_analitic_line(project, task, amount):
-            import wdb;wdb.set_trace()
 
             # busco el project y la task
             project_id = project_obj.search([('name', '=', project)])
