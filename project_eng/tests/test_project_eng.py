@@ -49,7 +49,7 @@ class TestProjectEng(TransactionCase):
 
         # asignar las cuatro tareas y ponerle precio
         tasks = project_task_obj.search(
-            [('project_id.name', 'in', ['IPV: SO0001', 'IHA: SO0002'])])
+            [('project_id.name', 'in', ['32828-190102', '20367-180614'])])
         price = 10
         for task in tasks:
             task.user_id = self.env.ref('base.res_users2')
@@ -57,6 +57,8 @@ class TestProjectEng(TransactionCase):
             task.cost_price = price
 
         def create_analitic_line(project, task, amount):
+            import wdb;wdb.set_trace()
+
             # busco el project y la task
             project_id = project_obj.search([('name', '=', project)])
             task_id = project_task_obj.search([('name', '=', task)])
@@ -70,24 +72,24 @@ class TestProjectEng(TransactionCase):
             aal_obj.create(vals)
 
         create_analitic_line(
-            'IPV: SO0001',
+            '32828-190102',
             'SO0001:[IHA] Diseño y cálculo de la '
             'estructura de hormigón armado',
             30
         )
         create_analitic_line(
-            'IPV: SO0001',
+            '32828-190102',
             'SO0001:[IPV] Diseño de pavimentos',
             40
         )
         create_analitic_line(
-            'IHA: SO0002',
+            '20367-180614',
             'SO0002:[IME] Diseño y cálculo de la '
             'estructura metálica de cubierta',
             40
         )
         create_analitic_line(
-            'IHA: SO0002',
+            '20367-180614',
             'SO0002:[IHA] Diseño y cálculo de la '
             'estructura de hormigón armado',
             40
