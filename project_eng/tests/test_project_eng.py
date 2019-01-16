@@ -116,4 +116,4 @@ class TestProjectEng(TransactionCase):
         self.assertEqual(len(po), 1)
 
         self.assertEqual(po.partner_id.name,
-                         'Monica Fernanda Suarez Amezquita')
+                         'Nicolas Francisco Diez')
