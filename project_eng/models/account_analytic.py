@@ -31,6 +31,11 @@ class AccountAnalytic(models.Model):
 class AccountAnalyticLine(models.Model):
     _inherit = "account.analytic.line"
 
+    # no queremos usar este campo lo ponemos como no requerido
+    name = fields.Char(
+        required=False
+    )
+
     # este campo se muestra en el listado de partes de horas y se usa para
     # filtrar las timesheets
     asignee_id = fields.Many2one(
@@ -68,7 +73,8 @@ class AccountAnalyticLine(models.Model):
     amount = fields.Float(
         digits=dp.get_precision('Product Price'),
         compute="_compute_amount",
-        readonly=True
+        readonly=True,
+        store=True
     )
 
     def _compute_amount(self):
