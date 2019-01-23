@@ -74,6 +74,7 @@ class AccountAnalyticLine(models.Model):
         digits=dp.get_precision('Product Price'),
         compute="_compute_amount",
         readonly=True,
+        store=True,
     )
 
     def _compute_amount(self):
