@@ -44,7 +44,7 @@
 
         # utilitarios
         'auto_backup',  # poner el backup en: /var/odoo/backups/
-        'backend_theme',
+        #'backend_theme',
         'due_payments_argentina_fix'
     ],
     'data': [
@@ -62,6 +62,9 @@
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'rafi16jan-backend-theme',
          'branch': '11.0'},
+
+        {'usr': 'ntsystemwork', 'repo': 'templates', 'branch': '11.0',
+         'ssh': True},
 
         {'usr': 'jobiols', 'repo': 'adhoc-odoo-argentina', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'adhoc-argentina-sale', 'branch': '11.0'},
