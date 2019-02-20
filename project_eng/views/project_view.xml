@@ -73,6 +73,7 @@
                 <field name="sale_price"/>
                 <field name="cost_price"/>
                 <field name="product_id"/>
+                <field name="work"/>
             </xpath>
         </field>
     </record>

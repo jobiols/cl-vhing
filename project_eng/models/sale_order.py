@@ -79,6 +79,7 @@ class SaleOrder(models.Model):
     def _create_analytic_account(self, prefix=None):
         """ metodo heredado para pasarle los tres parametros al crear la
             analitica: project_code, work y description
+            se dispara al confirmar la venta.
         """
         for order in self:
             analytic = self.env['account.analytic.account'].create({
@@ -86,8 +87,9 @@ class SaleOrder(models.Model):
                 'code': order.client_order_ref,
                 'company_id': order.company_id.id,
                 'partner_id': order.partner_id.id,
+                'description': order.description,
                 'work': order.work,
-                'description': order.description
+                'project_code': order.project_code
             })
             order.analytic_account_id = analytic
 
@@ -117,5 +119,6 @@ class SaleOrderLine(models.Model):
         ret['project_code'] = self.project_code
         ret['work'] = self.order_id.work
         ret['description'] = self.order_id.description
+        ret['project_code'] = self.order_id.project_code
 
         return ret

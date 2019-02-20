@@ -8,24 +8,53 @@ class AccountAnalytic(models.Model):
     _inherit = "account.analytic.account"
 
     code = fields.Char(
-        compute="_compute_code",
         readonly=True,
-        string="Work"
+        string="Work",
+        compute="_compute_project_code",
     )
 
+    project_code = fields.Char(
+        compute="_compute_project_code",
+        readonly=True
+    )
+    work = fields.Char(
+        compute="_compute_project_code",
+        readonly=True
+    )
+    description = fields.Char(
+
+    )
     sale_order_ids = fields.One2many(
         'sale.order',
         'analytic_account_id',
         help='Campo tecnico para llegar del project a la SO'
     )
 
-    @api.depends('line_ids')
-    def _compute_code(self):
-        for analytic in self:
-            work = set(analytic.line_ids.mapped('work'))
-            if False in work:
-                work.remove(False)
-            analytic.code = ', '.join(work)
+    @api.multi
+    def _compute_project_code(self):
+        for aa in self:
+            project_obj = self.env['project.project']
+            proj = project_obj.search([('analytic_account_id.id', '=', aa.id)])
+            if len(proj) != 1:
+                aa.work = '??'
+                aa.code = '??'
+                aa.project_code = '??'
+            else:
+                aa.work = proj.work
+                aa.code = proj.work
+                aa.project_code = proj.project_code
+
+    @api.multi
+    def name_get(self):
+        """ Redefinir el nombre de la cuenta analitica
+        """
+        result = []
+        for rec in self:
+            name = '[{}] {} -- {}'.format(rec.project_code,
+                                          rec.work,
+                                          rec.partner_id.name)
+            result.append((rec.id, name))
+        return result
 
 
 class AccountAnalyticLine(models.Model):
@@ -74,6 +103,7 @@ class AccountAnalyticLine(models.Model):
         digits=dp.get_precision('Product Price'),
         compute="_compute_amount",
         readonly=True,
+        store=True,
     )
 
     def _compute_amount(self):

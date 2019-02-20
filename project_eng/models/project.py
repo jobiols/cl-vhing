@@ -21,19 +21,11 @@ class ProjectTask(models.Model):
         required=True
     )
 
-    # estos campos no se muestran, candidatos a borrarse.
-    """
     work = fields.Char(
         help='obra para la cual se trabaja en esta tarea',
         related='project_id.work',
         readonly=True
     )
-    description = fields.Char(
-        help='descripcion que viene de la SO',
-        related='project_id.description',
-        readonly=True
-    )
-    """
 
 
 class Project(models.Model):
@@ -185,4 +177,7 @@ class Project(models.Model):
         for project in res:
             project.type_ids = tasks
 
+        # el nombre del proyecto es el codigo, sin el parentesis con la ref
+        # que le pone odoo
+        res.name = res.project_code
         return res
