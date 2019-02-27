@@ -115,5 +115,5 @@ class TestProjectEng(TransactionCase):
         po = po_obj.search([('id', '>', last_po.id)])
         self.assertEqual(len(po), 1)
 
-        self.assertEqual(po.partner_id.name,
-                         'Nicolas Francisco Diez')
+        self.assertEqual(po.partner_id.name, 'Nicolas Francisco Diez')
+

@@ -43,11 +43,12 @@ class ProjectTaskInvoiceWizard(models.TransientModel):
                 # traemos el costo cargado en la tarea.
                 task = aal.task_id
                 price_task = task.cost_price
+                planned_hours = task.planned_hours
                 taxes = [x.id for x in task.product_id.supplier_taxes_id]
                 po.order_line.create(
                     {'product_id': aal.task_id.product_id.id,
                      'product_qty': aal.unit_amount,
-                     'price_unit': price_task / 100,
+                     'price_unit': price_task / planned_hours,
                      'price_task_total': price_task,
                      'name': aal.task_id.name,
                      'date_planned': aal.date,
