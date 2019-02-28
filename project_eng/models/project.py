@@ -41,7 +41,8 @@ class Project(models.Model):
     )
     work = fields.Char(
         compute="_compute_refs",
-        readonly=True
+        readonly=True,
+        store=True
     )
     description = fields.Char(
         compute='_compute_refs',

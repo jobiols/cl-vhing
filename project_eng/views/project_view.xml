@@ -115,4 +115,17 @@
             </xpath>
         </field>
     </record>
+
+    <!-- Mejorar busqueda en proyectos -->
+    <record id="view_project_project_filter" model="ir.ui.view">
+        <field name="name">PROJECT ENG improve search</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.view_project_project_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="work" string="Work"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>
