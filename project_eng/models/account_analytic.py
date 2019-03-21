@@ -106,6 +106,7 @@ class AccountAnalyticLine(models.Model):
         store=True,
     )
 
+    @api.depends('unit_amount', 'task_id.cost_price')
     def _compute_amount(self):
         for aal in self:
             aal.amount = aal.unit_amount * aal.task_id.cost_price / 100
