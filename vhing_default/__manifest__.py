@@ -34,18 +34,10 @@
         'project_eng',
 
         # para la localizacion argentina
-        'l10n_ar_base',  # esto se instala solo
-        'l10n_ar_account',  # esto se instala solo
-        'l10n_ar_afipws_fe',  # Factura Electrónica Argentina
-        'l10n_ar_aeroo_einvoice',  # impresion de factura electronica aeroo
-        'l10n_ar_account_vat_ledger_citi',
-        'account_debt_management',
-        'l10n_ar_aeroo_payment_group',
+        'standard_depends',  # poner el backup en: /var/odoo/backups/
 
         # utilitarios
-        'auto_backup',  # poner el backup en: /var/odoo/backups/
         'backend_theme',
-        'due_payments_argentina_fix'
     ],
     'data': [
     ],
