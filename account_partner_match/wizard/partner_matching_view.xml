@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+        <record id="partner_matching_form" model="ir.ui.view">
+            <field name='name'>ACCOUNT PARTNER MATCH form</field>
+            <field name='model'>matching.wizard</field>
+            <field name='arch' type='xml'>
+                <form string='Show partners accounts'>
+                    <sheet>
+                        <group col="2">
+                            <field name="FEH_account_id"/>
+                            <field name="JAV_account_id"/>
+                        </group>
+                    </sheet>
+                    <footer>
+                        <button name='invoice_tasks' string='Invoice Tasks' class='oe_highlight' type='object'/>
+                        <button special="cancel" string="Cancel" type="object" class="btn btn-default oe_inline"/>
+                    </footer>
+                </form>
+            </field>
+        </record>
+
+        <record id="action_partner_matching" model="ir.actions.act_window">
+            <field name="name">aaaaaaaaaaaAutoload Settings</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">matching.wizard</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+        </record>
+
+        <menuitem id="menu_partner_matching" name="Revisar Socios"
+                  parent="account_ux.menu_reconciliations_main"
+                  groups="base.group_erp_manager"
+                  sequence="16"
+                  action="action_partner_matching"/>
+
+</odoo>
