@@ -101,6 +101,21 @@
         </field>
     </record>
 
+    <!-- agregar campos a task kanban -->
+    <record id="view_task_kanban" model="ir.ui.view">
+        <field name="name">PROJECT ENG add fields</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="arch" type="xml">
+            <field name="user_email" position="after">
+                <field name="partner_id" invisible="1"/>
+            </field>
+            <xpath expr="//t[@t-if='record.email_from.raw_value']" position="replace">
+                <t t-if="record.partner_id.raw_value"><span><field name="partner_id"/></span></t>
+            </xpath>
+        </field>
+    </record>
+
     <!-- agregar campos a kanban -->
     <record id="project_view_kanban" model="ir.ui.view">
         <field name="name">PROJECT ENG add fields</field>
