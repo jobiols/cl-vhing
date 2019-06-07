@@ -17,12 +17,13 @@ class PartnerMatchingWizard(models.TransientModel):
     )
     difference = fields.Float(
         default=lambda self: self._get_difference(),
-        readonly=True
+        readonly=True,
+        string="FEH - JAV"
     )
 
     @api.multi
     def _get_difference(self):
-        return abs(self._get_account_feh() - self._get_account_jav())
+        return self._get_account_feh() - self._get_account_jav()
 
     @api.multi
     def _get_balance(self, account_id):
@@ -39,14 +40,14 @@ class PartnerMatchingWizard(models.TransientModel):
 
     @api.multi
     def _get_account_feh(self):
-        domain = [('code', '=', '1.2.02.01.041')]
+        domain = [('code', '=', '1.2.02.01.040')]
         feh_id = self.env['account.account'].search(domain)
 
         return self._get_balance(feh_id)
 
     @api.multi
     def _get_account_jav(self):
-        domain = [('code', '=', '1.2.02.01.040')]
+        domain = [('code', '=', '1.2.02.01.041')]
         jav_id = self.env['account.account'].search(domain)
 
         return self._get_balance(jav_id)

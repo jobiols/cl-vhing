@@ -27,7 +27,7 @@
     'website': 'http://github.com/jobiols/module-repo',
     'license': 'AGPL-3',
     'depends': [
-        'account_ux'
+        'account'
     ],
     'data': [
         'security/security.xml',

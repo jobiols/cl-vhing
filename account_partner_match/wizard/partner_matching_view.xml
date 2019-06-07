@@ -25,7 +25,7 @@
         </record>
 
         <menuitem id="menu_partner_matching" name="Revisar Socios"
-                  parent="account_ux.menu_reconciliations_main"
+                  parent="account.menu_finance_entries_actions"
                   groups="base.group_erp_manager,account_partner_match.group_partner_matching"
                   sequence="16"
                   action="action_partner_matching"/>
