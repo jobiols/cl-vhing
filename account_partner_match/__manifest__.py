@@ -22,7 +22,7 @@
     'name': 'Account Partner Match',
     'version': '11.0.0.0.0',
     'category': 'Tools',
-    'summary': "Module summary",
+    'summary': "Show differences between partner accounts",
     'author': "jeo Software",
     'website': 'http://github.com/jobiols/module-repo',
     'license': 'AGPL-3',
@@ -30,7 +30,8 @@
         'account_ux'
     ],
     'data': [
-        'wizard/partner_matching_view.xml'
+        'security/security.xml',
+        'wizard/partner_matching_view.xml',
     ],
     'demo': [
         'data/data.xml'
