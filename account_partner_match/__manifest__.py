@@ -19,7 +19,7 @@
 ##############################################################################
 
 {
-    'name': 'Module Name',
+    'name': 'Account Partner Match',
     'version': '11.0.0.0.0',
     'category': 'Tools',
     'summary': "Module summary",
