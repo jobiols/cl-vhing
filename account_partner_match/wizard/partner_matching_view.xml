@@ -7,20 +7,17 @@
                 <form string='Show partners accounts'>
                     <sheet>
                         <group col="2">
-                            <field name="FEH_account_id"/>
-                            <field name="JAV_account_id"/>
+                            <field name="feh_account_id"/>
+                            <field name="jav_account_id"/>
+                            <field name="difference"/>
                         </group>
                     </sheet>
-                    <footer>
-                        <button name='invoice_tasks' string='Invoice Tasks' class='oe_highlight' type='object'/>
-                        <button special="cancel" string="Cancel" type="object" class="btn btn-default oe_inline"/>
-                    </footer>
                 </form>
             </field>
         </record>
 
         <record id="action_partner_matching" model="ir.actions.act_window">
-            <field name="name">aaaaaaaaaaaAutoload Settings</field>
+            <field name="name">Autoload Settings</field>
             <field name="type">ir.actions.act_window</field>
             <field name="res_model">matching.wizard</field>
             <field name="view_mode">form</field>
