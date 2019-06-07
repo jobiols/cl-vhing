@@ -43,6 +43,7 @@
         'views/custom_reports.xml',
         'views/project_view.xml',
         'views/res_partner.xml',
+        'reports/purchase_order_templates.xml',
     ],
     'demo': [
         'data/partner_demo.xml',
