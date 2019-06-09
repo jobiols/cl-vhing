@@ -98,15 +98,16 @@ class AccountAnalyticLine(models.Model):
         help="Purchase order for this piece of work",
         readonly=True
     )
-    # este campo se muestra en el listado de partes de horas
-    amount = fields.Float(
+    # este campo se muestra en el listado de partes de horas,
+    task_cost = fields.Float(
         digits=dp.get_precision('Product Price'),
-        compute="_compute_amount",
+        compute="_compute_task_cost",
         readonly=True,
         store=True,
+        help='Total to pay for this task'
     )
 
     @api.depends('unit_amount', 'task_id.cost_price')
-    def _compute_amount(self):
+    def _compute_task_cost(self):
         for aal in self:
-            aal.amount = aal.unit_amount * aal.task_id.cost_price / 100
+            aal.task_cost = aal.unit_amount * aal.task_id.cost_price / 100
