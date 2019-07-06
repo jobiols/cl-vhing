@@ -11,6 +11,7 @@ class AccountAnalytic(models.Model):
         readonly=True,
         string="Work",
         compute="_compute_project_code",
+        store=True
     )
 
     project_code = fields.Char(
