@@ -61,13 +61,6 @@
                 <field name="asignee_id"/>
                 <field name="work"/>
                 <field name="partner_id" string="Customer"/>
-<!--
-                <field name="date"/>
-                <field name="employee_id"/>
-                <field name="project_id"/>
-                <field name="task_id"/>
-                <field name="name"/>
--->
                 <filter name="mine" string="My Timesheets" domain="[('user_id', '=', uid)]"/>
                 <separator/>
                 <filter name="week" string="This Week"
@@ -89,6 +82,18 @@
                     <filter string="Timesheet Month" name="groupby_date" domain="[]" context="{'group_by':'date'}" help="Timesheet by Month"/>
                 </group>
             </search>
+        </field>
+    </record>
+
+    <!-- agregar la referencia de factura en la cuenta analitica -->
+    <record id="view_account_analytic_line_tree" model="ir.ui.view">
+        <field name="name">PROJECT ENG add invoice name</field>
+        <field name="model">account.analytic.line</field>
+        <field name="inherit_id" ref="analytic.view_account_analytic_line_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='date']" position="after">
+                <field name="timesheet_invoice_id"/>
+            </xpath>
         </field>
     </record>
 
