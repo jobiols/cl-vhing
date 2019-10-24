@@ -52,6 +52,7 @@
     'repos': [
         {'usr': 'jobiols', 'repo': 'cl-vhing', 'branch': '11.0'},
         {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
+        {'usr': 'jobiols', 'repo': 'rafi16jan-backend-theme', 'branch': '11.0'},
 
         {'usr': 'ingadhoc', 'repo': 'odoo-argentina', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'argentina-sale', 'branch': '11.0'},
