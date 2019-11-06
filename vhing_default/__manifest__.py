@@ -75,6 +75,7 @@
         {'usr': 'oca', 'repo': 'social', 'branch': '11.0'},
         {'usr': 'oca', 'repo': 'server-brand', 'branch': '11.0'},
         {'usr': 'oca', 'repo': 'server-ux', 'branch': '11.0'},
+        {'usr': 'oca', 'repo': 'project', 'branch': '11.0'},
 
     ],
     'docker': [
