@@ -37,7 +37,7 @@
         'standard_depends_ce',  # poner el backup en: /var/odoo/backups/
 
         # utilitarios
-
+        'project_timeline',  # Vista gantt de las tareas
     ],
     'data': [
     ],
@@ -68,6 +68,7 @@
         {'usr': 'ingadhoc', 'repo': 'product', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'partner', 'branch': '11.0'},
         {'usr': 'ingadhoc', 'repo': 'account-invoicing', 'branch': '11.0'},
+        {'usr': 'ingadhoc', 'repo': 'stock', 'branch': '11.0'},
 
         {'usr': 'oca', 'repo': 'partner-contact', 'branch': '11.0'},
         {'usr': 'oca', 'repo': 'web', 'branch': '11.0'},
@@ -76,6 +77,7 @@
         {'usr': 'oca', 'repo': 'server-brand', 'branch': '11.0'},
         {'usr': 'oca', 'repo': 'server-ux', 'branch': '11.0'},
         {'usr': 'oca', 'repo': 'project', 'branch': '11.0'},
+        {'usr': 'oca', 'repo': 'queue', 'branch': '11.0'},
 
     ],
     'docker': [
