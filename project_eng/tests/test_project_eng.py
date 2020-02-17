@@ -116,4 +116,3 @@ class TestProjectEng(TransactionCase):
         self.assertEqual(len(po), 1)
 
         self.assertEqual(po.partner_id.name, 'Nicolas Francisco Diez')
-
