@@ -1,4 +1,8 @@
 language: python
+
+python:
+  - "3.6"
+
 sudo: false
 cache: pip
 
@@ -7,28 +11,25 @@ addons:
   apt:
     packages:
       - expect-dev  # provides unbuffer utility
-      - python-lxml # because pip installation is slow
-      - python3-dev # para que instale cups
-      - libcups2-dev # para que instale cups
-python:
-  - "3.6"
+      - python-lxml  # because pip installation is slow
+      - python-simplejson
+      - python-serial
+      - python-yaml
+      - cups
+      - libcups2-dev
+      - python3-dev
 
 env:
   global:
-  - VERSION="11.0" TESTS="0" LINT_CHECK="0"
-
+  - VERSION="11.0" TESTS="0" LINT_CHECK="0" MAKEPOT="0"
+  - WKHTMLTOPDF_VERSION="0.12.4"
   matrix:
   - LINT_CHECK="1"
   - TESTS="1" ODOO_REPO="odoo/odoo"
 
-git:
-  depth: 1
-
 install:
-  - pip install -r requirements.txt
-  - git clone https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
-  - export PATH=${HOME}/maintainer-quality-tools/travis:${PATH}
-  - pip install --upgrade python-magic
+  - git clone --depth=1 https://github.com/OCA/maintainer-quality-tools.git ${HOME}/maintainer-quality-tools
+  - export PATH=${HOME}/maintainer-quality-tools/travis:$PATH
   - travis_install_nightly
 
 script:
