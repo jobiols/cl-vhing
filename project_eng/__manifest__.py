@@ -19,20 +19,14 @@
 # -----------------------------------------------------------------------------
 {
     'name': 'Project Eng',
-    'version': '11.0.0.1.0',
+    'version': '11.0.0.1.1',
     'license': 'AGPL-3',
     'category': 'Tools',
     'summary': 'Project enhacements for engineering',
+    "development_status": "Production/Stable",
     'author': 'jeo Software',
     'depends': [
         'report_aeroo',  # dependencia para el reporte po modificado
-#        'l10n_ar_aeroo_base',
-#        'l10n_ar_aeroo_einvoice',
-#        'l10n_ar_aeroo_invoice',
-#        'l10n_ar_aeroo_payment_group',
-
-#        'l10n_ar_aeroo_purchase',
-#        'l10n_ar_aeroo_sale',
         'l10n_ar_aeroo_stock',
 
         'hr_timesheet',

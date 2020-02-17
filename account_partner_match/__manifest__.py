@@ -22,6 +22,7 @@
     'name': 'Account Partner Match',
     'version': '11.0.0.0.0',
     'category': 'Tools',
+    "development_status": "Production/Stable",
     'summary': "Show differences between partner accounts",
     'author': "jeo Software",
     'website': 'http://github.com/jobiols/module-repo',
