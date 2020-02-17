@@ -82,9 +82,14 @@ class Project(models.Model):
     def _compute_refs(self):
         for proj in self:
             so_ids = proj.mapped('analytic_account_id.sale_order_ids')
-            proj.work = so_ids[0].work if so_ids else False
-            proj.description = so_ids[0].description if so_ids else False
-            proj.project_code = so_ids[0].project_code if so_ids else False
+            proj.work = so_ids[0].work if so_ids \
+                else False
+            proj.description = so_ids[0].description if so_ids \
+                else False
+            # si no esta creado desde una so, entonces como codigo pongo el
+            # nombre del proyecto, de esa forma puedo crear proyectos sin so
+            proj.project_code = so_ids[0].project_code if so_ids \
+                else proj.name
 
     @api.depends('tasks')
     def _compute_stage(self):
