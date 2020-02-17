@@ -1,11 +1,11 @@
 <?xml version="1.0" ?>
 <odoo>
     <data>
-        <!-- a este hay que cambiarle el codigo porque esta duplicado -->
+        <!-- a este hay que cambiarle el codigo porque esta duplicado
         <record id="product_product_delivery_poste" model="product.template">
             <field name="default_code">Delivery_1</field>
         </record>
-
+-->
         <record id="product_category0" model="product.category">
             <field name="name">Tareas de estudio</field>
         </record>
@@ -77,8 +77,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>
@@ -162,12 +160,9 @@
             <field name="purchase_line_warn">no-message</field>
             <field name="purchase_method">purchase</field>
             <field eval="1" name="active"/>
-            <field model="res.users" name="create_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field eval="1" name="purchase_ok"/>
             <field name="sale_line_warn">no-message</field>
-            <field model="res.users" name="responsible_id"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="responsible_id" ref="base.user_root"/>
             <field name="uom_id" ref="product.product_uom_unit"/>
             <field name="service_type">manual</field>
             <field name="default_code">IPV</field>
@@ -183,8 +178,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>
@@ -218,8 +211,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>
@@ -252,8 +243,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>
@@ -335,12 +324,9 @@
             <field name="purchase_line_warn">no-message</field>
             <field name="purchase_method">purchase</field>
             <field eval="1" name="active"/>
-            <field model="res.users" name="create_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field eval="1" name="purchase_ok"/>
             <field name="sale_line_warn">no-message</field>
-            <field model="res.users" name="responsible_id"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="responsible_id" ref="base.user_root"/>
             <field name="uom_id" ref="product.product_uom_unit"/>
             <field name="service_type">manual</field>
             <field name="default_code">DME</field>
@@ -356,8 +342,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>
@@ -406,12 +390,9 @@
             <field name="purchase_line_warn">no-message</field>
             <field name="purchase_method">purchase</field>
             <field eval="1" name="active"/>
-            <field model="res.users" name="create_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field eval="1" name="purchase_ok"/>
             <field name="sale_line_warn">no-message</field>
-            <field model="res.users" name="responsible_id"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="responsible_id" ref="base.user_root"/>
             <field name="uom_id" ref="product.product_uom_unit"/>
             <field name="service_type">manual</field>
             <field name="default_code">MET</field>
@@ -427,8 +408,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>
@@ -441,12 +420,9 @@
             <field name="purchase_line_warn">no-message</field>
             <field name="purchase_method">purchase</field>
             <field eval="1" name="active"/>
-            <field model="res.users" name="create_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field eval="1" name="purchase_ok"/>
             <field name="sale_line_warn">no-message</field>
-            <field model="res.users" name="responsible_id"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="responsible_id" ref="base.user_root"/>
             <field name="uom_id" ref="product.product_uom_unit"/>
             <field name="service_type">timesheet</field>
             <field name="default_code">HAR</field>
@@ -463,8 +439,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>
@@ -474,11 +448,8 @@
             <field name="name">Diseño y cálculo de la estructura de hormigón armado</field>
             <field name="purchase_method">purchase</field>
             <field eval="1" name="active"/>
-            <field model="res.users" name="create_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field eval="1" name="purchase_ok"/>
-            <field model="res.users" name="responsible_id"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="responsible_id" ref="base.user_root"/>
             <field name="uom_id" ref="product.product_uom_unit"/>
             <field name="service_type">manual</field>
             <field name="expense_policy">no</field>
@@ -494,8 +465,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>
@@ -1060,12 +1029,9 @@
             <field name="purchase_line_warn">no-message</field>
             <field name="purchase_method">purchase</field>
             <field eval="1" name="active"/>
-            <field model="res.users" name="create_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field eval="1" name="purchase_ok"/>
             <field name="sale_line_warn">no-message</field>
-            <field model="res.users" name="responsible_id"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
+            <field name="responsible_id" ref="base.user_root"/>
             <field name="uom_id" ref="product.product_uom_unit"/>
             <field name="service_type">manual</field>
             <field name="default_code">VOB</field>
@@ -1081,8 +1047,6 @@
             <field name="company_id" ref="base.main_company"/>
             <field eval="[(6,0,[ref('purchase.route_warehouse0_buy')])]"
                    name="route_ids"/>
-            <field model="res.users" name="write_uid"
-                   search="[('name', '=', 'Fernando Heredia')]"/>
             <field name="invoice_policy">order</field>
         </record>
     </data>

@@ -1,2 +1,1 @@
-standard_depends_ce https://github.com/jobiols/standard_depends_ce.git 11.0
-
+odoo_addons https://github.com/jobiols/odoo_addons.git 11.0
