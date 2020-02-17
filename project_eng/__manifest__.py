@@ -46,9 +46,9 @@
         'reports/purchase_order_templates.xml',
     ],
     'demo': [
-        'data/partner_demo.xml',
-        'data/product_data_demo.xml',
-        'data/sales_order_data_demo.xml',
+        'demo/partner_demo.xml',
+        'demo/product_data_demo.xml',
+        'demo/sales_order_data_demo.xml',
     ],
     'test': [
     ],

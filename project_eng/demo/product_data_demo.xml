@@ -1,6 +1,11 @@
 <?xml version="1.0" ?>
 <odoo>
     <data>
+        <!-- a este hay que cambiarle el codigo porque esta duplicado -->
+        <record id="product_product_delivery_poste" model="product.product">
+            <field name="default_code">Delivery_1</field>
+        </record>
+
         <record id="product_category0" model="product.category">
             <field name="name">Tareas de estudio</field>
         </record>

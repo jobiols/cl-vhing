@@ -107,6 +107,7 @@
         <field name="name">PROJECT ENG add fields</field>
         <field name="model">project.task</field>
         <field name="inherit_id" ref="project.view_task_kanban"/>
+        <field name="priority" eval="130"/>
         <field name="arch" type="xml">
             <field name="user_email" position="after">
                 <field name="partner_id" invisible="1"/>
@@ -122,7 +123,6 @@
         <field name="name">PROJECT ENG add fields</field>
         <field name="model">project.project</field>
         <field name="inherit_id" ref="project.project_view_kanban"/>
-        <field name="priority" eval="130"/>
         <field name="arch" type="xml">
             <xpath expr="//field[@name='user_id']" position="after">
                 <field name="stage"/>
