@@ -2,7 +2,7 @@
 <odoo>
     <data>
         <!-- a este hay que cambiarle el codigo porque esta duplicado -->
-        <record id="product_product_delivery_poste" model="product.product">
+        <record id="product_product_delivery_poste" model="product.template">
             <field name="default_code">Delivery_1</field>
         </record>
 

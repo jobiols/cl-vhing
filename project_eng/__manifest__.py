@@ -25,13 +25,13 @@
     'summary': 'Project enhacements for engineering',
     'author': 'jeo Software',
     'depends': [
+        'report_aeroo',  # dependencia para el reporte po modificado
         'hr_timesheet',
         'project',
         'purchase',
         'sale',
         'sale_timesheet',
         'analytic',
-
         'website_quote',  # dependencia para cargar demo data
     ],
     'data': [
@@ -46,8 +46,8 @@
         'reports/purchase_order_templates.xml',
     ],
     'demo': [
-        'demo/partner_demo.xml',
         'demo/product_data_demo.xml',
+        'demo/partner_demo.xml',
         'demo/sales_order_data_demo.xml',
     ],
     'test': [

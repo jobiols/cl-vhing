@@ -1,0 +1,2 @@
+standard_depends_ce https://github.com/jobiols/standard_depends_ce.git 11.0
+
