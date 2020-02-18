@@ -43,10 +43,11 @@
         'views/timesheet_view.xml',
         'views/sale_views.xml',
         'wizard/project_task_invoice_wizard_views.xml',
-        'views/custom_reports.xml',
         'views/project_view.xml',
         'views/res_partner.xml',
         'reports/purchase_order_templates.xml',
+        'reports/custom_reports.xml',
+        'reports/sale_order_report.xml',
     ],
     'demo': [
         'demo/product_data_demo.xml',
