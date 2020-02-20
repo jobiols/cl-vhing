@@ -36,6 +36,7 @@
         'sale_timesheet',
         'analytic',
         'website_quote',  # dependencia para cargar demo data
+        'project_timeline',  # Vista gantt de las tareas
     ],
     'data': [
         'views/project_view.xml',

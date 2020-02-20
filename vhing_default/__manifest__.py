@@ -36,8 +36,6 @@
         # para la localizacion argentina
         'standard_depends_ce',  # poner el backup en: /var/odoo/backups/
 
-        # utilitarios
-        'project_timeline',  # Vista gantt de las tareas
     ],
     'data': [
     ],
