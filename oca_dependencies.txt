@@ -1,1 +1,1 @@
-odoo_addons https://github.com/jobiols/odoo_addons.git 11.0
+odoo-addons https://github.com/jobiols/odoo-addons.git 11.0
