@@ -1,1 +1,3 @@
 odoo-addons https://github.com/jobiols/odoo-addons.git 11.0
+sale https://github.com/ingadhoc/sale 11.0
+project https://github.com/oca/project 11.0
