@@ -1,1 +1,2 @@
 odoo-addons https://github.com/jobiols/odoo-addons.git 11.0
+y
