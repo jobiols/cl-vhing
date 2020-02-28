@@ -111,10 +111,18 @@
                     <field name="stage"/>
                 </xpath>
 
-                <!-- Agregar columnas cobrado%, facturado%, sin cobrar -->
+                <!-- ocultar columna amount_total -->
+                <xpath expr="//field[@name='amount_total']" position="attributes">
+                    <attribute name="invisible">1</attribute>
+                </xpath>
+
+                <!-- Agregar columnas facturado%,  cobrado%, sin cobrar -->
                 <xpath expr="//field[@name='amount_total']" position="after">
-                    <field name="amount_paid_percent"/>
+                    <field name="amount_untaxed" string="Total"/>
                     <field name="amount_invoiced_percent"/>
+<!--
+                    <field name="amount_paid_percent"/>
+-->
                     <field name="amount_due" widget="monetary" sum="Total due"/>
                 </xpath>
 
