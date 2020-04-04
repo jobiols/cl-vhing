@@ -108,7 +108,12 @@ class AccountAnalyticLine(models.Model):
         help='Total to pay for this task'
     )
 
-    @api.depends('unit_amount', 'task_id.cost_price')
+    @api.depends('unit_amount', 'task_id.cost_price', 'task_id.planned_hours')
     def _compute_task_cost(self):
+        """ costo=Costo tarea / horas planificadas x horas del parte de horas
+        """
         for aal in self:
-            aal.task_cost = aal.unit_amount * aal.task_id.cost_price / 100
+            cost = aal.task_id.cost_price
+            plan = aal.task_id.planned_hours
+            labor = aal.unit_amount
+            aal.task_cost = cost / plan * labor if plan else 0
