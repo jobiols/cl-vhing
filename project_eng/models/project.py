@@ -20,12 +20,58 @@ class ProjectTask(models.Model):
         help='producto que representa esta tarea',
         required=True
     )
-
+    
     work = fields.Char(
         help='obra para la cual se trabaja en esta tarea',
         related='project_id.work',
         readonly=True
     )
+    children_effective_hours = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True,
+        string="Sub-tasks Hours Spent",
+        help="Total de horas dedicadas en las subtareas"
+    )
+    new_total_hours_spent = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True,
+        string="Total Spent"
+    )
+    children_planned_hours = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True,
+        string="Sub-task Planned Hours"
+    )
+    total_planned_hours = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True
+    )
+    new_remaining_hours = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True,
+        string="Remaining Hours"
+    )
+
+    @api.depends('stage_id', 'timesheet_ids.unit_amount', 'planned_hours', 'child_ids.stage_id',
+                 'child_ids.planned_hours', 'child_ids.effective_hours', 'child_ids.children_hours',
+                 'child_ids.timesheet_ids.unit_amount')
+    def _compute_new_task_hours(self):
+        for task in self.sorted(key='id', reverse=True):
+            children_planned_hours = children_effective_hours = 0
+            for child_task in task.child_ids:
+                children_effective_hours += child_task.effective_hours
+                children_planned_hours += child_task.planned_hours
+
+            # horas dedicadas de las subtareas
+            task.children_effective_hours = children_effective_hours
+            # horas totales dedicadas subtareas mas tarea
+            task.new_total_hours_spent = children_effective_hours + task.effective_hours
+            # horas planificadas de las subtareas
+            task.children_planned_hours = children_planned_hours
+            # horas planificadas subtareas + tarea
+            task.total_planned_hours = task.planned_hours + children_planned_hours
+            # horas restantes
+            task.new_remaining_hours = task.total_planned_hours - task.new_total_hours_spent
 
 
 class Project(models.Model):

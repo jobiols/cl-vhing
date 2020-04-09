@@ -85,6 +85,45 @@
         </field>
     </record>
 
+    <!-- Corregir la suma de las horas de las tareas incluyendo las subtareas -->
+    <record id="view_task_form2_inherited" model="ir.ui.view">
+        <field name="name">PROJECT ENG add correct subtask hours</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[hasclass('oe_subtotal_footer')]" position="replace">
+                <group class="oe_subtotal_footer oe_right" name="project_hours">
+                <group string="Asi estaba antes" class="oe_subtotal_footer oe_right">
+                    <field name="effective_hours" widget="float_time" />
+                    <field name="children_hours" widget="float_time" attrs="{'invisible' : [('children_hours', '=', 0.0)]}" />
+                    <field name="total_hours_spent" widget="float_time" class="oe_subtotal_footer_separator" attrs="{'invisible' : [('children_hours', '=', 0.0)]}" />
+                    <field name="remaining_hours" widget="float_time" class="oe_subtotal_footer_separator" readonly="1"/>
+                </group>
+                <group string="Teniendo en cuenta subtareas" class="oe_subtotal_footer oe_right">
+                    <br/><br/>
+                    <br/><br/>
+                    <field name="effective_hours" widget="float_time" />
+                    <field name="children_effective_hours" widget="float_time"
+                           attrs="{'invisible' : [('children_effective_hours', '=', 0.0)]}"/>
+                    <field name="new_total_hours_spent" widget="float_time"
+                           attrs="{'invisible' : [('children_effective_hours', '=', 0.0)]}"
+                           class="oe_subtotal_footer_separator"/>
+                    <br/>
+                    <field name="planned_hours" widget="float_time"/>
+                    <field name="children_planned_hours" widget="float_time"
+                           attrs="{'invisible' : [('children_planned_hours', '=', 0.0)]}"/>
+
+                    <field name="total_planned_hours" widget="float_time"
+                           class="oe_subtotal_footer_separator"
+                           attrs="{'invisible' : [('children_planned_hours', '=', 0.0)]}"/>
+                    <br/>
+                    <field name="new_remaining_hours" widget="float_time" />
+                </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
     <!-- agregar la referencia de factura en la cuenta analitica -->
     <record id="view_account_analytic_line_tree" model="ir.ui.view">
         <field name="name">PROJECT ENG add invoice name</field>
