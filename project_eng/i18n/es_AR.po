@@ -1,0 +1,468 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* project_eng
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0-20200406\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-04-26 15:01+0000\n"
+"PO-Revision-Date: 2020-04-26 15:01+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.project_task_invoice_wizard_form
+msgid "<span class=\"text-muted\">This will invoice the selected tasks</span>"
+msgstr "<span class=\"text-muted\">This will invoice the selected tasks</span>"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.report_purchaseorder_document
+msgid "<strong>Description</strong>"
+msgstr "<strong>Descripción</strong>"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.report_purchaseorder_document
+msgid "<strong>Fecha Req.</strong>"
+msgstr "<strong>Fecha Req.</strong>"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.report_purchaseorder_document
+msgid "<strong>Importe</strong>"
+msgstr "<strong>Importe</strong>"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.report_purchaseorder_document
+msgid "<strong>Impuestos</strong>"
+msgstr "<strong>Impuestos</strong>"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_amount_due
+msgid "Amount Due"
+msgstr "Saldo"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_amount_invoiced_percent
+msgid "Amount Invoiced Percent"
+msgstr "Porcentaje Facturado"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_amount_paid_percent
+msgid "Amount Paid Percent"
+msgstr "Porcentaje Pagado"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_account_analytic_account
+msgid "Analytic Account"
+msgstr "Cuenta analítica"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_account_analytic_line
+msgid "Analytic Line"
+msgstr "Línea analítica"
+
+#. module: project_eng
+#: model:ir.actions.report,name:project_eng.action_aeroo_report_ar_einvoice
+msgid "Argentinian Aeroo Electronic Invoice"
+msgstr "Factura Electrónica Argentina de Aeroo"
+
+#. module: project_eng
+#: model:ir.actions.report,name:project_eng.action_aeroo_report_ar_sale_order
+msgid "Argentinian Aeroo Sale Order"
+msgstr "Orden de Venta Argentina de Aeroo"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_line_asignee_id
+msgid "Assigned to"
+msgstr "Asignada a"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_account_analytic_account_sale_order_ids
+#: model:ir.model.fields,help:project_eng.field_project_project_sale_order_ids
+msgid "Campo tecnico para llegar del project a la SO"
+msgstr "Campo tecnico para llegar del project a la SO"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.project_task_invoice_wizard_form
+msgid "Cancel"
+msgstr "Cancelar"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_res_partner
+msgid "Contact"
+msgstr "Contacto"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_cost_price
+msgid "Cost Price"
+msgstr "Costo"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_invoice_wizard_create_uid
+msgid "Created by"
+msgstr "Creado por"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_invoice_wizard_create_date
+msgid "Created on"
+msgstr "Creado en"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.hr_timesheet_line_form
+#: model:ir.ui.view,arch_db:project_eng.hr_timesheet_line_tree
+#: model:ir.ui.view,arch_db:project_eng.view_project
+msgid "Customer"
+msgstr "Cliente"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_account_description
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_line_description
+#: model:ir.model.fields,field_description:project_eng.field_project_project_description
+#: model:ir.model.fields,field_description:project_eng.field_purchase_order_description
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_description
+msgid "Description"
+msgstr "Descripción"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_invoice_wizard_display_name
+msgid "Display Name"
+msgstr "Nombre mostrado"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.timesheet_view_search
+msgid "Hours not buyed"
+msgstr "Horas no compradas"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_invoice_wizard_id
+msgid "ID"
+msgstr "ID"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_project_percent_ing
+msgid "ING%"
+msgstr "ING%"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_sale_order_user_initials
+msgid "Iniciales del nombre del usuario responsable"
+msgstr "Iniciales del nombre del usuario responsable"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_res_partner_initials
+msgid "Iniciales del partner"
+msgstr "Iniciales del partner"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_project_project_responsible_initials
+#: model:ir.model.fields,help:project_eng.field_res_users_initials
+msgid "Iniciales del usuario"
+msgstr "Iniciales del usuario"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_res_partner_initials
+#: model:ir.model.fields,field_description:project_eng.field_res_users_initials
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_user_initials
+msgid "Initials"
+msgstr "Iniciales"
+
+#. module: project_eng
+#: model:ir.actions.act_window,name:project_eng.project_task_actions_act_window_invoice_tasks
+msgid "Invoice Selected Tasks"
+msgstr "Facturar tareas seleccionadas"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.project_task_invoice_wizard_form
+msgid "Invoice Tasks"
+msgstr "Facturar Tareas"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_invoice_wizard___last_update
+msgid "Last Modified on"
+msgstr "Última modificación en"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_invoice_wizard_write_uid
+msgid "Last Updated by"
+msgstr "Última actualización de"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_invoice_wizard_write_date
+msgid "Last Updated on"
+msgstr "Última actualización en"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_sale_order_amount_due
+msgid "Lo que resta cobrar del total facturado"
+msgstr "Lo que resta cobrar del total facturado"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_partner_contact_id
+msgid "Partner Contact"
+msgstr "Socio comercial"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_sale_order_amount_paid_percent
+msgid "Porcentaje cobrado del total facturado"
+msgstr "Porcentaje cobrado del total facturado"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_sale_order_stage
+msgid "Porcentaje de avance"
+msgstr "Porcentaje de avance"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_sale_order_amount_invoiced_percent
+msgid "Porcentaje de la orden de venta que ha sido facturado"
+msgstr "Porcentaje de la orden de venta que ha sido facturado"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_purchase_order_line_price_task_total
+msgid "Price Task Total"
+msgstr "Precio total de la tarea"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_product_id
+msgid "Product"
+msgstr "Producto"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_project_project
+msgid "Project"
+msgstr "Proyecto"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_account_project_code
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_line_project_code
+#: model:ir.model.fields,field_description:project_eng.field_project_project_project_code
+#: model:ir.model.fields,field_description:project_eng.field_purchase_order_project_code
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_line_project_code
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_project_code
+msgid "Project Code"
+msgstr "Codigo del proyecto"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.view_project
+msgid "Project Number"
+msgstr "Número de proyecto"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_project_purchase_count
+msgid "Purchase Count"
+msgstr "Cuenta de compra"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_purchase_order
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_line_purchase_order_id
+msgid "Purchase Order"
+msgstr "Pedido de compra"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_purchase_order_line
+msgid "Purchase Order Line"
+msgstr "Línea de pedido de compra"
+
+#. module: project_eng
+#: code:addons/project_eng/models/project.py:213
+#, python-format
+msgid "Purchase Order Lines"
+msgstr "Líneas de pedido de compra"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_account_analytic_line_purchase_order_id
+msgid "Purchase order for this piece of work"
+msgstr "Pedido de compra para esta parte de la obra"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.edit_project
+msgid "Purchases"
+msgstr "Compras"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_sale_order
+msgid "Quotation"
+msgstr "Presupuesto"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_new_remaining_hours
+msgid "Remaining Hours"
+msgstr "Horas restantes"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_project_responsible_initials
+msgid "Resp."
+msgstr "Resp."
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_account_sale_order_ids
+#: model:ir.model.fields,field_description:project_eng.field_project_project_sale_order_ids
+msgid "Sale Order"
+msgstr "Pedido de venta"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_sale_price
+msgid "Sale Price"
+msgstr "Precio de venta"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.edit_project
+msgid "Sales"
+msgstr "Ventas"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_project_sales_count
+msgid "Sales Count"
+msgstr "Recuento de ventas"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_sale_order_line
+msgid "Sales Order Line"
+msgstr "Línea de pedido de ventas"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_project_stage
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_stage
+msgid "Stage"
+msgstr "Etapa"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_children_planned_hours
+msgid "Sub-task Planned Hours"
+msgstr "Horas planificadas de Sub Tareas"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_children_effective_hours
+msgid "Sub-tasks Hours Spent"
+msgstr "Horas dedicadas de Sub Tareas"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_project_task
+msgid "Task"
+msgstr "Tarea"
+
+#. module: project_eng
+#: code:addons/project_eng/wizard/project_task_invoice_wizard.py:39
+#, python-format
+msgid "Task %s does not have an associated product. I need a product to create the invoice line"
+msgstr "La tarea %s no tiene un producto asociado. Necesito un producto para crear la linea de factura."
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_line_task_cost
+msgid "Task Cost"
+msgstr "Costo de la tarea"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_invoice_wizard_aal_ids
+msgid "Tasks to Invoice"
+msgstr "Tareas a facturar"
+
+#. module: project_eng
+#: sql_constraint:sale.order:0
+msgid "The project code must be unique."
+msgstr "El codigo de proyecto debe ser único."
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.hr_timesheet_line_tree
+#: model:ir.ui.view,arch_db:project_eng.view_order_tree
+msgid "Total"
+msgstr "Total"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_total_planned_hours
+msgid "Total Planned Hours"
+msgstr "Total Horas planificadas"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_project_total_sales
+msgid "Total Sales"
+msgstr "Ventas totales"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_task_new_total_hours_spent
+msgid "Total Spent"
+msgstr "Total horas dedicadas"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_project_task_children_effective_hours
+msgid "Total de horas dedicadas en las subtareas"
+msgstr "Total de horas dedicadas en las subtareas"
+
+#. module: project_eng
+#: model:ir.ui.view,arch_db:project_eng.view_order_tree
+msgid "Total due"
+msgstr "Saldo total"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_account_analytic_line_task_cost
+msgid "Total to pay for this task"
+msgstr "Total a pagar por esta tarea"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_res_users
+msgid "Users"
+msgstr "Usuarios"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_project_project_percent_vh
+msgid "VH%"
+msgstr "VH%"
+
+#. module: project_eng
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_account_work
+#: model:ir.model.fields,field_description:project_eng.field_account_analytic_line_work
+#: model:ir.model.fields,field_description:project_eng.field_project_project_work
+#: model:ir.model.fields,field_description:project_eng.field_project_task_work
+#: model:ir.model.fields,field_description:project_eng.field_purchase_order_work
+#: model:ir.model.fields,field_description:project_eng.field_sale_order_work
+#: model:ir.ui.view,arch_db:project_eng.view_project_project_filter
+msgid "Work"
+msgstr "Obra"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_project_project_project_code
+msgid "campo tecnico para pasar el project_code a aal"
+msgstr "campo tecnico para pasar el project_code a aal"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_account_analytic_line_project_code
+msgid "campo tecnico para pasar el project_code a la oc"
+msgstr "campo tecnico para pasar el project_code a la oc"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_account_analytic_line_description
+msgid "campo tecnico para pasar la description a la oc"
+msgstr "campo tecnico para pasar la description a la oc"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_project_task_work
+msgid "obra para la cual se trabaja en esta tarea"
+msgstr "obra para la cual se trabaja en esta tarea"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_project_task_cost_price
+msgid "precio de costo de la tarea"
+msgstr "precio de costo de la tarea"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_project_task_sale_price
+msgid "precio de venta de la tarea"
+msgstr "precio de venta de la tarea"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_project_task_product_id
+msgid "producto que representa esta tarea"
+msgstr "producto que representa esta tarea"
+
+#. module: project_eng
+#: model:ir.model,name:project_eng.model_project_task_invoice_wizard
+msgid "project.task.invoice.wizard"
+msgstr "project.task.invoice.wizard"
+
+#. module: project_eng
+#: model:ir.model.fields,help:project_eng.field_account_analytic_line_work
+msgid "work related to this analytic line"
+msgstr "Obra relacionada a esta linea analítica"
