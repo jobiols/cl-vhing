@@ -110,13 +110,11 @@ class SaleOrderLine(models.Model):
             - el codigo de proyecto
             - la obra
         """
-
         ret = super(SaleOrderLine,
                     self)._timesheet_create_task_prepare_values()
         ret['sale_price'] = self.product_id.list_price
         ret['product_id'] = self.product_id.id
         ret['cost_price'] = self.product_id.standard_price
-        ret['project_code'] = self.project_code
         ret['work'] = self.order_id.work
         ret['description'] = self.order_id.description
         ret['project_code'] = self.order_id.project_code
