@@ -18,7 +18,6 @@ class ProjectTask(models.Model):
     product_id = fields.Many2one(
         'product.product',
         help='producto que representa esta tarea',
-        required=True
     )
     work = fields.Char(
         help='obra para la cual se trabaja en esta tarea',

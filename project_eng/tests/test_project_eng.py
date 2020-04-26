@@ -38,11 +38,6 @@ class TestProjectEng(TransactionCase):
         project_task_obj = self.env['project.task']
         aal_obj = self.env['account.analytic.line']
 
-        # ponerle un producto a todas las tareas
-        product_obj = self.env['product.product']
-        product = product_obj.search([], limit=1)
-        project_task_obj.write({'product_id': product.id})
-
         # confirmar las dos so
         def confirm_SO(name):
             so_obj = self.env['sale.order']
