@@ -87,7 +87,7 @@ class ProjectTask(models.Model):
                 task.new_progress = 100.0
             elif task.planned_hours > 0.0:
                 # formula de calculo anterior
-                # task.new_progress = round(100.0 * (task.effective_hours + 
+                # task.new_progress = round(100.0 * (task.effective_hours +
                 # task.children_hours) / task.planned_hours, 2)
                 task.new_progress = round(
                     100.0 * (task.new_total_hours_spent) /
