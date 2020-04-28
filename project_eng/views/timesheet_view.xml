@@ -89,8 +89,12 @@
     <record id="view_task_form2_inherited" model="ir.ui.view">
         <field name="name">PROJECT ENG add correct subtask hours</field>
         <field name="model">project.task</field>
+        <field name="priority" eval="130"/>
         <field name="inherit_id" ref="hr_timesheet.view_task_form2_inherited"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='progress']" position="replace">
+                <field name="new_progress" widget="progressbar"/>
+            </xpath>
             <xpath expr="//group[hasclass('oe_subtotal_footer')]" position="replace">
                 <group class="oe_subtotal_footer oe_right" name="project_hours">
                 <group class="oe_subtotal_footer oe_right">
