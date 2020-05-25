@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- descripcion -->
+    <record id="view_task_tree2_inherited" model="ir.ui.view">
+        <field name="name">PROJECT TIMELINE FIX cambiar horas remanentes</field>
+        <field name="model">project.task</field>
+        <field name="priority" eval="130"/>
+        <field name="inherit_id" ref="hr_timesheet.view_task_tree2_inherited"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='remaining_hours']" position="replace">
+                <field name="new_remaining_hours" widget="float_time"
+                       sum="Remaining Hours" readonly="1"/>
+                <field name="level"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
