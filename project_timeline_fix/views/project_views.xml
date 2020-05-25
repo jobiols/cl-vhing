@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!-- Copyright 2020 jeo Software
+     License AGPL-3.0 or later (https://www.gnu.org/licenses/agpl). -->
+
+<odoo>
+<data>
+
+<!-- el boton subtareas debe quedar permanentes-->
+<record id="view_task_form2" model="ir.ui.view">
+     <field name="name">PROJ TIMELINE FIX</field>
+     <field name="model">project.task</field>
+     <field name="inherit_id" ref="project.view_task_form2"/>
+     <field name="arch" type="xml">
+          <xpath expr="//button[@name='action_subtask']" position="attributes">
+               <attribute name='attrs'/>
+          </xpath>
+     </field>
+</record>
+
+</data>
+</odoo>

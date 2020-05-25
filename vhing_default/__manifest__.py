@@ -32,6 +32,7 @@
 
         # desarrollados
         'project_eng',
+        'project_timeline_fix',
 
         # para la localizacion argentina
         'standard_depends_ce',  # poner el backup en: /var/odoo/backups/
