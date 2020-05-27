@@ -1,6 +1,6 @@
 # For copyright and license notices, see __manifest__.py file in module root
 
-from odoo import api, fields, models
+from odoo import api, fields, models, _
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as FMT
 from datetime import datetime, timedelta
 from odoo.exceptions import UserError
@@ -22,7 +22,7 @@ class ProjectTask(models.Model):
     level = fields.Integer(
         compute='_compute_level',
         help='Representa el nivel de la tarea',
-        #store=True no funciona la recursion con store
+        # store=True no funciona la recursion con store
     )
 
     def get_level(self, level):
@@ -45,11 +45,11 @@ class ProjectTask(models.Model):
         for rec in self:
             for dep in rec.dependency_task_ids:
                 if not dep.date_end:
-                    raise UserError('La tarea %s no tiene fecha de '
-                                     'finalizacion' % dep.name)
+                    raise UserError(_('La tarea %s no tiene fecha de '
+                                     'finalizacion' % dep.name))
                 if not rec.date_start:
-                    raise UserError('La tarea %s no tiene fecha de inicio'
-                                     '' % rec.name)
+                    raise UserError(_('La tarea %s no tiene fecha de inicio'
+                                     '' % rec.name))
                 if dep.date_end > rec.date_start:
                     # dep es la tarea de la cual dependemos.
                     # rec es la tarea por la que pasa el bucle
@@ -61,7 +61,7 @@ class ProjectTask(models.Model):
                     shift = (dte-dts)
 
                     # calcular start y end de rec en datetime (el dts ya esta)
-                    #dts = datetime.strptime(rec.date_start, FMT)
+                    # dts = datetime.strptime(rec.date_start, FMT)
                     dte = datetime.strptime(rec.date_end, FMT)
 
                     # correr rec en shift segundos a la derecha
