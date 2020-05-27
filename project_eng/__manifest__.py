@@ -49,6 +49,7 @@
         'reports/purchase_order_templates.xml',
         'reports/custom_reports.xml',
         'reports/sale_order_report.xml',
+        'views/account_invoice_view.xml'
     ],
     'demo': [
         'demo/product_data_demo.xml',

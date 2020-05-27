@@ -5,3 +5,4 @@ from . import account_analytic
 from . import sale_order
 from . import users
 from . import partner
+from . import account_invoice

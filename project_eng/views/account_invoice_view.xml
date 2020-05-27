@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- descripcion -->
+    <record id="invoice_tree" model="ir.ui.view">
+        <field name="name">PROJECT ENG agregar work</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="work"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
