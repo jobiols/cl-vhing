@@ -26,7 +26,8 @@
     "development_status": "Production/Stable",
     'author': 'jeo Software',
     'depends': [
-        'sale'
+        'sale',
+        'account_cancel'
     ],
     'data': [
         'views/sale_views.xml',
