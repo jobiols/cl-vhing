@@ -7,11 +7,49 @@
         <field name="priority" eval="130"/>
         <field name="inherit_id" ref="hr_timesheet.view_task_tree2_inherited"/>
         <field name="arch" type="xml">
+            <xpath expr="//field[@name='progress']" position="replace"/>
+
+            <xpath expr="//field[@name='planned_hours']" position="replace">
+                <field name="total_planned_hours" string="Plan (total)"
+                       widget="float_time"/>
+                <field name="new_total_hours_spent" string="Dedic (total)"
+                       widget="float_time"/>
+            </xpath>
             <xpath expr="//field[@name='remaining_hours']" position="replace">
-                <field name="new_remaining_hours" widget="float_time"
-                       sum="Remaining Hours" readonly="1"/>
+                <field name="new_remaining_hours" string="Restante (total)"
+                       widget="float_time"/>
+                <field name="new_progress" string="Progreso (total)"
+                       widget="progressbar"/>
+            </xpath>
+
+            <xpath expr="//field[@name='stage_id']" position="before">
+                <field name="planned_hours" string="Plan (tarea)"
+                       widget="float_time"
+                       sum="Total horas planificadas"/>
+                <field name="effective_hours" string="Dedic (tarea)"
+                       widget="float_time"
+                       sum="Total horas dedicadas"/>
+                <field name="task_remaining_hours" string="Restante (tarea)"
+                       widget="float_time"
+                       sum="Total horas restantes"/>
+                <field name="task_progress" widget="progressbar"/>
                 <field name="level"/>
             </xpath>
         </field>
     </record>
+
+    <!-- descripcion -->
+    <record id="edit_project" model="ir.ui.view">
+        <field name="name">PROJECT TIMELINE FIX ajustar tarea</field>
+        <field name="model">project.project</field>
+        <field name="inherit_id" ref="project.edit_project"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='attachment_tree_view']" position="before">
+                <button type='object' name='adjust_task_start'
+                        string='Ajustar inicio de tareas' class="oe_stat_button"
+                        icon="fa-cogs"/>
+            </xpath>
+        </field>
+    </record>
+
 </odoo>

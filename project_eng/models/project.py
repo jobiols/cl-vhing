@@ -24,37 +24,63 @@ class ProjectTask(models.Model):
         related='project_id.work',
         readonly=True
     )
+    children_planned_hours = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True,
+        string="Sub-task Planned Hours",
+        help='Total horas planificadas en las subtareas'
+    )
     children_effective_hours = fields.Float(
         compute="_compute_new_task_hours",
         readonly=True,
         string="Sub-tasks Hours Spent",
         help="Total de horas dedicadas en las subtareas"
     )
+    total_planned_hours = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True,
+        help='Total de horas planificadas en esta tarea mas todas sus '
+             'subtareas'
+    )
     new_total_hours_spent = fields.Float(
         compute="_compute_new_task_hours",
         readonly=True,
-        string="Total Spent"
-    )
-    children_planned_hours = fields.Float(
-        compute="_compute_new_task_hours",
-        readonly=True,
-        string="Sub-task Planned Hours"
-    )
-    total_planned_hours = fields.Float(
-        compute="_compute_new_task_hours",
-        readonly=True
+        string="Total horas dedicadas en tareas y subtareas"
     )
     new_remaining_hours = fields.Float(
         compute="_compute_new_task_hours",
         readonly=True,
-        string="Remaining Hours"
+        string="All Remaining Hours",
+        help='Horas restantes, de esta tarea mas la de todas las subtareas.'
+    )
+    task_remaining_hours = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True,
+        string="Task Remaining Hours",
+        help='Horas restantes de esta tarea.'
     )
     new_progress = fields.Float(
         compute="_compute_new_task_hours",
         readonly=True,
-        string="Progress",
+        string="Progreso (total)",
         help="Grado de avance calculado como:\n"
-             "Total horas dedicadas / Total horas planificadas * 100"
+             "Hs dedicadas / Hs planificadas * 100\n"
+             "Donde:\n"
+             "Hs dedicadas: Total de horas dedicadas de esta tarea mas todas "
+             "sus subtareas\n"
+             "Hs planificadas: Total de horas Planificadas de esta tarea mas "
+             "todas sus subtareas\n"
+    )
+
+    task_progress = fields.Float(
+        compute="_compute_new_task_hours",
+        readonly=True,
+        string="Progreso (tarea)",
+        help="Grado de avance calculado como:\n"
+             "Hs dedicadas / Hs planificadas * 100\n"
+             "Donde:\n"
+             "Hs dedicadas: Horas dedicadas de esta tarea.\n"
+             "Hs planificadas: Horas Planificadas de esta tarea.\n"
     )
 
     @api.depends('stage_id', 'timesheet_ids.unit_amount', 'planned_hours',
@@ -65,34 +91,42 @@ class ProjectTask(models.Model):
         for task in self.sorted(key='id', reverse=True):
             children_planned_hours = children_effective_hours = 0
             for child_task in task.child_ids:
-                children_effective_hours += child_task.effective_hours
-                children_planned_hours += child_task.planned_hours
+                children_planned_hours += child_task.total_planned_hours
+                children_effective_hours += child_task.new_total_hours_spent
+
+            # horas planificadas de las subtareas
+            task.children_planned_hours = children_planned_hours
 
             # horas dedicadas de las subtareas
             task.children_effective_hours = children_effective_hours
-            # horas totales dedicadas subtareas mas tarea
-            task.new_total_hours_spent = children_effective_hours + \
-                                         task.effective_hours
-            # horas planificadas de las subtareas
-            task.children_planned_hours = children_planned_hours
-            # horas planificadas subtareas + tarea
+
+            # horas totales dedicadas tarea mas subtareas
+            task.new_total_hours_spent = task.effective_hours + \
+                                         children_effective_hours
+
+            # horas planificadas tarea + subtareas
             task.total_planned_hours = task.planned_hours + \
                                        children_planned_hours
+
+            # horas restantes de esta tarea
+            task.task_remaining_hours = task.planned_hours - \
+                                        task.effective_hours
+
             # horas restantes
             task.new_remaining_hours = task.total_planned_hours - \
                                        task.new_total_hours_spent
+
             # progreso
-            if task.stage_id and task.stage_id.fold:
-                task.new_progress = 100.0
-            elif task.planned_hours > 0.0:
-                # formula de calculo anterior
-                # task.new_progress = round(100.0 * (task.effective_hours +
-                # task.children_hours) / task.planned_hours, 2)
-                task.new_progress = round(
-                    100.0 * (task.new_total_hours_spent) /
-                    task.total_planned_hours, 2)
-            else:
-                task.new_progress = 0.0
+            spent = task.new_total_hours_spent
+            planned = task.total_planned_hours
+            task.new_progress = round(100.0 * spent / planned, 2) \
+                if planned else 0.0
+
+            # progreso en esta tarea
+            spent = task.effective_hours
+            planned = task.planned_hours
+            task.task_progress = round(100.0 * spent / planned, 2) \
+                if planned else 0.0
 
 
 class Project(models.Model):
