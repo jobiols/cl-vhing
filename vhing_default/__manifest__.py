@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 {
     'name': 'vhing',
-    'version': '11.0.0.1.0',
+    'version': '11.0.1.0.0',
     'license': 'Other OSI approved licence',
     'category': 'Tools',
     'summary': 'Customizacion para VH Ingenieria',
@@ -46,44 +46,49 @@
     'auto_install': False,
     'images': [],
 
+    'config': [
+    ],
+
+    'env-ver': '2',
+    'odoo-license': 'CE',
+
     'port': '8069',
-    'repos': [
-        {'usr': 'jobiols', 'repo': 'cl-vhing', 'branch': '11.0'},
-        {'usr': 'jobiols', 'repo': 'odoo-addons', 'branch': '11.0'},
-        {'usr': 'jobiols', 'repo': 'rafi16jan-backend-theme',
-         'branch': '11.0'},
+    'git-repos': [
+        'https://github.com/jobiols/cl-vhing.git',
+        'https://github.com/jobiols/odoo-addons.git',
+        'https://github.com/jobiols/rafi16jan-backend-theme.git',
+        'https://github.com/jobiols/odoo-jeo-ce.git',
 
-        {'usr': 'ingadhoc', 'repo': 'odoo-argentina', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'argentina-sale', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'account-financial-tools',
-         'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'account-payment', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'website', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'miscellaneous', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'argentina-reporting', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'reporting-engine', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'aeroo_reports', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'sale', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'odoo-support', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'product', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'partner', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'account-invoicing', 'branch': '11.0'},
-        {'usr': 'ingadhoc', 'repo': 'stock', 'branch': '11.0'},
+        'https://github.com/ingadhoc/odoo-argentina.git',
+        'https://github.com/ingadhoc/argentina-sale.git',
+        'https://github.com/ingadhoc/account-financial-tools.git',
+        'https://github.com/ingadhoc/account-payment.git',
+        'https://github.com/ingadhoc/website.git',
+        'https://github.com/ingadhoc/miscellaneous.git',
+        'https://github.com/ingadhoc/argentina-reporting.git',
+        'https://github.com/ingadhoc/reporting-engine.git',
+        'https://github.com/ingadhoc/aeroo_reports.git',
+        'https://github.com/ingadhoc/sale.git',
+        'https://github.com/ingadhoc/odoo-support.git',
+        'https://github.com/ingadhoc/product.git',
+        'https://github.com/ingadhoc/partner.git',
+        'https://github.com/ingadhoc/account-invoicing.git',
+        'https://github.com/ingadhoc/stock.git',
 
-        {'usr': 'oca', 'repo': 'partner-contact', 'branch': '11.0'},
-        {'usr': 'oca', 'repo': 'web', 'branch': '11.0'},
-        {'usr': 'oca', 'repo': 'server-tools', 'branch': '11.0'},
-        {'usr': 'oca', 'repo': 'social', 'branch': '11.0'},
-        {'usr': 'oca', 'repo': 'server-brand', 'branch': '11.0'},
-        {'usr': 'oca', 'repo': 'server-ux', 'branch': '11.0'},
-        {'usr': 'oca', 'repo': 'project', 'branch': '11.0'},
-        {'usr': 'oca', 'repo': 'queue', 'branch': '11.0'},
+        'https://github.com/oca/partner-contact.git',
+        'https://github.com/oca/web.git',
+        'https://github.com/oca/server-tools.git',
+        'https://github.com/oca/social.git',
+        'https://github.com/oca/server-brand.git',
+        'https://github.com/oca/server-ux.git',
+        'https://github.com/oca/project.git',
+        'https://github.com/oca/queue.git',
 
     ],
-    'docker': [
-        {'name': 'odoo', 'usr': 'jobiols', 'img': 'odoo-jeo', 'ver': '11.0'},
-        {'name': 'postgres', 'usr': 'postgres', 'ver': '11.1-alpine'},
-        {'name': 'nginx', 'usr': 'nginx', 'ver': 'latest'},
-        {'name': 'aeroo', 'usr': 'adhoc', 'img': 'aeroo-docs'},
+    'docker-images': [
+        'odoo jobiols/odoo-jeo:11.0',
+        'postgres postgres:11.1-alpine',
+        'nginx nginx',
+        'aeroo adhoc/aeroo-docs'
     ]
 }
