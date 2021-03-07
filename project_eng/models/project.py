@@ -56,7 +56,6 @@ class ProjectTask(models.Model):
     task_remaining_hours = fields.Float(
         compute="_compute_new_task_hours",
         readonly=True,
-        string="Task Remaining Hours",
         help='Horas restantes de esta tarea.'
     )
     new_progress = fields.Float(
@@ -101,20 +100,17 @@ class ProjectTask(models.Model):
             task.children_effective_hours = children_effective_hours
 
             # horas totales dedicadas tarea mas subtareas
-            task.new_total_hours_spent = task.effective_hours + \
-                                         children_effective_hours
+            task.new_total_hours_spent = task.effective_hours + children_effective_hours
 
             # horas planificadas tarea + subtareas
-            task.total_planned_hours = task.planned_hours + \
-                                       children_planned_hours
+            task.total_planned_hours = task.planned_hours + children_planned_hours
 
             # horas restantes de esta tarea
-            task.task_remaining_hours = task.planned_hours - \
-                                        task.effective_hours
+            task.task_remaining_hours = task.planned_hours - task.effective_hours
 
             # horas restantes
-            task.new_remaining_hours = task.total_planned_hours - \
-                                       task.new_total_hours_spent
+            task.new_remaining_hours = (task.total_planned_hours -
+                                        task.new_total_hours_spent)
 
             # progreso
             spent = task.new_total_hours_spent

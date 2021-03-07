@@ -33,6 +33,7 @@
         # desarrollados
         'project_eng',
         'project_timeline_fix',
+        #'l10n_ar_fe_qr',            # Agregar QR a la factura
 
         # para la localizacion argentina
         'standard_depends_ce',  # poner el backup en: /var/odoo/backups/

@@ -1,8 +1,8 @@
 # For copyright and license notices, see __manifest__.py file in module root
 
+from datetime import datetime, timedelta
 from odoo import api, fields, models, _
 from odoo.tools import DEFAULT_SERVER_DATETIME_FORMAT as FMT
-from datetime import datetime, timedelta
 from odoo.exceptions import UserError
 
 
@@ -46,10 +46,10 @@ class ProjectTask(models.Model):
             for dep in rec.dependency_task_ids:
                 if not dep.date_end:
                     raise UserError(_('La tarea %s no tiene fecha de '
-                                     'finalizacion' % dep.name))
+                                      'finalizacion') % dep.name)
                 if not rec.date_start:
                     raise UserError(_('La tarea %s no tiene fecha de inicio'
-                                     '' % rec.name))
+                                      '') % rec.name)
                 if dep.date_end > rec.date_start:
                     # dep es la tarea de la cual dependemos.
                     # rec es la tarea por la que pasa el bucle
