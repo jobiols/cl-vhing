@@ -35,7 +35,7 @@
         'sale',
         'sale_timesheet',
         'analytic',
-        'website_quote',  # dependencia para cargar demo data
+        'website_quote',
         'project_timeline',  # Vista gantt de las tareas
     ],
     'data': [
@@ -49,7 +49,8 @@
         'reports/purchase_order_templates.xml',
         'reports/custom_reports.xml',
         'reports/sale_order_report.xml',
-        'views/account_invoice_view.xml'
+        'views/account_invoice_view.xml',
+        'views/website_quote_templates.xml',
     ],
     'demo': [
         'demo/product_data_demo.xml',
