@@ -49,20 +49,20 @@
                 </div>
                 <div class="col-md-6 col-xs-6">
                     <div class="row">
-                        <label class="col-sm-5 col-xs-5 text-right">NRO. DE PRESUPUESTO:</label>
-                        <div class="col-sm-7 col-xs-7">
+                        <label class="col-sm-7 col-xs-7 text-right">NRO. DE PRESUPUESTO:</label>
+                        <div class="col-sm-2 col-xs-2">
                             <div t-field="quotation.name"/>
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-sm-5 col-xs-5 text-right">FECHA:</label>
-                        <div class="col-sm-7 col-xs-7">
+                        <label class="col-sm-7 col-xs-7 text-right">FECHA:</label>
+                        <div class="col-sm-2 col-xs-2">
                             <span t-field="quotation.date_order" t-options='{"widget": "date"}'/>
                         </div>
                         <div class="clearfix"/>
                         <div t-if="quotation.validity_date and quotation.state in ['draft', 'sent']">
-                            <label class="col-sm-5 col-xs-5 text-right">VIGENCIA:</label>
-                            <div class="col-sm-7 col-xs-7">
+                            <label class="col-sm-7 col-xs-7 text-right">VIGENCIA:</label>
+                            <div class="col-sm-2 col-xs-2">
                                 <span t-field="quotation.validity_date"/>
                             </div>
                         </div>
