@@ -20,17 +20,23 @@
                    </li>
                 </ul>
             </div>
-            <div style="width:100%;
-                        border:1px solid black;
-                        text-align:center;
-                        border-bottom-style:double;
-                        font-size:40px;
-                        color:rgb(158, 158, 255);">
-                        Presupuesto
-            </div>
         </xpath>
 
         <xpath expr="//div[hasclass('row')]" position="replace">
+            <div class="row mt32">
+                <div class="col-md-6 col-xs-6" style="font-size:25px; color:gray; font-weight: bold;"
+                      t-if="quotation.validity_date and quotation.state in ['draft', 'sent']">
+                    <label>Presupuesto</label> <span t-field="quotation.name"/>
+                </div>
+                <div class="col-md-6 col-xs-6" style="font-size:25px; color:gray; font-weight: bold;"
+                      t-if="quotation.validity_date and quotation.state not in ['draft', 'sent']">
+                    <label>Orden de Venta</label> <span t-field="quotation.name"/>
+                </div>
+                <div class="col-md-6 col-xs-6" valign="middle" align="right">
+                    <img src="/logo.png" style="padding: 0px; margin: 0px; height: auto; width: 180px;" alt="Logo"/>
+                </div>
+
+            </div>
             <div class="row mt32" style="border-bottom:1px solid;">
                 <div class="col-md-6 col-xs-6">
                     <div class="row">
@@ -46,7 +52,7 @@
                         </div>
                     </div>
                     <div class="row">
-                        <label class="col-sm-4 col-xs-4 text-right">TIPO DE OBRA:</label>
+                        <label class="col-sm-4 col-xs-4 text-right">DESCRIPCIÓN:</label>
                         <div class="col-sm-8 col-xs-8">
                             <div t-field="quotation.description"/>
                         </div>
@@ -54,7 +60,7 @@
                 </div>
                 <div class="col-md-6 col-xs-6">
                     <div class="row">
-                        <label class="col-sm-7 col-xs-7 text-right">NRO. DE PRESUPUESTO:</label>
+                        <label class="col-sm-7 col-xs-7 text-right">NÚMERO:</label>
                         <div class="col-sm-3 col-xs-3">
                             <div t-field="quotation.name"/>
                         </div>
@@ -62,13 +68,13 @@
                     <div class="row">
                         <label class="col-sm-7 col-xs-7 text-right">FECHA:</label>
                         <div class="col-sm-4 col-xs-3">
-                            <span t-field="quotation.date_order" t-options='{"widget": "date"}'/>
+                            <span t-field="quotation.create_date" t-options='{"widget": "date"}'/>
                         </div>
                         <div class="clearfix"/>
                         <div t-if="quotation.validity_date and quotation.state in ['draft', 'sent']">
                             <label class="col-sm-7 col-xs-7 text-right">VIGENCIA:</label>
                             <div class="col-sm-5 col-xs-3">
-                                <span t-field="quotation.validity_date"/>
+                                <span t-field="quotation.validity_date" t-options='{"widget": "date"}'/>
                             </div>
                         </div>
                     </div>
