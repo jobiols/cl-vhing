@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- quitar la informacion de compañia del external_layout -->
+    <template id="external_layout_background" inherit_id="web.external_layout_background">
+        <xpath expr="//div[hasclass('company_address')]" position="replace"/>
+    </template>
+
+    <!-- modificaciones en el presupuesto -->
+    <template id="so_quotation_content" inherit_id="website_quote.so_quotation_content">
+        <xpath expr="//div[@id='introduction']" position="replace">
+            <div t-ignore="true" class=" css_editable_mode_hidden hidden-print">
+                <ul class="list-inline">
+                   <li groups="sales_team.group_sale_salesman">
+                     <a t-if="quotation.state not in ('manual')" class="btn btn-info"
+                        t-att-href="'/web#return_label=Website&amp;model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % (quotation._name, quotation.id, action)">Editar Presupuesto</a>
+                     <a t-if="quotation.state in ('manual')" class=" btn btn-info"
+                        t-att-href="'/web#return_label=Website&amp;model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % (quotation._name, quotation.id, action)">Volver a la SO</a>
+                   </li>
+                   <li>
+                      <a class="btn btn-info" target="_blank"
+                         t-att-href="'/quote/%s/%s' % (quotation.id,quotation.access_token)+'?pdf=True'">Imprimir</a>
+                   </li>
+                   <li>
+                     <t t-call='portal.record_pager'/>
+                   </li>
+                </ul>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[hasclass('row')]" position="replace">
+            <div class="row mt32">
+                <div class="col-md-6 col-xs-6"/>
+
+                <div class="col-md-6 col-xs-6" style="font-size:25px; color:gray; font-weight: bold;" align="right"
+                      t-if="quotation.validity_date and quotation.state in ['draft', 'sent']">
+                    <label>Presupuesto</label> <span t-field="quotation.name"/>
+                </div>
+                <div class="col-md-6 col-xs-6" style="font-size:25px; color:gray; font-weight: bold;" align="right"
+                      t-if="quotation.validity_date and quotation.state not in ['draft', 'sent']">
+                    <label>Orden de Venta</label> <span t-field="quotation.name"/>
+                </div>
+            </div>
+            <div class="row mt32" style="border-bottom:1px solid;">
+                <div class="col-md-6 col-xs-6">
+                    <div class="row">
+                        <label class="col-sm-4 col-xs-4 text-right">CLIENTE:</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <div t-field="quotation.partner_id"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 col-xs-4 text-right">OBRA:</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <div t-field="quotation.work"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 col-xs-4 text-right">DESCRIPCIÓN:</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <div t-field="quotation.description"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6 col-xs-6">
+                    <div class="row">
+                        <label class="col-sm-4 col-xs-4 text-right">NÚMERO:</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <div t-field="quotation.project_code"/>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <label class="col-sm-4 col-xs-4 text-right">FECHA:</label>
+                        <div class="col-sm-8 col-xs-8">
+                            <span t-field="quotation.create_date" t-options='{"widget": "date"}'/>
+                        </div>
+                        <div class="clearfix"/>
+                        <div t-if="quotation.validity_date and quotation.state in ['draft', 'sent']">
+                            <label class="col-sm-4 col-xs-4 text-right">VIGENCIA:</label>
+                            <div class="col-sm-8 col-xs-8">
+                                <span t-field="quotation.validity_date" t-options='{"widget": "date"}'/>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="pricing" inherit_id="website_quote.pricing">
+       <xpath expr="//thead" position="replace">
+            <tr>
+                <th>Productos</th>
+
+                <th></th>
+
+                <th><span t-if="any([line.tax_id for line in quotation.order_line])">Impuestos</span></th>
+                <th><span t-if="True in [line.discount > 0 for line in quotation.order_line]">Descuento</span></th>
+
+                <th></th>
+
+                <th class="text-right" groups="sale.group_show_price_subtotal">Total</th>
+                <th class="text-right price_tax_included" groups="sale.group_show_price_total">Precio Total</th>
+
+            </tr>
+       </xpath>
+
+       <xpath expr="//tbody" position="replace">
+            <t t-foreach="page" t-as="layout_category">
+
+                <t t-if="layout_category_size > 1 or page_size > 1" groups="sale.group_sale_layout">
+                    <tr class="active">
+                        <td colspan="7" style="font-weight: bold; border-bottom: 1px solid black;">&amp;bull;
+                            <t t-esc="layout_category['name']"/>
+                        </td>
+                    </tr>
+                </t>
+
+                <!-- Lines associated -->
+                <t t-foreach="layout_category['lines']" t-as="line">
+                    <tr>
+                    <td>
+                        <span t-field="line.name"/>
+                    </td>
+
+                    <td></td>
+
+                    <td>
+                        <div t-foreach="line.tax_id" t-as="tax">
+                            <t t-esc="tax.name"/>
+                        </div>
+                    </td>
+                    <td>
+                        <strong t-if="line.discount" class="text-info">
+                            <t t-esc="((line.discount % 1) and '%s' or '%d') % line.discount"/>% discount
+                        </strong>
+                    </td>
+
+                    <td></td>
+
+                    <td class="text-right oe_order_line_price_subtotal" groups="sale.group_show_price_subtotal" align="right">
+                        <span t-field="line.price_subtotal"
+                                t-options='{"widget": "monetary", "display_currency": quotation.pricelist_id.currency_id}'/>
+                    </td>
+                </tr>
+                </t>
+
+                <t t-if="(layout_category_size > 1  or page_size > 1) and layout_category['subtotal']" groups="sale.group_sale_layout">
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td class="text-right" style="padding-bottom: 32px"><strong>Subtotal:</strong></td>
+                        <td class="text-right" style="padding-bottom: 32px">
+                            <t t-set="subtotal" t-value="sum(line.price_subtotal for line in layout_category['lines'])"/>
+                            <strong data-id="total_amount" t-esc="subtotal" t-options="{'widget': 'monetary', 'display_currency': quotation.pricelist_id.currency_id}"/>
+                        </td>
+                        <td></td>
+                    </tr>
+                </t>
+            </t>
+            <t t-if="page_index == page_size - 1">
+                <t t-if="any([line.tax_id for line in quotation.order_line])">
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td class="text-right"><strong>Subtotal:</strong></td>
+                        <td class="text-right">
+                            <strong data-id="total_untaxed" t-field="quotation.amount_untaxed" t-options='{"widget": "monetary","display_currency": quotation.pricelist_id.currency_id}'/>
+                        </td>
+                        <td></td>
+                    </tr>
+
+                    <tr>
+                        <td></td><td></td><td></td><td></td>
+                        <td class="text-right">Impuestos:</td>
+                        <td class="text-right">
+                            <span data-id="total_taxes" t-field="quotation.amount_tax" t-options='{"widget": "monetary","display_currency": quotation.pricelist_id.currency_id}'/>
+                        </td>
+                        <td></td>
+                    </tr>
+                </t>
+                <tr>
+                    <td></td><td></td><td></td><td></td>
+                    <td class="text-right"><strong>Total:</strong></td>
+                    <td class="text-right">
+                        <strong data-id="total_amount" t-field="quotation.amount_total" t-options='{"widget": "monetary","display_currency": quotation.pricelist_id.currency_id}'/>
+                    </td>
+                    <td></td>
+                </tr>
+            </t>
+
+       </xpath>
+    </template>
+</odoo>

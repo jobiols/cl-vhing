@@ -19,7 +19,7 @@
 # -----------------------------------------------------------------------------
 {
     'name': 'Project Eng uy',
-    'version': '11.0.0.0.0',
+    'version': '11.0.1.0.0',
     'license': 'AGPL-3',
     'category': 'Tools',
     'summary': 'Project enhacements for engineering',
@@ -31,6 +31,7 @@
     ],
     'data': [
         'views/sale_views.xml',
+        'views/account_invoice_view.xml'
     ],
     'demo': [
     ],
