@@ -18,27 +18,26 @@
 #
 # -----------------------------------------------------------------------------
 {
-    'name': 'Project Eng uy',
-    'version': '11.0.1.0.0',
-    'license': 'AGPL-3',
-    'category': 'Tools',
-    'summary': 'Project enhacements for engineering',
+    "name": "Project Eng uy",
+    "version": "11.0.1.0.0",
+    "license": "AGPL-3",
+    "category": "Tools",
+    "summary": "Project enhacements for engineering",
     "development_status": "Production/Stable",
-    'author': 'jeo Software',
-    'depends': [
-        'sale',
-        'account_cancel'
+    "author": "jeo Software",
+    "depends": [
+        "sale",
+        "account_cancel",
+        "common_eng",
     ],
-    'data': [
-        'views/sale_views.xml',
-        'views/account_invoice_view.xml'
+    "data": [
+        "views/sale_views.xml",
+        "views/account_invoice_view.xml",
     ],
-    'demo': [
-    ],
-    'test': [
-    ],
-    'installable': True,
-    'application': False,
-    'auto_install': False,
-    'images': [],
+    "demo": [],
+    "test": [],
+    "installable": True,
+    "application": False,
+    "auto_install": False,
+    "images": [],
 }
