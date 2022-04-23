@@ -4,7 +4,7 @@
 # maintainers tools en tu maquina.
 # bajalo de aca --> https://github.com/OCA/maintainer-tools
 #
-source /home/jobiols/.virtualenvs/oca/bin/activate
+source /opt/maintainer-tools/env/bin/activate
 oca-gen-addon-readme \
 	--org-name jeoSoftware \
 	--repo-name cl-vhing \

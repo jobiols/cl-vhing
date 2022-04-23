@@ -50,7 +50,6 @@
         'reports/custom_reports.xml',
         'reports/sale_order_report.xml',
         'views/account_invoice_view.xml',
-        'views/website_quote_templates.xml',
     ],
     'demo': [
         'demo/product_data_demo.xml',
