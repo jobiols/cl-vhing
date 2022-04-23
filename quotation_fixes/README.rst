@@ -16,7 +16,7 @@ Quotation Fixes
 
 |badge1| |badge2| 
 
-Mejora la presentación del presupuesto en modo portal
+Mejora la presentación del presupuesto en modo portal para argentina.
 
 **Table of contents**
 
