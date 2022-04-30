@@ -27,6 +27,8 @@
     "author": "jeo Software",
     "depends": [
         "report_aeroo",  # dependencia para el reporte po modificado
+
+        
         "l10n_ar_aeroo_stock",
         "hr_timesheet",
         "project",
@@ -36,7 +38,8 @@
         "analytic",
         "website_quote",
         "project_timeline",  # Vista gantt de las tareas
-        #"common_eng",  # Cosas que hay en comun entre uruguay y argentina
+        "common_eng",  # Cosas que hay en comun entre uruguay y argentina.
+        'quotation_fixes',
     ],
     "data": [
         "views/project_view.xml",

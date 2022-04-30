@@ -29,6 +29,10 @@
         "sale",
         "account_cancel",
         "common_eng",
+        'quotation_fixes',
+        "report_aeroo",  # dependencia para el reporte po modificado
+        "project_timeline",  # Vista gantt de las tareas
+        'common_eng',
     ],
     "data": [
         "views/sale_views.xml",

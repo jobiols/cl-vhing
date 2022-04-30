@@ -25,7 +25,19 @@
     "summary": "Project common featuers",
     "development_status": "Production/Stable",
     "author": "jeo Software",
-    "depends": [],
+    "depends": [
+        "sale",
+        "purchase",
+        "project",
+
+        "l10n_ar_aeroo_stock",
+        "hr_timesheet",
+        "sale_timesheet",
+        "analytic",
+        "website_quote",
+        "project_timeline",  # Vista gantt de las tareas
+
+    ],
     "data": [],
     "demo": [],
     "test": [],
