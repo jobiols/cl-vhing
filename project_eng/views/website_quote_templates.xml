@@ -30,27 +30,27 @@
         </div>
 
         <div class="container" style="border-bottom:1px solid;font-size:16px;">
-            <div class="row">
-                <div class="col-md-6">
+            <div class="row mt32">
+                <div class="col-md-6 col-xs-6">
                     <strong>CLIENTE:</strong> <span t-field="quotation.partner_id"/>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-6">
                     <strong>NÚMERO:</strong> <span t-field="quotation.name"/>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-6">
                     <strong>OBRA:</strong> <span t-field="quotation.work"/>
                 </div>
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-6">
                     <strong>FECHA:</strong> <span t-field="quotation.create_date" t-options='{"widget": "date"}'/>
                 </div>
             </div>
             <div class="row">
-                <div class="col-md-6">
+                <div class="col-md-6 col-xs-6">
                     <strong>DESCRIPCIÓN:</strong> <span t-field="quotation.description"/>
                 </div>
-                <div class="col-md-6" t-if="quotation.validity_date and quotation.state in ['draft', 'sent']">
+                <div class="col-md-6 col-xs-6" t-if="quotation.validity_date and quotation.state in ['draft', 'sent']">
                     <strong>VIGENCIA:</strong> <span t-field="quotation.validity_date"/>
                 </div>
             </div>
@@ -90,8 +90,14 @@
                     I.V.A. NO INCLUIDO
                 </div>
                 <div class="col" style="float:right">
-                    <span t-field="quotation.amount_untaxed"/>.-
-                    (<span t-field="quotation.amount_untaxed_in_words"/>)
+                    <t t-if="quotation.currency_id.name == 'USD'">
+                        <span t-field="quotation.amount_untaxed"/>.-
+                        (Dolares <span t-esc="money"/> <span t-field="quotation.amount_untaxed_in_words"/>)
+                    </t>
+                    <t t-if="quotation.currency_id.name != 'USD'">
+                        <span t-field="quotation.amount_untaxed"/>.-
+                        (Pesos <span t-esc="money"/> <span t-field="quotation.amount_untaxed_in_words"/>)
+                    </t>
                 </div>
             </div>
             <br/>
@@ -205,9 +211,11 @@
 
     <template id="website_quote.report_quote">
         <t t-call="web.html_container">
-            <t t-set="data_report_margin_top" t-value="35"/>
-            <t t-set="data_report_header_spacing" t-value="50"/>
+            <!-- esto es margen superior -->
+            <t t-set="data_report_margin_top" t-value="40"/>
 
+            <!-- esto es espacio entre titulo y pagina-->
+            <t t-set="data_report_header_spacing" t-value="30"/>
             <t t-call="project_eng.internal_po_layout">
                 <t t-set="o" t-value="docs[0]"/>
                 <t t-foreach="docs" t-as="quotation">
