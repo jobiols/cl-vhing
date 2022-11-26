@@ -12,8 +12,8 @@
                 <t t-if="quotation.state not in ('draft','sent','cancel')">Orden</t>
                 <em t-esc="quotation.name"/>
                 <small t-field="quotation.state"/>
-                <div t-ignore="true" class="pull-right css_editable_mode_hidden">
-                    <ul class="list-inline">
+                <div t-ignore="true" class="poll-right css_editable_mode_hidden">
+                    <ol class="list-inline">
                         <li groups="sales_team.group_sale_salesman">
                             <a t-if="quotation.state not in ('manual')" class="btn btn-info" t-att-href="'/web#return_label=Website&amp;model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % (quotation._name, quotation.id, action)">Volver atras</a>
                             <a t-if="quotation.state in ('manual')" class=" btn btn-info" t-att-href="'/web#return_label=Website&amp;model=%s&amp;id=%s&amp;action=%s&amp;view_type=form' % (quotation._name, quotation.id, action)">Volver atras</a>
@@ -24,7 +24,7 @@
                         <li>
                             <t t-call='portal.record_pager'/>
                         </li>
-                    </ul>
+                    </ol>
                 </div>
             </h1>
         </div>
@@ -62,23 +62,23 @@
         <div>
             <br/>
             <p style="font-weight: bold;font-size:16px;">ALCANCE:</p>
-            <ul>
-                <li>Diseño y cálculo de la estructura de hormigón armado.</li>
+            <ol>
+                <li>Diseño y cálcolo de la estructura de hormigón armado.</li>
                 <li>Documentación para presentación en el organismo correspondiente.</li>
                 <li>Documentación ejecutiva para estructura de hormigón con detalles de armaduras.</li>
                 <li>Cómputo de materiales.</li>
-            </ul>
+            </ol>
         </div>
 
         <div>
             <br/>
             <p style="font-weight: bold;font-size:16px;">NOTAS:</p>
-            <ul>
+            <ol>
                 <li>Los trabajos serán entregados en formato digital.</li>
                 <li>Se considera contar con el proyecto de arquitectura definitivo junto con las cargas de diseño especiales si las hubiera, lugar de emplazamiento y cualquier otra información que condicione la estructura. Al mismo tiempo se requiere estudio de suelos del predio, información de linderos o interferencias que afecten la excavación y/o el sistema de sostenimiento de submurales.</li>
                 <li>Los pagos se ajustarán con el índice intermensual de la CAC para el parámetro construcción. Se utilizará de referencia la fecha del presupuesto y la fecha de las facturas. Si el pago se acreditara después de la fecha de pago acordada, se procederá a ajustar esta diferencia utilizando el índice del mes posterior a dicha acreditación y se liquidará en el siguiente pago.</li>
                 <li>Las visitas a la obra para evaluar la ejecución de la misma no están incluidas en el presente presupuesto a menos que se explicite lo contrario.</li>
-            </ul>
+            </ol>
         </div>
 
         <!-- Valor de la oferta -->
@@ -106,41 +106,39 @@
         <div>
             <br/>
             <p style="font-weight: bold;font-size:16px;">CONDICIONES DE PAGO:</p>
-            <ul>
-                <li>Anticipo al momento de confirmar el trabajo	30%</li>
-                <li>Entrega parcial	30%</li>
-                <li>Saldo contra entrega	40%</li>
-            </ul>
+            <div style="padding-left: 25px;">
+                <span t-field="quotation.note"/>
+            </div>
         </div>
 
         <div>
             <br/>
             <p style="font-weight: bold;font-size:16px;">FORMAS DE PAGO:</p>
-            <ul>
+            <ol>
                 <li>Transferencia bancaria</li>
                 <li>Cheque del día a la orden</li>
-            </ul>
+            </ol>
         </div>
 
         <div>
             <br/>
             <p style="font-weight: bold;font-size:16px;">OBSERVACIONES:</p>
-            <ul>
+            <ol>
                 <li>Se deberá emitir una nota requiriendo el servicio, orden de compra o contrato para dar comienzo a los trabajos, previa acreditación del anticipo.</li>
-            </ul>
+            </ol>
         </div>
 
         <div>
             <br/>
             <p style="font-weight: bold;font-size:16px;">DATOS BANCARIOS:</p>
-            <ul>
+            <ol>
                 <li>Titular: Fernando Heredia</li>
                 <li>Banco: Patagonia</li>
                 <li>Tipo de cuenta: caja de ahorro en pesos</li>
                 <li>Cbu: 0340 3585 0835 3580 8003 1204</li>
                 <li>Alias: vh.ingenieria.ptgn</li>
                 <li>Cuit: 23-29076283-9</li>
-            </ul>
+            </ol>
         </div>
 
         <div>
@@ -154,7 +152,7 @@
     </template>
 
     <template id="internal_po_layout">
-        <!-- Multicompany -->
+        <!-- Molticompany -->
         <t t-if="o and 'company_id' in o">
             <t t-set="company" t-value="o.company_id"/>
         </t>
@@ -192,18 +190,11 @@
 
         <div class="footer">
             <div class="row" style="border-top: solid;">
-                <div class="col-xs-3">
-                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                <div class="col-xs-4">
+                    <p>contacto@vhingenieria.com<br/>www.vhingenieria.com</p>
                 </div>
-                <div class="col-xs-2 col-xs-offset-2 text-center">
-                    <span t-esc="company.name"/>
-                </div>
-                <div class="col-xs-2 col-xs-offset-3 text-right">
-                    <ul class="list-inline">
-                        <li><span class="page"/></li>
-                        <li>/</li>
-                        <li><span class="topage"/></li>
-                    </ul>
+                <div class="col-xs-5 col-xs-offset-3 text-right">
+                    <p>Contacto +54 11-5263-8019<br/>Dr. Emir Mercader 4597, Buenos Aires</p>
                 </div>
             </div>
         </div>
@@ -214,7 +205,7 @@
             <!-- esto es margen superior -->
             <t t-set="data_report_margin_top" t-value="40"/>
 
-            <!-- esto es espacio entre titulo y pagina-->
+            <!-- esto es espacio entre titolo y pagina-->
             <t t-set="data_report_header_spacing" t-value="30"/>
             <t t-call="project_eng.internal_po_layout">
                 <t t-set="o" t-value="docs[0]"/>
