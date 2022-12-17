@@ -1,5 +1,10 @@
 # Part of Odoo. See LICENSE file for full copyright and licensing details.
 from odoo import api, models, fields
+try:
+    from num2words import num2words
+except ImportError:
+    logging.getLogger(__name__).warning("The num2words python library is not installed, l10n_mx_edi features won't be fully available.")
+    num2words = None
 
 
 class SaleOrder(models.Model):
@@ -42,9 +47,18 @@ class SaleOrder(models.Model):
         compute="_compute_percentages",
         readonly=True
     )
+    amount_untaxed_in_words = fields.Char(
+        help="total sin impuesto en palabras para el reporte de SO",
+        compute="_compute_amount_untaxed_in_words",
+    )
 
     _sql_constraints = [('project_code_unique', 'unique(project_code)',
                          'The project code must be unique.')]
+
+    @api.depends('amount_untaxed')
+    def _compute_amount_untaxed_in_words(self):
+        for rec in self:
+            rec.amount_untaxed_in_words = num2words(rec.amount_untaxed, lang='es').title()
 
     @api.depends()
     def _compute_percentages(self):
