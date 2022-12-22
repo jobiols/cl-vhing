@@ -35,7 +35,7 @@
                     <strong>CLIENTE:</strong> <span t-field="quotation.partner_id"/>
                 </div>
                 <div class="col-md-5 col-xs-5">
-                    <strong>NÚMERO:</strong> <span t-field="quotation.name"/>
+                    <strong>NÚMERO:</strong> <span t-field="quotation.project_code"/>
                 </div>
             </div>
             <div class="row">
