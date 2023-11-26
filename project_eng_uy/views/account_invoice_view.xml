@@ -11,6 +11,7 @@
             </xpath>
             <xpath expr="//field[@name='amount_total_signed']" position="before">
                 <field name="amount_untaxed" string="Importe Sin Impuesto"/>
+                <field name="amount_tax"/>
             </xpath>
         </field>
     </record>
