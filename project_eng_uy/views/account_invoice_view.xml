@@ -10,8 +10,8 @@
                 <field name="work"/>
             </xpath>
             <xpath expr="//field[@name='amount_total_signed']" position="before">
-                <field name="amount_untaxed" string="Importe Sin Impuesto"/>
-                <field name="amount_tax"/>
+                <field name="amount_untaxed" string="Importe Sin Impuesto" sum="Sin Impuesto"/>
+                <field name="amount_tax" sum="Impuesto"/>
             </xpath>
         </field>
     </record>
