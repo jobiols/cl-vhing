@@ -55,10 +55,13 @@
 
     'port': '8069',
     'git-repos': [
-        'git@github.com:jobiols/cl-vhing.git',
-        'git@github.com:jobiols/odoo-addons.git',
+        'https://github.com/jobiols/cl-vhing.git',
+#        'git@github.com:jobiols/cl-vhing.git',
+        'https://github.com/jobiols/odoo-addons.git',
+#        'git@github.com:jobiols/odoo-addons.git',
         'https://github.com/jobiols/rafi16jan-backend-theme.git',
-        'git@github.com:jobiols/odoo-jeo-ce.git',
+        'https://github.com/jobiols/odoo-jeo-ce.git',
+#        'git@github.com:jobiols/odoo-jeo-ce.git',
 
         'https://github.com/ingadhoc/odoo-argentina.git',
         'https://github.com/ingadhoc/argentina-sale.git',
